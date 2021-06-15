@@ -4,7 +4,8 @@
   "description": "This is the beginning of the project: Orvide(tentative name)",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "test": "nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [
     "orvide",
