@@ -4,7 +4,8 @@
   "description": "This is the beginning of the project: Orvide(tentative name)",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "test": "nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [
     "orvide",
@@ -13,6 +14,11 @@
   "author": "A&D",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.13",
+    "morgan": "^1.10.0"
   }
 }
