@@ -9,6 +9,7 @@ router.get(`/register`, async (req, res, next) => {
 });
 
 router.get('/login', (req, res) => {
+    console.log("arpit")
     res.send("sdf");
 })
 
