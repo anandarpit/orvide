@@ -8,12 +8,13 @@ router.get(`/register`, async (req, res, next) => {
   res.status(200).json({ success: true, msg: "Register Route" });
 });
 
-router.get('/fucku', (req, res) => {
+router.get('/gth', (req, res) => {
     console.log("arpitanand")
-    res.send("s;odf");u
+    res.send("fffff");
+    okay
 })
 
 
 
-module.exports = router;
+
 module.exports = router;
