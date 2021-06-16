@@ -10,7 +10,7 @@ router.get(`/register`, async (req, res, next) => {
 
 router.get('/login', (req, res) => {
     console.log("arpitanand")
-    res.send("sdf");
+    res.send("s;odf");u
 })
 
 
