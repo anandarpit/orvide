@@ -8,7 +8,7 @@ router.get(`/register`, async (req, res, next) => {
   res.status(200).json({ success: true, msg: "Register Route" });
 });
 
-router.get('/login', (req, res) => {
+router.get('/fucku', (req, res) => {
     console.log("arpitanand")
     res.send("s;odf");u
 })
