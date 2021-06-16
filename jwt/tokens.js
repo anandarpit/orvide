@@ -47,9 +47,10 @@ function verifyAccessToken(req, res, next) {
   const bearerToken = authHeader.split(` `)
   const token = bearerToken[1]
   jwt.verify(token, PUB_KEY, (err, payload) => {
-    if(err) 
-    const message = err.name === 'JsonWebTokenError' ? 'Unauthorized' : err.message
+    if(err) {
+      const message = err.name === 'JsonWebTokenError' ? 'Unauthorized' : err.message
     return next(createError.Unauthorized(message))
+    }
   })
 
   req.payload = payload
@@ -94,7 +95,6 @@ function verifyRefreshToken(refreshToken) {
     })
   })
 }
-
 
 module.exports = {signAccessToken, signRefreshToken, verifyRefreshToken, verifyAccessToken}
 

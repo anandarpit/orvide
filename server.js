@@ -15,9 +15,6 @@ app.use(express.static("static"));
 app.use("/", routes);
 
 
-const routes = require('./routes/index')
-app.use(`/`, routes);
-
 app.use(express.static('static'));
 app.use(async (req, res, next) => {
   next(createError.NotFound());
