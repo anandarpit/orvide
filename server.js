@@ -21,8 +21,8 @@ app.use((err, req, res, next) => {
     },
   });
 });
-
-app.use(require('./routes'));
+const routes = require('./routes/index')
+app.use(`/`, routes);
 
 const PORT = process.env.PORT || 3000;
 
