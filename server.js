@@ -14,6 +14,11 @@ app.use(express.static("static"));
 
 app.use("/", routes);
 
+
+const routes = require('./routes/index')
+app.use(`/`, routes);
+
+app.use(express.static('static'));
 app.use(async (req, res, next) => {
   next(createError.NotFound());
 });
@@ -27,6 +32,7 @@ app.use((err, req, res, next) => {
     },
   });
 });
+
 
 const PORT = process.env.PORT || 3000;
 
