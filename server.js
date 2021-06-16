@@ -8,6 +8,9 @@ app.use(morgan(`dev`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const routes = require('./routes/index')
+app.use(`/`, routes);
+
 app.use(async (req, res, next) => {
   next(createError.NotFound());
 });
@@ -21,8 +24,7 @@ app.use((err, req, res, next) => {
     },
   });
 });
-const routes = require('./routes/index')
-app.use(`/`, routes);
+
 
 const PORT = process.env.PORT || 3000;
 

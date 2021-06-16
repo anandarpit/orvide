@@ -20,7 +20,7 @@ function signAccessToken(userid) {
       sub: _id,
       iat: Date.now(),
       iss: issuer,
-      type: at
+      // type: at
     };
 
     const options = {
@@ -41,19 +41,24 @@ function signAccessToken(userid) {
 }
 
 function verifyAccessToken(req, res, next) {
-  if(!req.headers["authorization"]) return next(createError.Unauthorized(`You are not authorized`))
+  try {
+    if(!req.headers["authorization"]) return next(createError.Unauthorized(`You are not authorized`))
 
   const authHeader = req.headers[`authorization`]
   const bearerToken = authHeader.split(` `)
   const token = bearerToken[1]
   jwt.verify(token, PUB_KEY, (err, payload) => {
-    if(err) 
+    if(err) {
     const message = err.name === 'JsonWebTokenError' ? 'Unauthorized' : err.message
     return next(createError.Unauthorized(message))
+    }    
   })
 
   req.payload = payload
   next()
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 function signRefreshToken(userid) {
@@ -65,7 +70,7 @@ function signRefreshToken(userid) {
       sub: _id,
       iat: Date.now(),
       iss: issuer,
-      type: rt
+      // type: rt   you cannot define your own I guess, check how to do this later
     };
 
     const options = {
@@ -96,5 +101,6 @@ function verifyRefreshToken(refreshToken) {
 }
 
 
-module.exports = {signAccessToken, signRefreshToken, verifyRefreshToken, verifyAccessToken}
+module.exports = {signRefreshToken, signAccessToken, verifyRefreshToken,  verifyAccessToken}
+
 
