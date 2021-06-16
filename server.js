@@ -7,7 +7,7 @@ const app = express();
 app.use(morgan(`dev`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.static('static'));
 app.use(async (req, res, next) => {
   next(createError.NotFound());
 });

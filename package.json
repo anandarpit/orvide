@@ -19,7 +19,15 @@
     "express": "^4.17.1",
     "http-errors": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.13",
+    "mongoose": "^5.12.14",
     "morgan": "^1.10.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anandarpit/orvide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anandarpit/orvide/issues"
+  },
+  "homepage": "https://github.com/anandarpit/orvide#readme"
 }
