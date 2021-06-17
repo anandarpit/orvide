@@ -1,11 +1,11 @@
 const mongoose =require('mongoose');
-const bcrypt = require('bcrypt')
+
 
 const UserSchema = new mongoose.Schema({
     username: {
         type: mongoose.Schema.Types.String,
         lowercase: true,
-        required: true,
+        required: true, 
         unique: true,
         trim: true
     },
@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema({
         unique: true,
         trim: true
     },
-    pass: {
+    password: {
         hash: {
             type : mongoose.Schema.Types.String,
             required: true
@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema({
             required: true,
             trim: true
         },
-        lastname: {
+        lastName: {
             type: mongoose.Schema.Types.String,
             required: false,
             trim: true
@@ -55,22 +55,23 @@ const UserSchema = new mongoose.Schema({
 })
 
 //will run on every save request while in register route
-UserSchema.pre('save', async function (next) {
-    try {
-      if (this.isNew) {
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(this.password, salt)
-        this.password = hashedPassword
-      }
-      next()
-    } catch (error) {
-      next(error)
-    }
-  })
+// UserSchema.pre('save', async function (next) {
+//     try {
+//       if (this.isNew) {
+//         const salt = await bcrypt.genSalt(10)
+//         const hashedPassword = await bcrypt.hash(this.password, salt)
+//         this.password = hashedPassword
+//       }
+//       next()
+//     } catch (error) {
+//       next(error)
+//     }
+//   })
 
-//Will be used during login; to check if the password is correct
-UserSchema.methods.isValidPassword = async function(pass){
-    return bcrypt.compare(pass, this.password)
-}
+// //Will be used during login; to check if the password is correct
+// UserSchema.methods.isValidPassword = async function(pass){
+//     return bcrypt.compare(pass, this.password)
+// }
 
-mongoose.model('User', UserSchema);
+const user = mongoose.model('User', UserSchema);
+module.exports = user;
