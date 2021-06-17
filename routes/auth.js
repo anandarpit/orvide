@@ -1,15 +1,24 @@
 const mongoose = require(`mongoose`);
 const createError = require(`http-errors`);
 const router = require("express").Router();
-const {signAccessToken, signRefreshToken, verifyAccessToken, verifyRefreshToken} = require(`../jwt/tokens`);
+const {signAccessToken, verifyAccessToken} = require(`../jwt/tokens`);
+const registerSchema = require(`../helpers/validation`)
+const User = require(`../model/User`)
 
-router.get(`/register`, async (req, res, next) => {
-  res.status(200).json({ success: true, msg: "Register Route" });
+router.post(`/register`, async (req, res, next) => {
+  //TODO write register logic
+  try {
+    const validatedResult = await registerSchema().validateAsync(req.body)
+    console.log(`hhfhhf`)
+    res.send(validatedResult)
+  } catch (error) {
+  res.send(error)
+  }
 });
 
 router.get('/login', (req, res) => {
-    console.log("arpitanand")
-    res.send("sdf");
+    // res.send("sdf");
+  //TODO build login logic
 })
-arpit anand
-module.exports = router;
+
+module.exports = router;  

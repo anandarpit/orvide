@@ -14,12 +14,11 @@ app.use(express.static("static"));
 
 app.use("/", routes);
 
-
 app.use(express.static('static'));
+
 app.use(async (req, res, next) => {
   next(createError.NotFound());
 });
-
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.send({

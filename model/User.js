@@ -1,4 +1,5 @@
 const mongoose =require('mongoose');
+const bcrypt = require('bcrypt')
 
 const UserSchema = new mongoose.Schema({
     username: {
@@ -53,11 +54,9 @@ const UserSchema = new mongoose.Schema({
     }]
 })
 
+//will run on every save request while in register route
 UserSchema.pre('save', async function (next) {
     try {
-      /* 
-      Here first checking if the document is new by using a helper of mongoose .isNew, therefore, this.isNew is true if document is new else false, and we only want to hash the password if its a new document, else  it will again hash the password if you save the document again by making some changes in other fields incase your document contains other fields.
-      */
       if (this.isNew) {
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(this.password, salt)
@@ -68,5 +67,10 @@ UserSchema.pre('save', async function (next) {
       next(error)
     }
   })
+
+//Will be used during login; to check if the password is correct
+UserSchema.methods.isValidPassword = async function(pass){
+    return bcrypt.compare(pass, this.password)
+}
 
 mongoose.model('User', UserSchema);
