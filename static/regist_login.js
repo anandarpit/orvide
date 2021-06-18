@@ -30,7 +30,18 @@ function RegisterUser() {
     }
    
 }
-
+//TODO validate every input box
 function LoginUser() {
-    
+    if ( email.value || password.value) {
+        axios({
+            method: 'post',
+            url: '/login',
+            data: {
+              
+                email: email.value,
+                password:password.value
+            }
+          });   
+    }
+   
 }

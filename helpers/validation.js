@@ -2,7 +2,6 @@ const Joi = require(`@hapi/joi`)
 
 module.exports = 
 function registerSchema() {
-    console.log("hrlik");
     return Joi.object({
         
         firstName: Joi.string(),
@@ -10,7 +9,7 @@ function registerSchema() {
         password: Joi.string().min(6).required(), //TODO add a stronger regEx validation
         cnfpass: Joi.ref(`password`),
         email: Joi.string().email().lowercase().required(),
-        
+        //TODO add username
     })
 } 
 
