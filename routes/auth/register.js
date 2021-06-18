@@ -1,26 +1,28 @@
-const mongoose = require(`mongoose`);
 const createError = require(`http-errors`);
 const router = require("express").Router();
-const express = require('express');
-const path = require('path')
-const app = express();
-const {signAccessToken ,verifyAccessToken} = require(`../../jwt/tokens`);
-const registerSchema = require('../../helpers/validation')
+const {registerSchema} = require('../../helpers/validation')
 const {RegisterUser} = require('../../controller/auth.controller')
 
 router.post('/', async (req, res, next) => {
   
   try {
     const validatedResult = await registerSchema().validateAsync(req.body)
-    console.log(req.body);
-    await RegisterUser(req.body);
+
+    await RegisterUser(validatedResult, res).then((doc) => {
+      res.status(200).send({
+        message: "Successfully Registered!",
+        id: doc._id
+      })
+    })
     res.end()
   } catch (error) {
-  console.log(error);
+    //Checking for Validation Error
+    if(error.name = `ValidationError`){
+      res.status(400).send(createError(error.message)) //TODO add custom message instead of error.message
+    }else{
+      res.status(500).send(createError(`Internal Server Error :(`))
+    }
   }
-  console.log("post register");
 })
-
-
 
 module.exports = router;  

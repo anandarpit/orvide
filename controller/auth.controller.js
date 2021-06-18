@@ -4,53 +4,81 @@ const passwordGen = require("../passwordHash");
 const createError = require(`http-errors`);
 
 module.exports = {
-  RegisterUser: (data) => {
-    const { firstName, lastName, email, password, cnfpass } = data;
+  RegisterUser: (data, res) => {
+    return new Promise((resolve, reject) => {
+      try {
+        const { firstName, lastName, email, password } = data;
+        const passwordData = passwordGen.genPassword(password);
+        const hash = passwordData.hash;
+        const salt = passwordData.salt;
 
-    const passworData = passwordGen.genPassword(password);
-    const hash = passworData.hash;
-    const salt = passworData.salt;
+        //TODO remove username=email
+        connect.then((db) => {
+          const saveDetails = new UserSchema({
+            username: email,
+            name: { firstName, lastName },
+            email: email,
+            password: { salt, hash },
+          });
 
-    console.log(hash + " " + salt);
-    connect.then((db) => {
-      const saveDetails = new UserSchema({
-        username: email,
-        name: { firstName, lastName },
-        email,
-        password: { salt, hash },
-      }); //TODO username=email
-      saveDetails.save(function (err, doc) {
-        if (err) return console.error(err);
-        console.log("Document inserted succussfully!");
-      });
+          //TODO handle errors here more gracefully
+          saveDetails.save(function (err, doc) {
+            if (err) {
+              if ((err.name = `MongoError` && err.code === 11000)) {
+                //error.code = 11000 means duplicate user found!
+                res
+                  .status(409)
+                  .send(createError.BadRequest("User Already Exists"));
+                return reject();
+              } else {
+                res.send(createError(err.message)); //TODO unchecked error response
+                return reject();
+              }
+            }
+            console.log(doc);
+            return resolve(doc);
+          });
+        });
+      } catch (error) {
+        console.log(error.messages);
+        res.send(
+          createError.InternalServerError(
+            "An internal server error occurred :("
+          )
+        );
+      }
     });
   },
-  VerifyUser: (email, password) => {
-    return new Promise((resolve, reject) => {
 
-    console.log("inside verifyUser");
-    connect.then((db) => {
-      console.log("connected");
-      UserSchema.findOne({ email })
-        .then((user) => {
-          if (!user) {
-            console.log("invalid email");
-            return resolve(false)
-          }
-          console.log("find user");
-          const hash = user.password.hash;
-          const salt = user.password.salt;
-          if (!passwordGen.validPassword(password, hash, salt)) {
-            console.log("incorrect password");
-            return resolve(false);
-          }
-          console.log("user exist");
-          return resolve(true)
-        })
-        .catch((err) => {
-            reject(createError.InternalServerError("THis server is dammned"))
-          console.log("user find error " + err);
+  LoginUser: (email, password, res) => {
+    return new Promise((resolve, reject) => {
+      try {
+        console.log("Inside LoginUser");
+        connect.then((db) => {
+          console.log("connected");
+          UserSchema.findOne({ email })
+            .then((user) => {
+              if (!user) {
+                console.log("invalid email");
+                res.status(404).send(createError("No user found with that email"));
+                return resolve();
+              }
+              console.log("found user");
+              const hash = user.password.hash;
+              const salt = user.password.salt;
+              if (!passwordGen.validPassword(password, hash, salt)) {
+                console.log("incorrect password");
+                res.send(403).send(createError("Incorrect Credentials"));
+                return resolve();
+              }
+              console.log("logged info correct");
+              return resolve(true);
+            })
         });
+      } catch (error) {
+        res.status(500).send(createError.InternalServerError("Internal Server Error"))
+        return reject();
+      }
     });
-  })
-}};
+  },
+};
