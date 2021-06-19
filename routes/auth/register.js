@@ -4,7 +4,6 @@ const {registerSchema} = require('../../helpers/validation')
 const {RegisterUser} = require('../../controller/auth.controller')
 
 router.post('/', async (req, res, next) => {
-  
   try {
     const validatedResult = await registerSchema().validateAsync(req.body)
 
@@ -23,6 +22,10 @@ router.post('/', async (req, res, next) => {
       res.status(500).send(createError(`Internal Server Error :(`))
     }
   }
+})
+
+router.get(`/`, async (req, res, next) => {
+  //TODO render the static front end page
 })
 
 module.exports = router;  

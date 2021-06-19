@@ -3,8 +3,11 @@ const morgan = require(`morgan`);
 const createError = require(`http-errors`);
 const routes = require("./routes/index");
 require(`dotenv`).config();
-
 const app = express();
+var cookieParser = require('cookie-parser')
+app.use(cookieParser())
+
+
 
 app.use(morgan(`dev`));
 app.use(express.json());

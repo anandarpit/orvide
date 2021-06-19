@@ -29,7 +29,7 @@ const UserSchema = new mongoose.Schema({
     name: {
         firstName: {
             type : mongoose.Schema.Types.String,
-            required: true,
+            required: false,
             trim: true
         },
         lastName: {

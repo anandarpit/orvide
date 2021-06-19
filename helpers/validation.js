@@ -21,8 +21,12 @@ module.exports = {
     },
     loginSchema: ()=> {
         return Joi.object({
-            username: Joi.string().trim(),
-            password: Joi.string().min(6).required().messages({
+            username: Joi.string().required().messages({
+                "string.base": `Should be a type of 'text'`,
+                "string.empty": `Cannot be an empty field`,
+                "any.required": `Username is Required!`
+              }),
+            password: Joi.string().required().messages({
                 "any.required": `Password is Required!`
               }), 
         })

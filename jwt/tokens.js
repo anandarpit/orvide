@@ -9,9 +9,9 @@ const PRIV_KEY = fs.readFileSync(pathToPrivKey, "utf8");
 const pathToPubKey = path.join(__dirname, "..", "key/id_rsa_pub.pem");
 const PUB_KEY = fs.readFileSync(pathToPubKey, "utf8");
 
-function signAccessToken(userid) {
+function signAccessToken(userId) {
   return new Promise((resolve, reject) => {
-    const _id = userid;
+    const _id = userId;
     const issuer = `orvide.com`;
 
     const payload = {
@@ -29,32 +29,41 @@ function signAccessToken(userid) {
     jwt.sign(payload, PRIV_KEY, options, (err, token) => {
       if (err) {
         console.log(err.message);
-        reject(createError.InternalServerError());
-        return;
+        return reject(createError.InternalServerError());
       }
-      console.log(token);
-      resolve(token)
+      return resolve(token)
     });
   });
 }
 
-function verifyAccessToken(req, res, next) {
-  if(!req.headers["authorization"]) return next(createError.Unauthorized(`You are not authorized`))
-
-  const authHeader = req.headers[`authorization`]
-  const bearerToken = authHeader.split(` `)
-  const token = bearerToken[1]
-  jwt.verify(token, PUB_KEY, (err, payload) => {
-    if(err) {
-      const message = err.name === 'JsonWebTokenError' ? 'Unauthorized' : err.message
-    return next(createError.Unauthorized(message))
+function isAlreadyLoggedIn(req, res, next) {
+  try {
+    // console.log(req.headers['Cookie'])
+    if (!req.headers['Cookie']) {
+      next()
+      return
     }
-  })
+    const token = req.headers.cookie.auth
+    // const bearerToken = authHeader.split(` `)
+    // const token = authH
+    jwt.verify(token, PUB_KEY, (err, payload) => {
+      if (err) {
+        if (err.name == "JsonWebTokenError") {
+          next()
+        } else {
+          res.status(400).send(createError.InternalServerError())
+        }
+      } else {
+        res.redirect("Already Logged In")
+      }
+    })
 
-  req.payload = payload
-  next()
+    req.payload = payload
+    next()
+  } catch (error) {
+    res.status(500).send(error.message)
+  }
 }
 
-
-module.exports = {signAccessToken, verifyAccessToken}
+module.exports = { signAccessToken, isAlreadyLoggedIn }
 

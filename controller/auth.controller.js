@@ -50,9 +50,12 @@ module.exports = {
     });
   },
 
-  LoginUser: (email, password, res) => {
+  LoginUser: (validatedResult, res) => {
     return new Promise((resolve, reject) => {
       try {
+        const email = validatedResult.username;
+        const password = validatedResult.password;
+
         console.log("Inside LoginUser");
         connect.then((db) => {
           console.log("connected");
@@ -61,7 +64,7 @@ module.exports = {
               if (!user) {
                 console.log("invalid email");
                 res.status(404).send(createError("No user found with that email"));
-                return resolve();
+                return reject();
               }
               console.log("found user");
               const hash = user.password.hash;
@@ -69,10 +72,10 @@ module.exports = {
               if (!passwordGen.validPassword(password, hash, salt)) {
                 console.log("incorrect password");
                 res.send(403).send(createError("Incorrect Credentials"));
-                return resolve();
+                return reject();
               }
               console.log("logged info correct");
-              return resolve(true);
+              return resolve(user._id);
             })
         });
       } catch (error) {

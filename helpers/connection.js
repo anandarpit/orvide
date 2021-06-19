@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
+require(`dotenv`).config()
 
-const Connect = mongoose.connect("mongodb://localhost:27017/orvide", { useNewUrlParser: true,useUnifiedTopology: true,useCreateIndex: true }).then(() => {
+const Connect = mongoose.connect(process.env.MONGO_URL, {dbName: process.env.DB_NAME ,useNewUrlParser: true,useUnifiedTopology: true,useCreateIndex: true }).then(() => {
     console.log('mongodb connected.')
   }).catch((err)=>console.log(err))
 
