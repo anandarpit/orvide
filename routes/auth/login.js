@@ -13,13 +13,9 @@ router.post('/', async (req, res, next) => {
             if (userId) {
                 console.log("user verified");
                 signAccessToken(userId).then((token, time) => {
-                    var cookie = req.cookies.auth;
-                    if (!cookie) {
-                        res.cookie('auth', token, { maxAge: 900000, httpOnly: true });
-                    } else {
-                        console.log('Cookie Already Set');
-                    }
-                    // res.setHeader('Authorization', 'Bearer ' + token);
+
+                    //TODO 1. add `secure`  2. find whether to extract token from header or from cookies in token.js
+                    res.cookie('authorization', token, { maxAge: 60000, httpOnly: true }); // 60 seconds max age
                     res.status(200).send(`Successfully logged in`)
                 })
             }
@@ -27,15 +23,15 @@ router.post('/', async (req, res, next) => {
     } catch (error) {
         //Checking for Validation Error
         if (error.name = `ValidationError`) {
-            res.status(400).send(createError(error.message)) //TODO add custom message instead of error.message
+            res.status(400).send(createError(error.message))
         } else {
             res.status(500).send(createError(`Internal Server Error :(`))
         }
     }
 })
 
-router.get('/', isAlreadyLoggedIn, (req, res, next)=>{
-    
+router.get('/', isAlreadyLoggedIn, (req, res, next) => {
+    res.send("Hello from the other side")
 })
 
 module.exports = router

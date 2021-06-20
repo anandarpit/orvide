@@ -38,30 +38,25 @@ function signAccessToken(userId) {
 
 function isAlreadyLoggedIn(req, res, next) {
   try {
-    // console.log(req.headers['Cookie'])
-    if (!req.headers['Cookie']) {
+    const token = req.cookies.authorization
+    console.log(token)
+
+    if (!token) {
       next()
-      return
     }
-    const token = req.headers.cookie.auth
-    // const bearerToken = authHeader.split(` `)
-    // const token = authH
     jwt.verify(token, PUB_KEY, (err, payload) => {
       if (err) {
         if (err.name == "JsonWebTokenError") {
           next()
         } else {
-          res.status(400).send(createError.InternalServerError())
+          res.status(400).send(err.message) //TODO unhandled error
         }
       } else {
-        res.redirect("Already Logged In")
+        res.status(403).send("Already Logged In!!!! " + payload)
       }
     })
-
-    req.payload = payload
-    next()
   } catch (error) {
-    res.status(500).send(error.message)
+    res.status(500).send(error.message) //TODO unhandled error
   }
 }
 
