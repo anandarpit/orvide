@@ -7,7 +7,7 @@ module.exports = {
   RegisterUser: (data, res) => {
     return new Promise((resolve, reject) => {
       try {
-        const { firstName, lastName, email, password } = data;
+        const { firstName, lastName, email, password, username } = data;
         const passwordData = passwordGen.genPassword(password);
         const hash = passwordData.hash;
         const salt = passwordData.salt;
@@ -56,25 +56,19 @@ module.exports = {
         const email = validatedResult.username;
         const password = validatedResult.password;
 
-        console.log("Inside LoginUser");
         connect.then((db) => {
-          console.log("connected");
           UserSchema.findOne({ email })
             .then((user) => {
               if (!user) {
-                console.log("invalid email");
                 res.status(404).send(createError("No user found with that email"));
                 return reject();
               }
-              console.log("found user");
               const hash = user.password.hash;
               const salt = user.password.salt;
               if (!passwordGen.validPassword(password, hash, salt)) {
-                console.log("incorrect password");
                 res.send(403).send(createError("Incorrect Credentials"));
                 return reject();
               }
-              console.log("logged info correct");
               return resolve(user._id);
             })
         });

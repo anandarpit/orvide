@@ -4,9 +4,9 @@ const fs = require("fs");
 const path = require("path");
 
 //This is temporary until we use Aws KMS to store the private key
-const pathToPrivKey = path.join(__dirname, "..", "key/id_rsa_priv.pem");
+const pathToPrivKey = path.join(__dirname, "..", "jwt/key/id_rsa_priv.pem");
 const PRIV_KEY = fs.readFileSync(pathToPrivKey, "utf8");
-const pathToPubKey = path.join(__dirname, "..", "key/id_rsa_pub.pem");
+const pathToPubKey = path.join(__dirname, "..", "jwt/key/id_rsa_pub.pem");
 const PUB_KEY = fs.readFileSync(pathToPubKey, "utf8");
 
 function signAccessToken(userId) {
@@ -36,14 +36,12 @@ function signAccessToken(userId) {
   });
 }
 
-function isAlreadyLoggedIn(req, res, next) {
+function isAlreadyLoggedIn(req, res, next) { //TODO maybe we need to check for cookies for this one!
   try {
-    const token = req.cookies.authorization
-    console.log(token)
+    const token = req.headers[`authorization`]
 
-    if (!token) {
-      next()
-    }
+    if (!token) next()
+  
     jwt.verify(token, PUB_KEY, (err, payload) => {
       if (err) {
         if (err.name == "JsonWebTokenError") {
@@ -52,7 +50,7 @@ function isAlreadyLoggedIn(req, res, next) {
           res.status(400).send(err.message) //TODO unhandled error
         }
       } else {
-        res.status(403).send("Already Logged In!!!! " + payload)
+        res.status(403).send({message: "Already Logged in", payload})
       }
     })
   } catch (error) {

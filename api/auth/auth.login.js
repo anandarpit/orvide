@@ -2,20 +2,18 @@ const createError = require(`http-errors`);
 const router = require("express").Router();
 const { signAccessToken, isAlreadyLoggedIn } = require(`../../jwt/tokens`);
 const { LoginUser } = require("../../controller/auth.controller");
-const { loginSchema } = require('../../helpers/validation')
+const { loginSchema } = require('../../validation/authValidation')
 
-
+ 
 router.post('/', async (req, res, next) => {
     try {
         const validatedResult = await loginSchema().validateAsync(req.body)
 
         await LoginUser(validatedResult, res).then((userId) => {
             if (userId) {
-                console.log("user verified");
                 signAccessToken(userId).then((token, time) => {
 
-                    //TODO 1. add `secure`  2. find whether to extract token from header or from cookies in token.js
-                    res.cookie('authorization', token, { maxAge: 60000, httpOnly: true }); // 60 seconds max age
+                    res.cookie('authorization', token, { maxAge: 1000 * 60 * 60, httpOnly: true }); // 1 hour max age
                     res.status(200).send(`Successfully logged in`)
                 })
             }
@@ -31,7 +29,7 @@ router.post('/', async (req, res, next) => {
 })
 
 router.get('/', isAlreadyLoggedIn, (req, res, next) => {
-    res.send("Hello from the other side")
+    res.send(200).send("Please enter your credentials!")
 })
 
 module.exports = router
