@@ -38,6 +38,7 @@ function signAccessToken(userId) {
 
 function isAlreadyLoggedIn(req, res, next) { //TODO maybe we need to check for cookies for this one!
   try {
+   
     const token = req.headers[`authorization`]
 
     if (!token) next()
@@ -49,7 +50,9 @@ function isAlreadyLoggedIn(req, res, next) { //TODO maybe we need to check for c
           res.status(400).send(err.message) //TODO unhandled error
         }
       } else {
-        res.status(403).send({message: "Already Logged in", payload})
+        req.loginStatus = true;
+        next();
+        // res.status(403).send({message: "Already Logged in", payload})
       }
     })
   } catch (error) {

@@ -1,9 +1,14 @@
 const createError = require(`http-errors`);
+const express = require("express");
+const app = express();
+const path = require('path');
 const router = require("express").Router();
 const { signAccessToken, isAlreadyLoggedIn } = require(`../../jwt/tokens`);
 const { LoginUser } = require("../../controller/auth.controller");
 const { loginSchema } = require('../../validation/authValidation')
-
+const staticpath =path.join(__dirname,'../../static');
+app.use(express.static(staticpath));
+console.log(staticpath);
  
 router.post('/', async (req, res, next) => {
     try {
@@ -28,8 +33,12 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-router.get('/', isAlreadyLoggedIn, (req, res, next) => {
-    res.send(200).send("Please enter your credentials!")
+router.get('/',isAlreadyLoggedIn, (req, res, next) => {
+    // res.send(200).send("Please enter your credentials!")
+    if(req.loginStatus)
+    res.sendFile(staticpath+'/home.html')
+    res.sendFile(staticpath+'/login.html')
+
 })
 
 module.exports = router
