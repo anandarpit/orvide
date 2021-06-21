@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/node_modules", express.static("./node_modules"));
 app.use(express.static("static"));
 
-app.use("/", require("./index"));
+app.use("/", require("./routes"));
 
 app.use(async (req, res, next) => {
   next(createError.NotFound());

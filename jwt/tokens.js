@@ -45,7 +45,6 @@ function isAlreadyLoggedIn(req, res, next) { //TODO maybe we need to check for c
     jwt.verify(token, PUB_KEY, (err, payload) => {
       if (err) {
         if (err.name == "JsonWebTokenError") {
-          next()
         } else {
           res.status(400).send(err.message) //TODO unhandled error
         }

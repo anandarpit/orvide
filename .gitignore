@@ -4,3 +4,5 @@ tasks.md
 packagelock.js
 package-lock.json
 .env
+servertest.js
+swaggertest.json

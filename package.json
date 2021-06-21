@@ -4,7 +4,6 @@
   "description": "This is the beginning of the project: Orvide(tentative name)",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon server.js",
     "start": "nodemon server.js"
   },
   "keywords": [
@@ -20,7 +19,7 @@
     "express": "^4.17.1",
     "http-errors": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
-    "mocha": "^9.0.0",
+    "mocha": "^9.0.1",
     "mongoose": "^5.12.13",
     "morgan": "^1.10.0",
     "swagger-ui-express": "^4.1.6"
