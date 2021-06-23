@@ -1,14 +1,9 @@
 const createError = require(`http-errors`);
 const router = require("express").Router();
-const {registerSchema} = require('../../validation/authValidation')
-const {RegisterUser} = require('../../controller/auth.controller')
+const {registerSchema} = require('../../validation/validation.auth')
+const {RegisterUser} = require('../../controller/controller.auth')
 
-/**
- * @swagger
- * /api/register:
- *  post:
- *   description: Register a new User
- */
+
 router.post('/', async (req, res, next) => {
   try {
     const validatedResult = await registerSchema().validateAsync(req.body)

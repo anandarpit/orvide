@@ -1,10 +1,64 @@
 const connect = require("../helpers/connection");
-const UserSchema = require("../model/User");
+const UserSchema = require("../model/user/User");
+const UserMetaSchema = require("../model/user/UserMeta")
 const passwordGen = require("../passwordHash");
 const createError = require(`http-errors`);
+const sendMail = require("../helpers/GmailAPI")
+const crypto = require('crypto');
+
+
+function randomValueHex(len) {
+  return crypto.randomBytes(Math.ceil(len / 2))
+    .toString('hex') // convert to hexadecimal format
+    .slice(0, len).toUpperCase();   // return required number of characters
+}
 
 module.exports = {
-  RegisterUser: (data, res) => {
+  RegisterEmail: (validatedResult) => {
+    return new Promise((resolve, reject) => {
+      try {
+        const { email, password } = validatedResult;
+
+        const passwordData = passwordGen.genPassword(password);
+        const hash = passwordData.hash;
+        const salt = passwordData.salt;
+
+        const OTP = randomValueHex(6)
+
+        connect.then((db) => {
+          const RegEmail = new UserMetaSchema({
+            email: email,
+            password: { salt, hash },
+            emailVerification: { isVerified: false, verificationOtp: OTP },
+            hasCompletedRegistration: false
+          })
+
+          RegEmail.save((err, doc) => {
+            if (err) return reject(err);
+            else {
+              //For Email
+              const receiverEmail = email
+              const subject = 'Your verification OTP'
+              const body = OTP
+
+              sendMail(receiverEmail, subject, body)
+                .then((result) => {
+                  return resolve(doc)
+                })
+                .catch((error) => {
+                  return reject(error)
+                })
+              ;
+            }
+          })
+        })
+      } catch (error) {
+        if (error) return reject(error)
+      }
+    })
+  },
+
+  RegisterSchema: (data, res) => {
     return new Promise((resolve, reject) => {
       try {
         const { firstName, lastName, email, password, username } = data;

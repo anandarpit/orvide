@@ -1,18 +1,20 @@
 const Joi = require(`@hapi/joi`)
 
 module.exports = {
-    registerEmail: () => {
+    verifyEmail: () => {
         return Joi.object({
-            email: Joi
-            .string()
-            .email()
-            .lowercase()
-            .required()
-            .messages({
+            email: Joi.string().email().lowercase().required().messages({
                 "string.email": `Invalid Email`,
                 "string.empty": `Email cannot be empty`,
                 "any.required": `Email is required`
-            })
+            }),
+            password: Joi.string().min(6).required().messages({
+                "string.base": `Should be a type of 'text'`,
+                "string.empty": `Cannot be an empty field`,
+                "string.min": `Should have a minimum length of {#limit}`,
+                "any.required": `Password is Required!`
+            }),
+            cnfPass: Joi.ref(`password`), //TODO display messages
         })
     },
     registerSchema: () => {
@@ -27,18 +29,15 @@ module.exports = {
                 "any.required": `Username is Required!`
 
             }),
-            password: Joi.string().min(6).required().messages({
-                "string.base": `Should be a type of 'text'`,
-                "string.empty": `Cannot be an empty field`,
-                "string.min": `Should have a minimum length of {#limit}`,
-                "any.required": `Password is Required!`
+            email: Joi.string().email().lowercase().required().messages({
+                "string.email": `Invalid Email`,
+                "string.empty": `Email cannot be empty`,
+                "any.required": `Email is required`
             }),
-            // cnfPass: Joi.ref(`password`), /TODO display messages
-            // email: Joi.string().email().lowercase().required().messages({
-            //     "string.email": `Invalid Email`,
-            //     "string.empty": `Email cannot be empty`,
-            //     "any.required": `Email is required`
-            // }),
+            otp: Joi.number().integer().positive().required().max(8).messages({
+                "any.required": `Email is required`,
+                "string.empty": `Email cannot be empty`
+            })
         })
     },
     loginSchema: () => {

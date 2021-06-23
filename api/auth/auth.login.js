@@ -4,8 +4,8 @@ const app = express();
 const path = require('path');
 const router = require("express").Router();
 const { signAccessToken, isAlreadyLoggedIn } = require(`../../jwt/tokens`);
-const { LoginUser } = require("../../controller/auth.controller");
-const { loginSchema } = require('../../validation/authValidation')
+const { LoginUser } = require("../../controller/controller.auth");
+const { loginSchema } = require('../../validation/validation.auth')
 const staticpath =path.join(__dirname,'../../static');
 app.use(express.static(staticpath));
 console.log(staticpath);

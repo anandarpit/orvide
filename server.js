@@ -3,12 +3,6 @@ const morgan = require(`morgan`);
 const createError = require(`http-errors`);
 require(`dotenv`).config();
 const app = express();
-
-//Adding Swagger
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 var cookieParser = require('cookie-parser')
 app.use(cookieParser())
 
@@ -19,6 +13,11 @@ app.use("/node_modules", express.static("./node_modules"));
 app.use(express.static("static"));
 
 app.use("/", require("./routes"));
+
+//Adding Swagger
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(async (req, res, next) => {
   next(createError.NotFound());

@@ -4,27 +4,21 @@ const mongoose =require('mongoose');
 const UserSchema = new mongoose.Schema({
     username: {
         type: mongoose.Schema.Types.String,
-        lowercase: true,
-        required: true, 
         unique: true,
+        required: false,
+        lowercase: true,
         trim: true
     },
     email: {
         type: mongoose.Schema.Types.String,
-        lowercase: true,
-        required: true,
         unique: true,
+        lowercase: true,
+        required: false,
         trim: true
     },
-    password: {
-        hash: {
-            type : mongoose.Schema.Types.String,
-            required: true
-        },
-        salt: {
-            type: mongoose.Schema.Types.String,
-            required: true
-        }
+    hasCompletedRegistration: {
+        type: mongoose.Schema.Types.Boolean,
+        required: false
     },
     name: {
         firstName: {
@@ -54,24 +48,6 @@ const UserSchema = new mongoose.Schema({
     }]
 })
 
-//will run on every save request while in register route
-// UserSchema.pre('save', async function (next) {
-//     try {
-//       if (this.isNew) {
-//         const salt = await bcrypt.genSalt(10)
-//         const hashedPassword = await bcrypt.hash(this.password, salt)
-//         this.password = hashedPassword
-//       }
-//       next()
-//     } catch (error) {
-//       next(error)
-//     }
-//   })
 
-// //Will be used during login; to check if the password is correct
-// UserSchema.methods.isValidPassword = async function(pass){
-//     return bcrypt.compare(pass, this.password)
-// }
-
-const user = mongoose.model('User', UserSchema);
+const user = mongoose.model('Users', UserSchema);
 module.exports = user;
