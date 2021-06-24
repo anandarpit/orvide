@@ -28,8 +28,10 @@ const UserMetaSchema = new mongoose.Schema({
             required: true
         },
         verificationOtp: {
-            type: mongoose.Schema.Types.String,
-            required: false
+            type: mongoose.Schema.Types.String
+        },
+        issuedTime: {
+            type: mongoose.Schema.Types.Number
         }
     },
     hasCompletedRegistration: {

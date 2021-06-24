@@ -13,10 +13,10 @@ router.post('/', async (req, res, next) => {
         }).catch((err) => {
             if (err.name = `MongoError` && err.code === 11000) {
                 if (Object.keys(err.keyPattern)[0] === "email") {
-                    return res.send(`A user already exists with the same Email. Please login instead!`)
+                    return res.set(200).send(`A user already exists with the same Email. Please login instead!`)
                 }
                 else{
-                    return res.send(err)
+                    return res.set(200).send(err)
                 }
             }
         })

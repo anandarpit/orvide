@@ -19,9 +19,15 @@ module.exports = {
     },
     registerSchema: () => {
         return Joi.object({
-            firstName: Joi.string(),
-            lastName: Joi.string(),
-            username: Joi.string().min(4).lowercase().required().message({
+            firstName: Joi.string().required().messages({
+                "any.required": `First Name is Required!`,
+                "string.base": `First Name should be type of 'text'`,
+                "string.empty": `First Name cannot be an empty field`,
+            }),
+            lastName: Joi.string().messages({
+                "string.base": `Last Name should be a type of 'text'`,
+            }),
+            username: Joi.string().min(4).lowercase().required().messages({
                 //TODO add appropriate RegEX
                 "string.base": `Should be a type of 'text'`,
                 "string.empty": `Cannot be an empty field`,
@@ -34,9 +40,9 @@ module.exports = {
                 "string.empty": `Email cannot be empty`,
                 "any.required": `Email is required`
             }),
-            otp: Joi.number().integer().positive().required().max(8).messages({
-                "any.required": `Email is required`,
-                "string.empty": `Email cannot be empty`
+            otp: Joi.string().required().max(8).messages({
+                "any.required": `OTP is required`,
+                "string.empty": `OTP cannot be empty`
             })
         })
     },
