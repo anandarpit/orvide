@@ -54,7 +54,7 @@ module.exports = {
               }
             });
           } else
-            return reject(createError(409, { message: "This email is already registered in some account" }));
+            return reject(createError.BadRequest({code: "RE", value: "This email is already registered in some account" }));
         });
       } catch (error) {
         if (error) return reject(error);
@@ -73,26 +73,25 @@ module.exports = {
    * 
    * This has been covered in steps RegisterUser1 and RegisterUser2
    */
-
   RegisterUser1: async (email, otp) => {
     return new Promise((resolve, reject) => {
       try {
         connect.then(async (db) => {
           const userMeta = await UserMetaSchema.findOne({ email });
           if (!userMeta)
-            return reject(createError(409, { "message": "User does not exist! Please Register" }));
+            return reject(createError.BadRequest({ code: "RU1", value: "User does not exist! Please Register" }));
           else {
             if (userMeta.emailVerification.isVerified === false) {
               if (userMeta.emailVerification.expiryTime >= Date.now()) {
                 if (userMeta.emailVerification.verificationOtp === otp) {
                   return resolve(userMeta._id);
-                }  else return reject(createError.BadRequest({value: "Invalid OTP", code: 01} ))
-              } else return reject(createError.BadRequest({value: "OTP EXPIRED... TRY AGAIN!!!", code: 01} ))
-            } else return reject(createError.BadRequest({value :"Account Already verified!", code: 01 }))
+                } else return reject(createError.BadRequest({ value: "Invalid OTP", code: "RU1" }))
+              } else return reject(createError.BadRequest({ value: "OTP EXPIRED... TRY AGAIN!!!", code: "RU1" }))
+            } else return reject(createError.BadRequest({ value: "Account Already verified!", code: "RU1" }))
           }
         });
-      }  
-      catch (error) {return reject(error)}
+      }
+      catch (error) { return reject(error) }
     });
   },
 
@@ -102,35 +101,35 @@ module.exports = {
         const { firstName, lastName, email, username } = validatedResult;
 
         connect.then(async (db) => {
-            const Reg = new UserSchema({
-              _id: id,
-              emails: [{email: email}],
-              username: username,
-              name: { firstName, lastName },
-            });
+          const Reg = new UserSchema({
+            _id: id,
+            emails: [{ email: email }],
+            username: username,
+            name: { firstName, lastName },
+          });
 
-            Reg.save((err, doc) => {
-              if (err) return reject(err);
-              else {
-                const query = { id: id };
-                const usernameUpdate = new UserMetaSchema({
-                  username: username,
-                  emailVerification: {isVerified : true}
-                });
-                UserMetaSchema.findOneAndUpdate(
-                  query,
-                  usernameUpdate,
-                  (err, doc) => {
-                    console.log(id);
-                    if (err) return reject(err);
-                    else return resolve(true);
-                  }
-                );
+          await Reg.save((err, doc) => {
+            if (err) return reject(err);
+            else {
+              const filter = { _id: id };
+              const data = {
+                username: username,
+                emailVerification: { isVerified: true }
               }
-            });
+              UserMetaSchema.updateOne(
+                filter,
+                data,
+                (err, doc) => {
+                  console.log(id);
+                  if (err) return reject(err);
+                  else return resolve(doc);
+                }
+              );
+            }
+          });
         });
       } catch (error) {
-        return error;
+        return reject(error)
       }
     });
   },

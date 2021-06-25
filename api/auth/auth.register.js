@@ -1,40 +1,42 @@
 const createError = require(`http-errors`);
 const router = require("express").Router();
-const { registerSchema } = require('../../validation/validation.auth')
-const { RegisterUser1, RegisterUser2 } = require('../../controller/controller.auth')
+const { registerSchema } = require("../../validation/validation.auth");
+const {
+  RegisterUser1,
+  RegisterUser2,
+} = require("../../controller/controller.auth");
 
-
-router.post('/', async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
-    const validatedResult = await registerSchema().validateAsync(req.body)
-
-    const result1 = await RegisterUser1(validatedResult.email, validatedResult.otp)
+    const validatedResult = await registerSchema().validateAsync(req.body);
+    const result1 = await RegisterUser1(
+      validatedResult.email,
+      validatedResult.otp
+    );
     if (result1) {
-      const result2 = await RegisterUser2(validatedResult, result1)
+      const result2 = await RegisterUser2(validatedResult, result1);
       if (result2) {
-        res.send("Registered Successfully!")
+        return res.send("Registered Successfully!");
       }
     }
-    res.end()
+    res.end();
   } catch (error) {
-    //Checking for Validation Error
-    if (error.name = `ValidationError` && error.isJoi) {
-      res.status(400).send(error.message) //TODO add custom message instead of error.message
-    }
-    else if (error.name = `MongoError` && error.code === 11000) {
-      res.status(400).send(error) 
-    }
-    else if (error.code = 01) {
-      res.status(401).send(error.message.value)
-    }
-    else {
-      res.status(500).send(error)
+    if ((error.name = `ValidationError` && error.isJoi)) {
+      //Validation Error from Hapi
+      res.status(400).send(error.message);
+    } else if ((error.name = `MongoError` && error.code === 11000)) {
+      //"11000" is the Mongo error code for duplicate errors
+      res.status(400).send(error);
+    } else if ((error.code = "RU1")) {
+      //"RU1" is a custom error code for RegisterUser1
+      res.status(401).send(error.message.value);
+    } else if ((error.code = "RE")) {
+      //"RE" is a custom error code for RegisterEmail
+      res.status(401).send(error.message.value);
+    } else {
+      res.status(500).send("Internal Service Error! :( ");
     }
   }
-})
-
-router.get(`/`, async (req, res, next) => {
-  //TODO render the static front end page
-})
+});
 
 module.exports = router;
