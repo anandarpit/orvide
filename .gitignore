@@ -6,3 +6,4 @@ package-lock.json
 .env
 servertest.js
 swaggertest.json
+.vscode

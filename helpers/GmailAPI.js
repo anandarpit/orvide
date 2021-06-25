@@ -31,7 +31,7 @@ async function sendMail(receiverEmail, subject, body) {
             from: 'orvide.com ✉ <initiatetenet@gmail.com>',
             to: receiverEmail,
             subject: subject,
-            text: "Your OTP is: " + body
+            text: body
         };
 
         const result = await transport.sendMail(mailOptions)

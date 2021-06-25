@@ -1,4 +1,5 @@
-const mongoose =require('mongoose');
+const mongoose = require('mongoose');
+const createError = require(`http-errors`);
 
 
 const UserSchema = new mongoose.Schema({
@@ -9,16 +10,18 @@ const UserSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    email: {
-        type: mongoose.Schema.Types.String,
-        unique: true,
-        lowercase: true,
-        required: false,
-        trim: true
-    },
+    emails: [{
+        email: {
+            type: mongoose.Schema.Types.String,
+            unique: true,
+            lowercase: true,
+            required: false,
+            trim: true
+        }
+    }],
     name: {
         firstName: {
-            type : mongoose.Schema.Types.String,
+            type: mongoose.Schema.Types.String,
             trim: true
         },
         lastName: {
@@ -27,20 +30,20 @@ const UserSchema = new mongoose.Schema({
         }
     },
     joinedOrgs: [{
-        orgId : {
-            type : mongoose.Schema.Types.ObjectId,
+        orgId: {
+            type: mongoose.Schema.Types.ObjectId,
         },
-        orgName : {
-            type : mongoose.Schema.Types.String,
+        orgName: {
+            type: mongoose.Schema.Types.String,
         },
-        userPermissionsId : {
-            type :  mongoose.Schema.Types.Object,
+        userPermissionsId: {
+            type: mongoose.Schema.Types.Object,
         },
-        role : {
-            type : mongoose.Schema.Types.String,
+        role: {
+            type: mongoose.Schema.Types.String,
         }
     }]
-})
+}, { timestamps: true })
 
 
 const user = mongoose.model('Users', UserSchema);

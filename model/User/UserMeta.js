@@ -30,7 +30,7 @@ const UserMetaSchema = new mongoose.Schema({
         verificationOtp: {
             type: mongoose.Schema.Types.String
         },
-        issuedTime: {
+        expiryTime: {
             type: mongoose.Schema.Types.Number
         }
     },
@@ -38,8 +38,7 @@ const UserMetaSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.Boolean,
         required: false
     }
-})
-
+}, {timestamps: true})
 
 const user = mongoose.model('UserMeta', UserMetaSchema);
 module.exports = user;

@@ -9,7 +9,7 @@ router.post('/', async (req, res, next) => {
         const validatedResult = await verifyEmail().validateAsync(req.body)
 
         await RegisterEmail(validatedResult).then((result) => {
-            res.set(200).send("Verification Mail sent!")
+            res.set(200).send("Verification Mail sent at : " + result.email)
         }).catch((err) => {
             if (err.name = `MongoError` && err.code === 11000) {
                 if (Object.keys(err.keyPattern)[0] === "email") {

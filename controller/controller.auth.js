@@ -1,6 +1,6 @@
 const connect = require("../helpers/connection");
 const UserSchema = require("../model/user/User");
-const UserMetaSchema = require("../model/user/UserMeta");
+const UserMetaSchema = require("../model/User/UserMeta");
 const passwordGen = require("../passwordHash");
 const createError = require(`http-errors`);
 const sendMail = require("../helpers/GmailAPI");
@@ -26,35 +26,35 @@ module.exports = {
 
         const OTP = randomValueHex(6);
 
-        connect.then((db) => {
-          const RegEmail = new UserMetaSchema({
-            email: email,
-            password: { salt, hash },
-            emailVerification: {
-              isVerified: false,
-              verificationOtp: OTP,
-              issuedTime: Date.now(),
-            },
-            hasCompletedRegistration: false,
-          });
+        //For Email
+        const receiverEmail = email;
+        const subject = "Your verification OTP";
+        const body = "Your OTP is: " + OTP;
 
-          RegEmail.save((err, doc) => {
-            if (err) return reject(err);
-            else {
-              //For Email
-              const receiverEmail = email;
-              const subject = "Your verification OTP";
-              const body = OTP;
+        connect.then(async (db) => {
+          const user = await UserSchema.findOne({ "emails.email": email });
+          if (!user) {
+            const RegEmail = new UserMetaSchema({
+              email: email,
+              password: { salt, hash },
+              emailVerification: {
+                isVerified: false,
+                verificationOtp: OTP,
+                expiryTime: Date.now() + 600000, // will be expired in 10 mins
+              },
+              hasCompletedRegistration: false,
+            });
 
-              sendMail(receiverEmail, subject, body)
-                .then((result) => {
-                  return resolve(doc);
-                })
-                .catch((error) => {
-                  return reject(error);
-                });
-            }
-          });
+            RegEmail.save((err, doc) => {
+              if (err) return reject(err);
+              else {
+                sendMail(receiverEmail, subject, body)
+                  .then((result) => { return resolve(doc) })
+                  .catch((error) => { return reject(error) });
+              }
+            });
+          } else
+            return reject(createError(409, { message: "This email is already registered in some account" }));
         });
       } catch (error) {
         if (error) return reject(error);
@@ -70,61 +70,64 @@ module.exports = {
    *          and when the username has been saved, save it again in the UserMeta collection also.
    *    (ii) = if the OTP is invalid, return that the OTP is invalid.
    *    (iii) = if the OTP is valid but expired than return as expired and register again!!
+   * 
+   * This has been covered in steps RegisterUser1 and RegisterUser2
    */
-  RegisterUser1: async (validatedResult) => {
+
+  RegisterUser1: async (email, otp) => {
     return new Promise((resolve, reject) => {
       try {
-        const { email, otp } = validatedResult;
-
         connect.then(async (db) => {
           const userMeta = await UserMetaSchema.findOne({ email });
-          if (!userMeta) return reject(false);
+          if (!userMeta)
+            return reject(createError(409, { "message": "User does not exist! Please Register" }));
           else {
-            if (userMeta.emailVerification.verificationOtp === otp) {
-              return resolve(true);
-            }
-            return createError.BadRequest("OTP does not match!");
+            if (userMeta.emailVerification.isVerified === false) {
+              if (userMeta.emailVerification.expiryTime >= Date.now()) {
+                if (userMeta.emailVerification.verificationOtp === otp) {
+                  return resolve(userMeta._id);
+                }  else return reject(createError.BadRequest({value: "Invalid OTP", code: 01} ))
+              } else return reject(createError.BadRequest({value: "OTP EXPIRED... TRY AGAIN!!!", code: 01} ))
+            } else return reject(createError.BadRequest({value :"Account Already verified!", code: 01 }))
           }
-        })
-        
-      } catch (error) {
-        return reject (error);
-      }
+        });
+      }  
+      catch (error) {return reject(error)}
     });
   },
 
-  RegisterUser2: (validatedResult) => {
+  RegisterUser2: (validatedResult, id) => {
     return new Promise((resolve, reject) => {
       try {
         const { firstName, lastName, email, username } = validatedResult;
 
         connect.then(async (db) => {
-          const user = await UserSchema.findOne({ username });
-          if (!user) {
             const Reg = new UserSchema({
-              email,
-              username,
+              _id: id,
+              emails: [{email: email}],
+              username: username,
               name: { firstName, lastName },
             });
 
             Reg.save((err, doc) => {
               if (err) return reject(err);
               else {
-                const query = { _id: validatedResult._id };
+                const query = { id: id };
                 const usernameUpdate = new UserMetaSchema({
-                  username: validatedResult.username,
+                  username: username,
+                  emailVerification: {isVerified : true}
                 });
                 UserMetaSchema.findOneAndUpdate(
                   query,
                   usernameUpdate,
                   (err, doc) => {
+                    console.log(id);
                     if (err) return reject(err);
                     else return resolve(true);
                   }
                 );
               }
             });
-          } else return reject(createError(200, "Username already taken!"));
         });
       } catch (error) {
         return error;
