@@ -2,7 +2,10 @@ const jwt = require(`jsonwebtoken`);
 const createError = require(`http-errors`);
 const fs = require("fs");
 const path = require("path");
-
+const express = require('express')
+const app = require('express')();
+const staticpath =path.join(__dirname,'../static');
+app.use(express.static(staticpath));
 //This is temporary until we use Aws KMS to store the private key
 const pathToPrivKey = path.join(__dirname, "..", "jwt/key/id_rsa_priv.pem");
 const PRIV_KEY = fs.readFileSync(pathToPrivKey, "utf8");
@@ -41,7 +44,7 @@ function isAlreadyLoggedIn(req, res, next) { //TODO maybe we need to check for c
    
     const token = req.headers[`authorization`]
 
-    if (!token) next()
+    if (!token) {res.render(staticpath + '/login.ejs')}
   
     jwt.verify(token, PUB_KEY, (err, payload) => {
       if (err) {

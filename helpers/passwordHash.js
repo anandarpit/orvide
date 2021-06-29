@@ -12,8 +12,5 @@ module.exports = {
             salt: salt,
             hash: genHash
         };
-    },
-    testing: () => {
-        return "hello";
     }
 }

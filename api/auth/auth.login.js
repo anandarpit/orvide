@@ -8,21 +8,25 @@ const { LoginUser } = require("../../controller/controller.auth");
 const { loginSchema } = require('../../validation/validation.auth')
 const staticpath =path.join(__dirname,'../../static');
 app.use(express.static(staticpath));
-console.log(staticpath);
+
+
  
 router.post('/', async (req, res, next) => {
+    console.log("login post");
     try {
         const validatedResult = await loginSchema().validateAsync(req.body)
 
-        await LoginUser(validatedResult, res).then((userId) => {
+        const userId = await LoginUser(validatedResult, res)
             if (userId) {
                 signAccessToken(userId).then((token, time) => {
 
                     res.cookie('authorization', token, { maxAge: 1000 * 60 * 60, httpOnly: true }); // 1 hour max age
-                    res.status(200).send(`Successfully logged in`)
+                    // res.status(200).send(`Successfully logged in`)
+                    console.log("cookie set");
+                    res.json('hello')
                 })
             }
-        })
+        
     } catch (error) {
         //Checking for Validation Error
         if (error.name = `ValidationError`) {
@@ -33,12 +37,7 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-router.get('/',isAlreadyLoggedIn, (req, res, next) => {
-    // res.send(200).send("Please enter your credentials!")
-    if(req.loginStatus)
-    res.sendFile(staticpath+'/home.html')
-    res.sendFile(staticpath+'/login.html')
 
-})
+
 
 module.exports = router

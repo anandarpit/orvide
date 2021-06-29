@@ -33,15 +33,23 @@ function RegisterUser() {
 //TODO validate every input box
 function LoginUser() {
     if ( email.value || password.value) {
-        axios({
-            method: 'post',
-            url: '/login',
-            data: {
+        // axios({
+        //     method: 'post',
+        //     url: '/api/login',
+        //     data: {
               
-                email: email.value,
-                password:password.value
-            }
-          });   
+        //         email: email.value,
+        //         password:password.value
+        //     }
+        //   }).then(response => {
+        //       console.log(response);
+        //   });   
+        axios.post('/api/login',{
+            email: email.value,
+            password:password.value
+        }).then((response) => {
+            console.log(response);
+        }).catch((err) => {console.log(err);})
     }
    
 }
