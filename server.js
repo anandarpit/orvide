@@ -1,9 +1,14 @@
 const express = require(`express`);
 const morgan = require(`morgan`);
 const createError = require(`http-errors`);
+const cors = require("cors")
 require(`dotenv`).config();
 const app = express();
 var cookieParser = require('cookie-parser')
+
+app.use(cors({origin: true, optionsSuccessStatus: 200,credentials: true,}));
+app.options('*', cors({origin: true, optionsSuccessStatus: 200, credentials: true}));
+
 app.use(cookieParser())
 
 app.use(morgan(`dev`));
