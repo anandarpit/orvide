@@ -1,8 +1,8 @@
 {
-    "openapi": "3.0.0",
+    "swagger": "2.0",
     "info": {
         "description": "This is the docs of [orvide.com](http://orvide.com)",
-        "version": "1.0.0",
+        "version": "1.0.5",
         "title": "Orvide: The Virtual Org!",
         "termsOfService": "http://localhost:4000/termsOfService",
         "contact": {
@@ -46,33 +46,18 @@
                 ],
                 "parameters": [
                     {
-                        "name": "email",
-                        "in": "path",
-                        "description": "Enter a valid email address",
+                        "name": "body",
+                        "in": "body",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "password",
-                        "in": "path",
-                        "description": "Enter a password",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "confirm password",
-                        "in": "path",
-                        "description": "Confirm your password",
-                        "required": false,
-                        "type": "string"
+                        "type": "string",
+                        "schema": {
+                            "$ref": "#/definitions/verifyEmail"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Verification Mail sent at {$email}"
-                    },
-                    "400": {
-                        "description": "Error: Bad Request"
+                        "description": "Verification Mail sent!"
                     }
                 }
             }
@@ -94,47 +79,18 @@
                 ],
                 "parameters": [
                     {
-                        "name": "email",
-                        "in": "path",
-                        "description": "Enter a valid email address",
+                        "name": "body",
+                        "in": "body",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "username",
-                        "in": "path",
-                        "description": "Enter the chosen username",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "otp",
-                        "in": "path",
-                        "description": "The verification OTP",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "First Name",
-                        "in": "path",
-                        "description": "The first Name",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Last Name",
-                        "in": "path",
-                        "description": "The Last Name",
-                        "required": true,
-                        "type": "string"
+                        "type": "string",
+                        "schema": {
+                            "$ref": "#/definitions/register"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "User Registered Successfully"
-                    },
-                    "400": {
-                        "description": "Error: Bad Request"
                     }
                 }
             }
@@ -156,18 +112,18 @@
                 ],
                 "parameters": [
                     {
-                        "name": "uname",
-                        "in": "path",
+                        "name": "body",
+                        "in": "body",
                         "required": true,
-                        "type": "string"
+                        "type": "string",
+                        "schema": {
+                            "$ref": "#/definitions/uname_unique"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Verification Mail sent at {$email}"
-                    },
-                    "400": {
-                        "description": "Error: Bad Request"
+                        "description": "unique/same"
                     }
                 }
             }
@@ -178,6 +134,59 @@
             "type": "apiKey",
             "name": "api_key",
             "in": "header"
+        }
+    },
+    "definitions": {
+        "verifyEmail": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "cnfPass": {
+                    "type": "string"
+                }
+            },
+            "xml": {
+                "name": "Verify Email"
+            }
+        },
+        "register": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "otp": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                }
+            },
+            "xml": {
+                "name": "Register"
+            }
+        },
+        "uname_unique": {
+            "type": "object",
+            "properties": {
+                "uname": {
+                    "type": "string"
+                }
+            },
+            "xml": {
+                "name": "Unique Username"
+            }
         }
     }
 }
