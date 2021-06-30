@@ -41,6 +41,30 @@ function signAccessToken(userId) {
   });
 }
 
+function isLoggedIn(req, res, next) {
+  try {
+    const token = req.headers[`authorization`];
+    if (!token) next(createError.BadRequest({ code: "NT", value: "no token" }));
+
+    jwt.verify(token, PUB_KEY, (err, payload) => {
+      if (err) {
+        if (err.name == "JsonWebTokenError")
+          next(createError.BadRequest({ code: "IT", value: "invalid token" }));
+        else
+          next(
+            createError.InternalServerError({ code: "ISE", value: "internal server error" })
+          );
+      } else {
+        res.locals.authenticated = true;
+        res.locals.user = payload;
+        next();
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function isAlreadyLoggedIn(req, res, next) {
   //TODO maybe we need to check for cookies for this one!
   try {
@@ -66,4 +90,4 @@ function isAlreadyLoggedIn(req, res, next) {
   }
 }
 
-module.exports = { signAccessToken, isAlreadyLoggedIn };
+module.exports = { signAccessToken, isLoggedIn, isAlreadyLoggedIn };

@@ -23,6 +23,10 @@
         {
             "name": "meta",
             "description": "Fetch meta details"
+        },
+        {
+            "name": "fetch",
+            "description": "can't find a good name"
         }
     ],
     "schemes": [
@@ -127,12 +131,36 @@
                     }
                 }
             }
+        },
+        "/fetch/my_profile": {
+            "get": {
+                "tags": [
+                    "fetch"
+                ],
+                "summary": "fetch the profile details",
+                "description": "Check if the supplied username is unique or not",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Brings the json object of user data"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
         }
     },
     "securityDefinitions": {
         "api_key": {
             "type": "apiKey",
-            "name": "api_key",
+            "name": "authorization",
             "in": "header"
         }
     },
