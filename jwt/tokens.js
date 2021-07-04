@@ -25,19 +25,24 @@ function signAccessToken(userId) {
     };
 
     const options = {
-      expiresIn: `1h`,
+      expiresIn: 10000 * 60, //10 mins
       algorithm: `RS256`,
     };
 
-    jwt.sign(payload, PRIV_KEY, options, (err, token) => {
-      if (err) {
-        console.log(err.message);
-        return reject(
-          createError(500, { code: "ISE", message: "internal server error" })
-        );
+    jwt.sign(
+      payload,
+      PRIV_KEY,
+      options,
+      (err, token) => {
+        if (err) {
+          console.log(err.message);
+          return reject(
+            createError(500, { code: "ISE", message: "internal server error" })
+          );
+        }
+        return resolve(token);
       }
-      return resolve(token);
-    });
+    );
   });
 }
 
@@ -48,16 +53,17 @@ function isLoggedIn(req, res, next) {
 
     jwt.verify(token, PUB_KEY, (err, payload) => {
       if (err) {
-        if (err.name == "JsonWebTokenError")
-          next(createError.BadRequest({ code: "IT", value: "invalid token" }));
-        else
-          next(
-            createError.InternalServerError({ code: "ISE", value: "internal server error" })
-          );
+        if (err.name == "JsonWebTokenError") return next(createError.BadRequest({ code: "IT", value: "invalid token" }));
+        else return next(createError.InternalServerError({ code: "ISE", value: "internal server error", }));
       } else {
-        res.locals.authenticated = true;
-        res.locals.user = payload;
-        next();
+        if (Date.now() <= payload.exp) {
+          res.locals.authenticated = true;
+          res.locals.tokenPayload = payload;
+          next();
+        } else
+          return next(
+            createError.BadRequest({ code: "IT", value: "token expired" })
+          );
       }
     });
   } catch (error) {

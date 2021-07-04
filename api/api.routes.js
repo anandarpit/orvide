@@ -8,7 +8,6 @@ router.use('/meta/uname_unique', require('./meta/meta.uname_unique'))
 
 router.use('/fetch/my_profile', require('./fetch/fetch.my_profile'))
 
-router.use('/org', require('./auth/auth.org'));
-router.use('/redirectLogin', require('./auth/auth.redirect'));
+router.use('/org', require('./org/org.create'));
 
 module.exports = router;

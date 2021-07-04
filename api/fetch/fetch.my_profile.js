@@ -1,19 +1,19 @@
 const createError = require(`http-errors`);
 const router = require("express").Router();
 const { isLoggedIn } = require("../../jwt/tokens");
-const { MyProfile } = require("../../controller/controller.fetch");
+const { UserProfile } = require("../../controller/fetchUserProfile");
 
 router.get("/", isLoggedIn, async (req, res) => {
   try {
-    if (res.locals.authenticated && res.locals.user) {
-      const userData = await MyProfile(res.locals.user.sub);
+    if (res.locals.authenticated && res.locals.tokenPayload) {
+      const userData = await UserProfile(res.locals.tokenPayload.sub);
 
       const response = {
+        _id: userData._id,
+        username: userData.username,
         firstName: userData.name.firstName,
         lastName: userData.name.lastName,
         emails: userData.emails,
-        _id: userData._id,
-        username: userData.username,
       };
       res.send(response);
     }

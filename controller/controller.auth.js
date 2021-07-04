@@ -95,7 +95,7 @@ module.exports = {
               })
             );
           else {
-            if (userMeta.emailVerification.isVerified === false) {
+            if (!userMeta.emailVerification.isVerified) {
               if (userMeta.emailVerification.expiryTime >= Date.now()) {
                 if (userMeta.emailVerification.verificationOtp === otp) {
                   return resolve(userMeta._id);

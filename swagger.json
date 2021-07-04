@@ -99,6 +99,39 @@
                 }
             }
         },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Login the user",
+                "description": "Login by providing either username or email, and password",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "type": "string",
+                        "schema": {
+                            "$ref": "#/definitions/login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Logged in!!!"
+                    }
+                }
+            }
+        },
         "/meta/uname_unique": {
             "post": {
                 "tags": [
@@ -214,6 +247,23 @@
             },
             "xml": {
                 "name": "Unique Username"
+            }
+        },
+        "login": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            },
+            "xml": {
+                "name": "login"
             }
         }
     }
