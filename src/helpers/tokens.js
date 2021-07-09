@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const express = require("express");
 const app = require("express")();
-console.log(__dirname);
+
 //This is temporary until we use Aws KMS to store the private key
 const pathToPrivKey = path.join(__dirname, "key/id_rsa_priv.pem");
 const PRIV_KEY = fs.readFileSync(pathToPrivKey, "utf8");

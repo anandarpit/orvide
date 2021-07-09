@@ -14,9 +14,9 @@ function randomValueHex(len) {
     .toUpperCase(); // return required number of characters
 }
 
+
 module.exports = {
 
-  
   registerEmailService: (validatedResult) => {
     return new Promise((resolve, reject) => {
       try {

@@ -1,7 +1,7 @@
 const Joi = require(`@hapi/joi`)
 
 module.exports = {
-    uname_unique: () => {
+    uniqueUsernameJoi: () => {
         return Joi.object({
             username: Joi.string().min(4).lowercase().required().messages({
                 //TODO add appropriate RegEX
@@ -12,7 +12,7 @@ module.exports = {
             }),
         })
     },
-    unique_email: () => {
+    uniqueEmailJoi: () => {
         return Joi.object({
             email: Joi.string().email().required().messages({
                 //TODO add appropriate RegEX
