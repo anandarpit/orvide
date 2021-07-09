@@ -10,18 +10,15 @@ app.use(cors({origin: true, optionsSuccessStatus: 200,credentials: true,}));
 app.options('*', cors({origin: true, optionsSuccessStatus: 200, credentials: true}));
 
 app.use(cookieParser())
-
 app.use(morgan(`dev`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/node_modules", express.static("./node_modules"));
-app.use(express.static("static"));
 
 app.use("/", require("./routes"));
 
 //Adding Swagger
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
+const swaggerDocument = require('../swagger.json');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(async (req, res, next) => {

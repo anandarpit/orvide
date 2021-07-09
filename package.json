@@ -2,7 +2,7 @@
   "name": "orvide",
   "version": "1.0.0",
   "description": "This is the beginning of the project: Orvide(tentative name)",
-  "main": "server.js",
+  "main": "./src/server.js",
   "scripts": {
     "start": "nodemon server.js"
   },
@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
+    "axios": "^0.21.1",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",

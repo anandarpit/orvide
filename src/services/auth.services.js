@@ -15,6 +15,8 @@ function randomValueHex(len) {
 }
 
 module.exports = {
+
+  
   RegisterEmail: (validatedResult) => {
     return new Promise((resolve, reject) => {
       try {
