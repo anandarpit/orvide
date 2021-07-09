@@ -2,9 +2,12 @@ const express = require(`express`);
 const morgan = require(`morgan`);
 const createError = require(`http-errors`);
 const cors = require("cors")
+const helmet = require("helmet")
 require(`dotenv`).config();
 const app = express();
 var cookieParser = require('cookie-parser')
+
+app.use(helmet());
 
 app.use(cors({origin: true, optionsSuccessStatus: 200,credentials: true,}));
 app.options('*', cors({origin: true, optionsSuccessStatus: 200, credentials: true}));

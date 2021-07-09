@@ -4,11 +4,11 @@ const fs = require("fs");
 const path = require("path");
 const express = require("express");
 const app = require("express")();
+console.log(__dirname);
 //This is temporary until we use Aws KMS to store the private key
-const pathToPrivKey = path.join(__dirname, "..", "jwt/key/id_rsa_priv.pem");
+const pathToPrivKey = path.join(__dirname,'..',"/helpers/key/id_rsa_priv.pem");
 const PRIV_KEY = fs.readFileSync(pathToPrivKey, "utf8");
-const pathToPubKey = path.join(__dirname, "..", "jwt/key/id_rsa_pub.pem");
-const PUB_KEY = fs.readFileSync(pathToPubKey, "utf8");
+
 
 function signAccessToken(userId) {
   return new Promise((resolve, reject) => {

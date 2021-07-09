@@ -1,8 +1,8 @@
 const createError = require(`http-errors`);
 const router = require("express").Router();
-const { signAccessToken} = require(`../helpers/jwt/tokens`);
+const { signAccessToken} = require(`../helpers/tokens`);
 const {isLoggedIn} = require('../middleware/auth.middleware')
-const { LoginUser, RegisterEmail } = require("../services/auth.services");
+const { loginUserService, registerEmailService } = require("../services/auth.services");
 const { loginSchema, registerSchema, verifyEmail } = require("../validation/auth.validation");
 
 const {
@@ -10,10 +10,10 @@ const {
   RegisterUser2,
 } = require("../services/auth.services");
 
-exports.loginUser = async(req, res, next) => {
+exports.LoginUser = async(req, res, next) => {
  try {
     const validatedResult = await loginSchema().validateAsync(req.body);
-    const userId = await LoginUser(
+    const userId = await loginUserService(
       validatedResult.email,
       validatedResult.username,
       validatedResult.password
@@ -38,7 +38,7 @@ exports.loginUser = async(req, res, next) => {
   }
 }
 
-exports.registerUser = async(req,res, next)=>{
+exports.RegisterUser = async(req,res, next)=>{
    try {
     const validatedResult = await registerSchema().validateAsync(req.body);
     const result1 = await RegisterUser1(
@@ -71,13 +71,13 @@ exports.registerUser = async(req,res, next)=>{
   }
 }
 
-exports.verifyEmail = async(req,res,next)=>{
+exports.VerifyEmail = async(req,res,next)=>{
   try {
     const validatedResult = await verifyEmail().validateAsync(req.body);
       console.log("validated Result");
-      await RegisterEmail(validatedResult)
+      await registerEmailService(validatedResult)
       .then((result) => {
-          const msg = [`Verification Mail sent at ${req.email}`,"success"]
+          const msg = [`Verification Mail sent at ${req.body.email}`,"success"]
         res.set(200).json(msg);
       })
       .catch((err) => {

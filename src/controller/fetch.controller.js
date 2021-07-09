@@ -1,22 +1,24 @@
-const connect = require("../helpers/connection");
-const UserSchema = require("../model/user/User");
-const UserMetaSchema = require("../model/User/UserMeta");
 const createError = require(`http-errors`);
+const { MyProfile } = require("../services/fetch.services");
 
 module.exports = {
-  MyProfile: async (_id) => {
-    return new Promise((resolve, reject) => {
-      try {
-        connect.then(async (db) => {
-          const user = await UserSchema.findOne({ _id });
-          if (!user) {
-              return reject(createError.InternalServerError({ code: "ISE", "value": "some error occured"}))
-          }
-          else{
-              return resolve(user)
-          }
-        });
-      } catch (error) {return reject(error)}
-    });
-  },
+  PersonalProfile: async(req, res, next) => {
+    try {
+      if (res.locals.authenticated && res.locals.tokenPayload) {
+        const userData = await MyProfile(res.locals.tokenPayload.sub);
+
+        const response = {
+          _id: userData._id,
+          username: userData.username,
+          firstName: userData.name.firstName,
+          lastName: userData.name.lastName,
+          emails: userData.emails,
+        };
+        res.send(response);
+      }
+    } catch (error) {
+      return res.send(error);
+    }
+  }
 };
+

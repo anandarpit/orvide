@@ -17,7 +17,7 @@ function randomValueHex(len) {
 module.exports = {
 
   
-  RegisterEmail: (validatedResult) => {
+  registerEmailService: (validatedResult) => {
     return new Promise((resolve, reject) => {
       try {
         const { email, password } = validatedResult;
@@ -97,7 +97,7 @@ module.exports = {
               })
             );
           else {
-            if (userMeta.emailVerification.isVerified === false) {
+            if (!userMeta.emailVerification.isVerified) {
               if (userMeta.emailVerification.expiryTime >= Date.now()) {
                 if (userMeta.emailVerification.verificationOtp === otp) {
                   return resolve(userMeta._id);
@@ -130,7 +130,7 @@ module.exports = {
     });
   },
 
-  RegisterUser2: (validatedResult, id) => {
+  RegisterUser2: async(validatedResult, id) => {
     return new Promise((resolve, reject) => {
       try {
         const { firstName, lastName, email, username } = validatedResult;
@@ -165,7 +165,7 @@ module.exports = {
     });
   },
 
-  LoginUser: (email, username, password) => {
+  loginUserService: (email, username, password) => {
     return new Promise((resolve, reject) => {
       try {
         connect.then(async (db) => {

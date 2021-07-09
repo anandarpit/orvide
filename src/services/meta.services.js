@@ -20,7 +20,7 @@ module.exports = {
       }
     })
   },
-    unameUsername: (uname) => {
+    unameUsername: async(uname) => {
         return new Promise((resolve, reject) => {
             try {
                 connect.then(async (db) => {
