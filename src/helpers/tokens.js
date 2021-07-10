@@ -7,7 +7,7 @@ const app = require("express")();
 
 //This is temporary until we use Aws KMS to store the private key
 const pathToPrivKey = path.join(__dirname, "key/id_rsa_priv.pem");
-const PRIV_KEY = fs.readFileSync(pathToPrivKey, "utf8");
+const PRIV_KEY = fs.readFileSync(pathToPrivKey, "utf8"); //TODO Never use *Sync functions like the one here 
 
 
 function signAccessToken(userId) {

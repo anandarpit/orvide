@@ -3,7 +3,7 @@ const UserSchema = require("../model/user/User");
 const createError = require(`http-errors`);
 
 module.exports = {
-  uniqueEmailService: async (email) => {
+  uniqueEmail_serv_ue00: async (email) => {
     return new Promise((resolve, reject) => {
       try {
         connect.then(async (db) => {
@@ -18,7 +18,7 @@ module.exports = {
       }
     });
   },
-  uniqueUsernameService: async (uname) => {
+  uniqueUsername_serv_uu00: async (uname) => {
     return new Promise((resolve, reject) => {
       try {
         connect.then(async (db) => {

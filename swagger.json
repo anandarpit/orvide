@@ -33,7 +33,7 @@
         "http"
     ],
     "paths": {
-        "/auth/verifyEmail": {
+        "/auth/verificationEmail": {
             "post": {
                 "tags": [
                     "auth"

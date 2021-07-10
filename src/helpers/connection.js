@@ -9,6 +9,7 @@ const Connect = mongoose.connect(process.env.MONGO_URL, {
   useCreateIndex: true, 
   useFindAndModify: false,
   autoIndex: true,
+  replicaSet: "orvide"
 }).then(() => {
   console.log('mongodb connected.')
 }).catch((err) => console.log(err))

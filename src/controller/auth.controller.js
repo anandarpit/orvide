@@ -1,18 +1,24 @@
 const createError = require(`http-errors`);
-const router = require("express").Router();
-const { signAccessToken} = require(`../helpers/tokens`);
-// const {isLoggedIn} = require('../middleware/auth.middleware')
-const { loginUserService, registerEmailService } = require("../services/auth.services");
-const { loginSchema, registerSchema, verifyEmail } = require("../validation/auth.validation");
-const { RegisterUser1, RegisterUser2} = require("../services/auth.services");
+const { signAccessToken } = require(`../helpers/tokens`);
+const {
+  loginUser_serv_lu00,
+  verificationEmail_serv_ve00,
+  registerUser_serv_ru00,
+} = require("../services/auth.services");
+const {
+  loginUser_joi_lu00,
+  registerUser_joi_ru00,
+  verifyEmail_joi_ve00,
+} = require("../validation/auth.validation");
 
-exports.VerifyEmail = async(req,res,next)=>{
+exports.VerificationEmail_ve00 = async (req, res, next) => {
   try {
-    const validatedResult = await verifyEmail().validateAsync(req.body);
-      console.log("validated Result");
-      await registerEmailService(validatedResult)
+    const validatedResult = await verifyEmail_joi_ve00().validateAsync(
+      req.body
+    );
+    await verificationEmail_serv_ve00(validatedResult)
       .then((result) => {
-          const msg = [`Verification Mail sent at ${req.body.email}`,"success"]
+        const msg = [`Verification Mail sent at ${req.body.email}`, "success"];
         res.set(200).json(msg);
       })
       .catch((err) => {
@@ -24,7 +30,7 @@ exports.VerifyEmail = async(req,res,next)=>{
                 `A user already exists with the same Email. Please login instead!`
               );
           }
-        } else if(err.code = "RE"){
+        } else if ((err.code = "lu00")) {
           return res.set(200).send(err.message.value);
         }
       });
@@ -39,12 +45,12 @@ exports.VerifyEmail = async(req,res,next)=>{
       }
     }
   }
-}
+};
 
-exports.LoginUser = async(req, res, next) => {
- try {
-    const validatedResult = await loginSchema().validateAsync(req.body);
-    const userId = await loginUserService(
+exports.LoginUser_lu00 = async (req, res, next) => {
+  try {
+    const validatedResult = await loginUser_joi_lu00().validateAsync(req.body);
+    const userId = await loginUser_serv_lu00(
       validatedResult.email,
       validatedResult.username,
       validatedResult.password
@@ -62,42 +68,32 @@ exports.LoginUser = async(req, res, next) => {
   } catch (error) {
     //Checking for Validation Error
     if ((error.name = `ValidationError`))
-      return res.status(400).send(createError(error.message));
-    if (error.code = `ISE`) return res.send(error.message);
-    if (error.code = `LU`) return res.send(error.message);
+      return res.status(400).send(createError(error.message.value));
+    if ((error.code = `ISE`)) return res.send(error.message.value);
+    if ((error.code = `lu00`)) return res.send(error.message.value);
     return res.status(500).send(`Internal server error`);
   }
-}
+};
 
-exports.RegisterUser = async(req, res, next)=>{
-   try {
-    const validatedResult = await registerSchema().validateAsync(req.body);
-    const result1 = await RegisterUser1(
-      validatedResult.email,
-      validatedResult.otp
+exports.RegisterUser_ru00 = async (req, res, next) => {
+  try {
+    const validatedResult = await registerUser_joi_ru00().validateAsync(
+      req.body
     );
-    if (result1) {
-      const result2 = await RegisterUser2(validatedResult, result1);
-      if (result2) {
-        return res.send("registered");
-      }
-    }
+    const result = await registerUser_serv_ru00(validatedResult);
+    if (result) return res.send("registered");
     res.end();
   } catch (error) {
     if ((error.name = `ValidationError` && error.isJoi)) {
-   
       res.status(400).send(error.message);
     } else if ((error.name = `MongoError` && error.code === 11000)) {
-    
       res.status(400).send(error);
-    } else if ((error.code = "RU1")) {
-      //"RU1" is a custom error code for RegisterUser1
+    } else if ((error.code = "ru00")) {
       res.status(401).send(error.message.value);
-    } else if ((error.code = "RE")) {
-      //"RE" is a custom error code for RegisterEmail
-      res.status(401).send(error.message.value);
-    } else {
+    } else if(error.code = `ISE`){
+      return res.send(error.message.value);
+    }else {
       res.status(500).send("Internal Service Error! :( ");
     }
   }
-}
+};
