@@ -4,8 +4,8 @@ const { MyProfile } = require("../services/fetch.services");
 module.exports = {
   PersonalProfile: async(req, res, next) => {
     try {
-      if (res.locals.authenticated && res.locals.tokenPayload) {
-        const userData = await MyProfile(res.locals.tokenPayload.sub);
+      if (res.locals.authenticated && res.locals.user) {
+        const userData = await MyProfile(res.locals.user.sub);
 
         const response = {
           _id: userData._id,
@@ -14,8 +14,9 @@ module.exports = {
           lastName: userData.name.lastName,
           emails: userData.emails,
         };
-        res.send(response);
+        return res.send(response);
       }
+      res.end()
     } catch (error) {
       return res.send(error);
     }
