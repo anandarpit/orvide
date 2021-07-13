@@ -4,7 +4,8 @@
   "description": "This is the beginning of the project: Orvide(tentative name)",
   "main": "./src/server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "test": "mocha ./test/task.js --timeout 50000"
   },
   "keywords": [
     "orvide",
@@ -15,6 +16,8 @@
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "axios": "^0.21.1",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -28,6 +31,7 @@
     "mongoose": "^5.12.13",
     "morgan": "^1.10.0",
     "nodemailer": "^6.6.2",
+    "prettier": "^2.3.2",
     "swagger-ui-express": "^4.1.6"
   },
   "repository": {
