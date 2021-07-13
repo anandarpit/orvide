@@ -19,23 +19,24 @@ lastName = "sagan",
 password = "tenet@123",
 cnfPass = "tenet@123"
 describe("Check uniqueness",()=>{
-    it("email should be unique",(done)=>{
+    it("email should be unique",async()=>{
        
        chai.request(server)
       .post("/api/meta/email_unique")
       .send({email})
       .end((err,response)=>{
           response.should.have.status(200);
-          done();
+          response.text.should.be.equal("unique")
+          
       })
     })
-    it("username should be unique",(done)=>{
+    it("username should be unique",async()=>{
        chai.request(server)
       .post("/api/meta/uname_unique")
       .send({username})
       .end((err,response)=>{
           response.should.have.status(200);
-          done();
+          
       })
     })
 })
