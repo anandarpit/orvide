@@ -18,6 +18,27 @@ firstName = "Carl",
 lastName = "sagan",
 password = "tenet@123",
 cnfPass = "tenet@123"
+describe("Check uniqueness",()=>{
+    it("email should be unique",(done)=>{
+       
+       chai.request(server)
+      .post("/api/meta/email_unique")
+      .send({email})
+      .end((err,response)=>{
+          response.should.have.status(200);
+          done();
+      })
+    })
+    it("username should be unique",(done)=>{
+       chai.request(server)
+      .post("/api/meta/uname_unique")
+      .send({username})
+      .end((err,response)=>{
+          response.should.have.status(200);
+          done();
+      })
+    })
+})
 
 describe('auth-api',()=>{
     it("It should verify email and put in database",(done)=>{
@@ -64,6 +85,21 @@ it("It will Register user",(done)=>{
       .end((err,response)=>{
           response.should.have.status(200);
         //   response.body.should.be.a('array');
+          done();
+      })
+    })
+})
+describe("Login User", () => {
+    it("It will login user", (done) => {
+        const userCred = {
+            email,
+            password,
+        }
+         chai.request(server)
+      .post("/api/auth/login")
+      .send(userCred)
+      .end((err,response)=>{
+          response.should.have.status(200);
           done();
       })
     })
