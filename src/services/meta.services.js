@@ -4,17 +4,15 @@ const createError = require(`http-errors`);
 
 module.exports = {
   uniqueEmail_serv_ue00: async (email) => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async(resolve, reject) => {
       try {
-        connect.then(async (db) => {
           const email_exist = await UserSchema.findOne({ email });
           if (email_exist) {
             return resolve("same");
           }
           return resolve("unique");
-        });
       } catch (error) {
-        return reject(res.status(400).send(error));
+        return reject(createError(500,{message:"Internal Server Error"}));
       }
     });
   },

@@ -2,43 +2,30 @@ const mongoose = require("mongoose");
 const connect = require("../helpers/connection");
 const UserSchema = require("../model/user/User");
 const UserMetaSchema = require("../model/User/UserMeta");
-const passwordGen = require("../helpers/passwordHash");
+const {genPassword, validPassword} = require("../helpers/passwordHash");
 const createError = require(`http-errors`);
 const sendMail = require("../helpers/GmailAPI");
 const crypto = require("crypto");
 
-function randomValueHex(len) {
-  return crypto
-    .randomBytes(Math.ceil(len / 2))
-    .toString("hex") // convert to hexadecimal format
-    .slice(0, len)
-    .toUpperCase(); // return required number of characters
-}
+
 
 module.exports = {
-  verificationEmail_serv_ve00: async (validatedResult) => {
-    return new Promise((resolve, reject) => {
-      try {
-        const { email, password } = validatedResult;
+  verificationEmail_serv_ve00: async (validatedResult,mail) => {
+    return new Promise((resolve , reject) => {
+      
+         const { email, password } = validatedResult;
 
-        const passwordData = passwordGen.genPassword(password);
+        const passwordData = genPassword(password);
         const hash = passwordData.hash;
         const salt = passwordData.salt;
 
-        const OTP = randomValueHex(6);
-
-        //For Email
-        const receiverEmail = email;
-        const subject = "Your verification OTP";
-        const body = "Your OTP is: " + OTP;
-
-        //The fields to be saved!
+               //The fields to be saved!
         const RegEmail = new UserMetaSchema({
           email: email,
           password: { salt, hash },
           emailVerification: {
             isVerified: false,
-            verificationOtp: OTP,
+            verificationOtp: mail.OTP,
             expiryTime: Date.now() + 600000, // will be expired in 10 mins
           },
           hasCompletedRegistration: false,
@@ -48,28 +35,18 @@ module.exports = {
           const user = await UserSchema.findOne({ "emails.email": email });
           if (!user) {
             RegEmail.save((err, doc) => {
-              if (err) return reject(err);
-              else {
-                sendMail(receiverEmail, subject, body)
-                  .then((result) => {
-                    return resolve(doc);
-                  })
-                  .catch((error) => {
-                    return reject(error);
-                  });
-              }
+              if (err) return reject(createError(500,{err:"Internal Server Error"}));
+              return resolve(true);
+              
             });
-          } else
+          }
             return reject(
-              createError.BadRequest({
-                code: "ve00",
-                value: "This email is already registered in some account",
-              })
+              createError.BadRequest({value: "This email is already registered in some account"})
             );
-        });
-      } catch (error) {
-        if (error) return reject(error);
-      }
+        }).catch((err) => {
+          return reject(createError.InternalServerError({value:"Oops , Try again later"}))
+        })
+      
     });
   },
 
@@ -88,7 +65,7 @@ module.exports = {
             );
           const hash = userMeta.password.hash;
           const salt = userMeta.password.salt;
-          if (!passwordGen.validPassword(password, hash, salt))
+          if (!validPassword(password, hash, salt))
             return reject(
               createError(400, { code: "lu00", message: "invalid credentials" })
             );

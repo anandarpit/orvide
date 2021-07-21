@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const express = require("express");
 const app = require("express")();
+const logger = require("../logger");
 
 //This is temporary until we use Aws KMS to store the private key
 const pathToPrivKey = path.join(__dirname, "key/id_rsa_priv.pem");
@@ -29,7 +30,7 @@ function signAccessToken(userId) {
 
     jwt.sign(payload, PRIV_KEY, options, (err, token) => {
       if (err) {
-        console.log(err.message);
+        logger.error(err.message);
         return reject(
           createError(500, { code: "ISE", message: "internal server error" })
         );

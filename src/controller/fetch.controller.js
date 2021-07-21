@@ -1,9 +1,9 @@
 const createError = require(`http-errors`);
 const { MyProfile } = require("../services/fetch.services");
+const catchAsync = require('../utils/catchAsync')
 
 module.exports = {
-  PersonalProfile: async(req, res, next) => {
-    try {
+  PersonalProfile: catchAsync(async(req, res, next) => {
       if (res.locals.authenticated && res.locals.user) {
         const userData = await MyProfile(res.locals.user.sub);
 
@@ -14,12 +14,9 @@ module.exports = {
           lastName: userData.name.lastName,
           emails: userData.emails,
         };
-        return res.send(response);
+        return res.status(200).send(response);
       }
-      res.end()
-    } catch (error) {
-      return res.send(error);
-    }
-  }
+      res.end();
+  })
 };
 

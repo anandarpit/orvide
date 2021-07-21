@@ -8,6 +8,7 @@ const pathToPubKey = path.join(__dirname,"..", "helpers/key/id_rsa_pub.pem");
 console.log(pathToPubKey);
 const PUB_KEY = fs.readFileSync(pathToPubKey, "utf8");
 
+
 module.exports ={
  isLoggedIn : (req, res, next) =>{
   try {
@@ -57,5 +58,6 @@ isAlreadyLoggedIn : (req, res, next)=> {
   } catch (error) {
     res.status(500).send(error.message); //TODO unhandled error
   }
-}
+},
+
 }

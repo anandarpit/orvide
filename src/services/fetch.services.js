@@ -9,14 +9,16 @@ module.exports = {
       try {
         connect.then(async (db) => {
           const user = await UserSchema.findOne({ _id });
+         
           if (!user) {
               return reject(createError.InternalServerError({ code: "ISE", "value": "some error occured"}))
           }
           else{
+            
               return resolve(user)
           }
         });
-      } catch (error) {return reject(error)}
+      } catch (error) {return reject(createError(500,{message:"Internal Server Error"}))}
     });
   },
 };

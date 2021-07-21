@@ -1,0 +1,44 @@
+2021-07-21 11:34:00:340 [32minfo[39m: [32mServer is running on port 4000[39m
+2021-07-21 11:34:00:340 [32minfo[39m: [32mMongoose server listening[39m
+2021-07-21 11:34:28 [32minfo[39m: [32mServer is running on port 4000[39m
+2021-07-21 11:34:28 [32minfo[39m: [32mMongoose server listening[39m
+2021-07-21 11:57:42 [32minfo[39m: [32mServer is running on port 4000[39m
+2021-07-21 11:58:32 [32minfo[39m: [32mServer is running on port 4000[39m
+2021-07-21 11:59:01 [32minfo[39m: [32mMongoose connection is disconnected.[39m
+2021-07-21 11:59:01 [31merror[39m: [31mCan not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2727[39m
+2021-07-21 11:59:01 [33mwarn[39m: [33mconnection error[39m
+2021-07-21 11:59:16 [32minfo[39m: [32mServer is running on port 4000[39m
+2021-07-21 11:59:21 [32minfo[39m: [32mMongoose server listening[39m
+2021-07-21 11:59:27 [35mhttp[39m: [35mPOST /api/auth/login 200 11 - 64.881 ms[39m
+[35m[39m
+2021-07-21 11:59:57 [32minfo[39m: [32mMongoose connection is disconnected.[39m
+2021-07-21 12:00:16 [32minfo[39m: [32mServer is running on port 4000[39m
+2021-07-21 12:00:20 [32minfo[39m: [32mServer is running on port 4000[39m
+2021-07-21 12:00:49 [32minfo[39m: [32mServer is running on port 4000[39m
+2021-07-21 12:00:52 [32minfo[39m: [32mServer is running on port 4000[39m
+2021-07-21 12:01:22 [32minfo[39m: [32mMongoose connection is disconnected.[39m
+2021-07-21 12:01:22 [31merror[39m: [31mCan not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2727[39m
+2021-07-21 12:01:22 [33mwarn[39m: [33mconnection error[39m
+2021-07-21 12:01:35 [32minfo[39m: [32mServer is running on port 4000[39m
+2021-07-21 12:02:05 [32minfo[39m: [32mMongoose connection is disconnected.[39m
+2021-07-21 12:02:05 [31merror[39m: [31mCan not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2727[39m
+2021-07-21 12:02:05 [33mwarn[39m: [33mconnection error[39m
+2021-07-21 12:02:15 [31merror[39m: [31mRejection  MongooseError: Operation `usermetas.findOne()` buffering timed out after 10000ms[39m
+2021-07-21 12:03:14 [32minfo[39m: [32mServer is running on port 4000[39m
+2021-07-21 12:03:17 [32minfo[39m: [32mServer is running on port 4000[39m
+2021-07-21 12:04:04 [34minfo[39m: [34mServer is running on port 4000[39m
+2021-07-21 12:04:19 [37minfo[39m: [37mServer is running on port 4000[39m
+2021-07-21 12:04:46 [34minfo[39m: [34mServer is running on port 4000[39m
+2021-07-21 12:05:15 [34minfo[39m: [34mMongoose connection is disconnected.[39m
+2021-07-21 12:05:15 [31merror[39m: [31mCan not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2727[39m
+2021-07-21 12:05:15 [33mwarn[39m: [33mconnection error[39m
+2021-07-21 12:05:35 [36minfo[39m: [36mServer is running on port 4000[39m
+2021-07-21 12:05:46 [34minfo[39m: [34mServer is running on port 4000[39m
+2021-07-21 12:06:16 [34minfo[39m: [34mMongoose connection is disconnected.[39m
+2021-07-21 12:06:16 [31merror[39m: [31mCan not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2727[39m
+2021-07-21 12:06:16 [33mwarn[39m: [33mconnection error[39m
+2021-07-21 12:11:08 [34minfo[39m: [34mServer is running on port 4000[39m
+2021-07-21 12:11:11 [34minfo[39m: [34mServer is running on port 4000[39m
+2021-07-21 12:11:15 [34minfo[39m: [34mServer is running on port 4000[39m
+2021-07-21 12:11:23 [35minfo[39m: [35mServer is running on port 4000[39m
+2021-07-21 12:11:32 [34minfo[39m: [34mServer is running on port 4000[39m

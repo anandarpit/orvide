@@ -1,6 +1,8 @@
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
 require(`dotenv`).config();
+ const {randomValueHex} = require('../utils/generateValue.utils')
+ const {genPassword} = require('./passwordHash')
 
 const CLIENT_ID = process.env.CLIENT_ID
 const CLIENT_SECRET = process.env.CLIENT_SECRET
@@ -11,7 +13,8 @@ const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_U
 oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN })
 
 async function sendMail(receiverEmail, subject, body) {
-    try {
+    return new Promise(async(resolve, reject) => {
+      try {
         const accessToken = await oAuth2Client.getAccessToken()
 
         const transport = nodemailer.createTransport({
@@ -35,11 +38,29 @@ async function sendMail(receiverEmail, subject, body) {
         };
 
         const result = await transport.sendMail(mailOptions)
-        return result
+        return resolve(result)
     } catch (error) {
-        return error
+        return reject(error)
     }
+    }) 
+    
 }
 
+ generateMail = async(validatedResult)=>{
+ 
+ const { email} = validatedResult;
+ const OTP = randomValueHex(6);
 
-module.exports = sendMail;
+        //For Email
+    const mail = {
+            receiverEmail : email,
+            subject : "Your verification OTP",
+            body : "Your OTP is: " + OTP,
+            OTP:OTP
+     }
+
+        return mail;
+
+ }
+
+module.exports = {sendMail, generateMail};
