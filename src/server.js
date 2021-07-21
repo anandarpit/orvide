@@ -28,14 +28,11 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(async (req, res, next) => {
   next(createError.NotFound());
 });
-app.use(logError)
+
 app.use(errorHandler)
 
 
-function logError (err, req, res, next) {
-  logger.error(err.stack)
-  next(err)
-}
+
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {

@@ -4,3 +4,40 @@
 2021-07-21 12:02:15 [31merror[39m: [31mRejection  MongooseError: Operation `usermetas.findOne()` buffering timed out after 10000ms[39m
 2021-07-21 12:05:15 [31merror[39m: [31mCan not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2727[39m
 2021-07-21 12:06:16 [31merror[39m: [31mCan not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2727[39m
+2021-07-21 12:12:17 [31merror[39m: [31mCan not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2727[39m
+2021-07-21 12:32:14 [31merror[39m: [31mCan not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2727[39m
+2021-07-21 12:37:43 [31merror[39m: [31mNotFoundError: Not Found[39m
+[31m    at C:\Users\dell\Desktop\ngo\orvide\src\server.js:29:20[39m
+[31m    at Layer.handle [as handle_request] (C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\layer.js:95:5)[39m
+[31m    at trim_prefix (C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\index.js:317:13)[39m
+[31m    at C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\index.js:284:7[39m
+[31m    at Function.process_params (C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\index.js:335:12)[39m
+[31m    at Immediate.next (C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\index.js:275:10)[39m
+[31m    at Immediate._onImmediate (C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\index.js:635:15)[39m
+[31m    at processImmediate (internal/timers.js:463:21)[39m
+2021-07-21 12:40:00 [31merror[39m: [31mNotFoundError: Not Found[39m
+[31m    at C:\Users\dell\Desktop\ngo\orvide\src\server.js:29:20[39m
+[31m    at Layer.handle [as handle_request] (C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\layer.js:95:5)[39m
+[31m    at trim_prefix (C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\index.js:317:13)[39m
+[31m    at C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\index.js:284:7[39m
+[31m    at Function.process_params (C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\index.js:335:12)[39m
+[31m    at Immediate.next (C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\index.js:275:10)[39m
+[31m    at Immediate._onImmediate (C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\index.js:635:15)[39m
+[31m    at processImmediate (internal/timers.js:463:21)[39m
+2021-07-21 12:40:00 [31merror[39m: [31mNot Found[39m
+2021-07-21 12:40:50 [31merror[39m: [31mNot Found[39m
+2021-07-21 12:42:12 [31merror[39m: [31mNotFoundError: Not Found[39m
+[31m    at C:\Users\dell\Desktop\ngo\orvide\src\server.js:29:20[39m
+[31m    at Layer.handle [as handle_request] (C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\layer.js:95:5)[39m
+[31m    at trim_prefix (C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\index.js:317:13)[39m
+[31m    at C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\index.js:284:7[39m
+[31m    at Function.process_params (C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\index.js:335:12)[39m
+[31m    at Immediate.next (C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\index.js:275:10)[39m
+[31m    at Immediate._onImmediate (C:\Users\dell\Desktop\ngo\orvide\node_modules\express\lib\router\index.js:635:15)[39m
+[31m    at processImmediate (internal/timers.js:463:21)[39m
+2021-07-21 12:43:28 [31merror[39m: [31mCan not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2727[39m
+2021-07-21 12:43:38 [31merror[39m: [31m{ code: 'NT', value: 'no token' }[39m
+2021-07-21 12:45:34 [31merror[39m: [31m{ code: 'NT', value: 'no token' }[39m
+2021-07-21 12:45:53 [31merror[39m: [31mCan not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2727[39m
+2021-07-21 13:13:08 [31merror[39m: [31m{ code: 'NT', value: 'no token' }[39m
+2021-07-21 13:13:22 [31merror[39m: [31mCan not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2727[39m

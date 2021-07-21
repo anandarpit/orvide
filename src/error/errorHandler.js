@@ -25,7 +25,7 @@ const ExceptionHandler = error => {
   exitHandler()
 }
 const RejectionHandler = error => {
-  logger.error("Rejection  " +error);
+  logger.error("Rejection  " +error.message);
 
   exitHandler()
 }
@@ -41,7 +41,7 @@ isOperational = err => {
 }
 
 exports.errorHandler =  (err, req, res, next) => {
-   logError(err)
+   logger.error(err.message)
   if (!isOperational(err)) {
     logError(`shutting down due to ${err.stack}`)
     process.exit(1)
