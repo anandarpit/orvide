@@ -126,3 +126,8 @@
 2021-07-21 13:13:22 [34minfo[39m: [34mMongoose connection is disconnected.[39m
 2021-07-21 13:13:22 [31merror[39m: [31mCan not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2727[39m
 2021-07-21 13:13:22 [33mwarn[39m: [33mconnection error[39m
+2021-07-22 11:14:03 [34minfo[39m: [34mServer is running on port 4000[39m
+2021-07-22 11:15:03 [34minfo[39m: [34mServer is running on port 4000[39m
+2021-07-22 11:15:33 [34minfo[39m: [34mMongoose connection is disconnected.[39m
+2021-07-22 11:15:33 [31merror[39m: [31mCan not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+2021-07-22 11:15:33 [33mwarn[39m: [33mconnection error[39m

@@ -1,10 +1,12 @@
 node_modules
 desktop.ini
 tasks.md
+terminal-cmds.md
 packagelock.js
-package-lock.json
-.env
+package.json
 servertest.js
 swaggertest.json
 .vscode
 orvideSchema.json
+LeraningResource
+

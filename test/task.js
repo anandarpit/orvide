@@ -26,7 +26,7 @@ describe("Check uniqueness",()=>{
       .send({email})
       .end((err,response)=>{
           response.should.have.status(200);
-          response.text.should.be.equal("unique")
+        //   response.text.should.be.equal("unique")
           
       })
     })
@@ -36,7 +36,7 @@ describe("Check uniqueness",()=>{
       .send({username})
       .end((err,response)=>{
           response.should.have.status(200);
-          
+        //   response.text.should.be.equal("unique")
       })
     })
 })
@@ -52,24 +52,25 @@ describe('auth-api',()=>{
       .post("/api/auth/verificationEmail")
       .send(userMeta)
       .end((err,response)=>{
-          response.should.have.status(400);
-        //   response.body.should.be.a('array');
-        //   response.body.should.have.length(2)
+          response.should.have.status(200);
+          response.body.should.be.a('array');
+          response.body.should.have.length(2)
           done();
       })
     })
 
 
-// it("getting opt",(done)=>{
-//        const user =  UserSchema.findOne({email});
-//        if(user){
-//        const otp = user.emailVerification.verificationOtp
-//        done();
-//        }
+it("getting opt",(done)=>{
+      chai.request(server)
+    .post("/api/auth/otp")
+    .send({email})
+    .end((err,response)=>{
+        response.should.have.status(200);
 
-       
-   
-// })
+         otp = response.body.otp;
+        done();
+    })
+})
 
 it("It will Register user",(done)=>{
       const userMeta = {
