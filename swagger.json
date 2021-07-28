@@ -241,7 +241,7 @@
         "uname_unique": {
             "type": "object",
             "properties": {
-                "uname": {
+                "username": {
                     "type": "string"
                 }
             },

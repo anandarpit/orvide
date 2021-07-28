@@ -39,7 +39,7 @@ winston.addColors(colors)
 // Chose the aspect of your log customizing the log format.
 const format = winston.format.combine(
   // Add the message timestamp with the preferred format
-  winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+  winston.format.timestamp({ format: 'DD/MM/YYYY HH:mm:ss' }),
   // Tell Winston that the logs must be colored
   winston.format.colorize({ all: true }),
   // Define the format of the message showing the timestamp, the level and the message

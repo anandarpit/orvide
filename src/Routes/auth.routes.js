@@ -6,7 +6,5 @@ router.post('/verificationEmail',authController.VerificationEmail_ve00)
 router.post('/register',authController.RegisterUser_ru00); //TODO add transactions
 router.post('/login', authController.LoginUser_lu00);
 
-// router.post('/token',decodeToken);
-
 router.get('/',isLoggedIn)
 module.exports = router;

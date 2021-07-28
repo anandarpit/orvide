@@ -2,51 +2,55 @@ const mongoose = require("mongoose");
 const connect = require("../helpers/connection");
 const UserSchema = require("../model/user/User");
 const UserMetaSchema = require("../model/User/UserMeta");
-const {genPassword, validPassword} = require("../helpers/passwordHash");
+const { genPassword, validPassword } = require("../helpers/passwordHash");
 const createError = require(`http-errors`);
-const sendMail = require("../helpers/GmailAPI");
-const crypto = require("crypto");
-
-
+const logger = require("../logger");
 
 module.exports = {
-  verificationEmail_serv_ve00: async (validatedResult,mail) => {
-    return new Promise((resolve , reject) => {
-      
-         const { email, password } = validatedResult;
+  verificationEmail_serv_ve00: async (validatedResult, OTP) => {
+    return new Promise(async (resolve, reject) => {
+      const { email, password } = validatedResult;
 
-        const passwordData = genPassword(password);
-        const hash = passwordData.hash;
-        const salt = passwordData.salt;
+      const passwordData = genPassword(password);
+      const hash = passwordData.hash;
+      const salt = passwordData.salt;
 
-               //The fields to be saved!
-        const RegEmail = new UserMetaSchema({
-          email: email,
-          password: { salt, hash },
-          emailVerification: {
-            isVerified: false,
-            verificationOtp: mail.OTP,
-            expiryTime: Date.now() + 600000, // will be expired in 10 mins
-          },
-          hasCompletedRegistration: false,
-        });
+      const RegEmail = {
+        email: email,
+        password: {
+          salt,
+          hash,
+        },
+        emailVerification: {
+          isVerified: false,
+          verificationOtp: OTP,
+          expiryTime: Date.now() + 600000, // will be expired in 10 mins
+        },
+      };
 
-        connect.then(async (db) => {
-          const user = await UserSchema.findOne({ "emails.email": email });
-          if (!user) {
-            RegEmail.save((err, doc) => {
-              if (err) return reject(createError(500,{err:"Internal Server Error"}));
+      const user = await UserSchema.findOne({
+        "emails.email": email,
+      });
+      if (!user) {
+        await UserMetaSchema.updateOne(
+          { email: email },
+          RegEmail,
+          { upsert: true },
+          (err, doc) => {
+            if (err) {
+              return reject(createError(500, { err: "Internal Server Error" }));
+            } else {
               return resolve(true);
-              
-            });
+            }
           }
-            return reject(
-              createError.BadRequest({value: "This email is already registered in some account"})
-            );
-        }).catch((err) => {
-          return reject(createError.InternalServerError({value:"Oops , Try again later"}))
-        })
-      
+        );
+      } else {
+        return reject(
+          createError.BadRequest({
+            value: "This email is already registered in some account",
+          })
+        );
+      }
     });
   },
 
@@ -55,25 +59,39 @@ module.exports = {
       try {
         connect.then(async (db) => {
           var userMeta = null;
-          if (email) userMeta = await UserMetaSchema.findOne({ email });
+          if (email)
+            userMeta = await UserMetaSchema.findOne({
+              email,
+            });
           else if (username)
-            userMeta = await UserMetaSchema.findOne({ username });
+            userMeta = await UserMetaSchema.findOne({
+              username,
+            });
 
           if (!userMeta)
             return reject(
-              createError(400, { code: "lu00", message: "user not found" })
+              createError(400, {
+                code: "lu00",
+                message: "user not found",
+              })
             );
           const hash = userMeta.password.hash;
           const salt = userMeta.password.salt;
           if (!validPassword(password, hash, salt))
             return reject(
-              createError(400, { code: "lu00", message: "invalid credentials" })
+              createError(400, {
+                code: "lu00",
+                message: "invalid credentials",
+              })
             );
           return resolve(userMeta._id);
         });
       } catch (error) {
         return reject(
-          createError(500, { code: "ISE", message: "internal server error" })
+          createError(500, {
+            code: "ISE",
+            message: "internal server error",
+          })
         );
       }
     });
@@ -98,7 +116,9 @@ module.exports = {
         try {
           const email = validatedResult.email;
           const otp = validatedResult.otp;
-          const userMeta = await UserMetaSchema.findOne({ email }).session(session);
+          const userMeta = await UserMetaSchema.findOne({
+            email,
+          }).session(session);
 
           if (!userMeta)
             return reject(
@@ -134,29 +154,50 @@ module.exports = {
 
               const reg = new UserSchema({
                 _id: userMeta._id,
-                emails: [{ email: email }],
+                emails: [
+                  {
+                    email: email,
+                  },
+                ],
                 username: username,
-                name: { firstName, lastName },
+                name: {
+                  firstName,
+                  lastName,
+                },
               });
 
-              await reg.save({ session }).catch((err) => {
-                return reject(createError.InternalServerError({ code: "ISE", value: "Some error occurred"}))
-              })
+              await reg
+                .save({
+                  session,
+                })
+                .catch((err) => {
+                  return reject(
+                    createError.InternalServerError({
+                      code: "ISE",
+                      value: "Some error occurred",
+                    })
+                  );
+                });
 
               userMeta.emailVerification.isVerified = true;
               userMeta.emailVerification.verificationOtp = undefined;
               userMeta.emailVerification.expiryTime = undefined;
               userMeta.username = username;
               await userMeta.save();
-              
+
               await session.commitTransaction();
-              return resolve(true)
+              return resolve(true);
             }
           }
         } catch (error) {
           await session.abortTransaction();
           console.error(error);
-          return reject(createError.InternalServerError({ code: "ISE", value: "Something went wrong"}))
+          return reject(
+            createError.InternalServerError({
+              code: "ISE",
+              value: "Something went wrong",
+            })
+          );
         } finally {
           session.endSession();
         }

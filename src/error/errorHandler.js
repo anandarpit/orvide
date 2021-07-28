@@ -1,57 +1,54 @@
-const logger = require('../logger')
-const createError = require('http-errors')
-const app = require('../server')
-const server = app.server
+const logger = require("../logger");
+const createError = require("http-errors");
+const app = require("../server.js");
 
-exports.logError = (err) =>{
- logger.error(err)
-}
-
+exports.logError = (err) => {
+  logger.error(err);
+};
 
 const exitHandler = () => {
-  if (server) {
-    server.close(() => {
-      logger.info('Server closed');
-      process.exit(1)
-    })
+  if (app) {
+    app.close(() => {
+      logger.info("Server closed");
+      process.exit(1);
+    });
   } else {
-    process.exit(1)
+    process.exit(1);
   }
-}
+};
 
-const ExceptionHandler = error => {
-  logger.error("unexpected  " +error.stack);
+const ExceptionHandler = (error) => {
+  logger.error("unexpected  " + error.stack);
 
-  exitHandler()
-}
-const RejectionHandler = error => {
-  logger.error("Rejection  " +error.message);
+  exitHandler();
+};
+const RejectionHandler = (error) => {
+  logger.error("Rejection  " + error.stack);
 
-  exitHandler()
-}
-process.on('uncaughtException', ExceptionHandler)
-process.on('unhandledRejection', RejectionHandler)
+  exitHandler();
+};
+process.on("uncaughtException", ExceptionHandler);
+process.on("unhandledRejection", RejectionHandler);
 
-isOperational = err => {
-    const errorType = createError.isHttpError(err);
+isOperational = (err) => {
+  const errorType = createError.isHttpError(err);
 
-    if(errorType || err.isJoi )
-    return true
-    else return false
-}
+  if (errorType || err.isJoi) return true;
+  else return false;
+};
 
-exports.errorHandler =  (err, req, res, next) => {
-   logger.error(err.message)
+exports.errorHandler = (err, req, res, next) => {
+  logger.error(err.message);
   if (!isOperational(err)) {
-    logError(`shutting down due to ${err.stack}`)
-    process.exit(1)
+    logger.error(`shutting down due to ${err.stack}`);
+    process.exit(1);
   } else {
-    res.status(err.status || 500)
+    res.status(err.status || 500);
     res.send({
       error: {
         status: err.status || 500,
-        message: err.message
-      }
-    })
+        message: err.message,
+      },
+    });
   }
-}
+};

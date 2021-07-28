@@ -8,5 +8,5 @@ servertest.js
 swaggertest.json
 .vscode
 orvideSchema.json
-LeraningResource
-
+node_modules
+logs
