@@ -55,9 +55,9 @@ module.exports = {
   },
 
   loginUser_serv_lu00: async (email, username, password) => {
-    return new Promise((resolve, reject) => {
-      try {
-        connect.then(async (db) => {
+    return new Promise(async (resolve, reject) => {
+      // try {
+        // connect.then(async (db) => {
           var userMeta = null;
           if (email)
             userMeta = await UserMetaSchema.findOne({
@@ -84,16 +84,16 @@ module.exports = {
                 message: "invalid credentials",
               })
             );
-          return resolve(userMeta._id);
-        });
-      } catch (error) {
-        return reject(
-          createError(500, {
-            code: "ISE",
-            message: "internal server error",
-          })
-        );
-      }
+          return resolve(userMeta);
+        // });
+      // } catch (error) {
+      //   return reject(
+      //     createError(500, {
+      //       code: "ISE",
+      //       message: "internal server error",
+      //     })
+      //   );
+      // }
     });
   },
 

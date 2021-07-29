@@ -3,12 +3,12 @@ const createError = require(`http-errors`);
 const fs = require("fs");
 const path = require("path");
 const logger = require("../logger");
-const catchAsync = require("../utils/catchAsync")
+const catchAsync = require("../utils/catchAsync");
 //This is temporary until we use Aws KMS to store the private key
 const pathToPrivKey = path.join(__dirname, "key/id_rsa_priv.pem");
 const PRIV_KEY = fs.readFileSync(pathToPrivKey, "utf8"); //TODO Never use *Sync functions like the one here
 
-exports.signAccessToken = catchAsync(async (userId) => {
+function signAccessToken(userId) {
   return new Promise((resolve, reject) => {
     const _id = userId;
     const issuer = `orvide.com`;
@@ -35,4 +35,6 @@ exports.signAccessToken = catchAsync(async (userId) => {
       return resolve(token);
     });
   });
-});
+}
+
+module.exports = { signAccessToken };

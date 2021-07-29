@@ -4,7 +4,7 @@ const server = require('./server.test')
 // const express = require('express');
 // const mongoose = require('mongoose');
 require(`dotenv`).config()
-require('./index')
+// require('./index')
 
 chai.should();
 chai.use(chaiHttp);

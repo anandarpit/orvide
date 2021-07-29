@@ -12,7 +12,6 @@ const {
 } = require("../validation/auth.validation");
 const catchAsync = require("../utils/catchAsync");
 
-
 exports.VerificationEmail_ve00 = catchAsync(async (req, res, next) => {
   const validatedResult = await verifyEmail_joi_ve00().validateAsync(req.body, {
     abortEarly: false,
@@ -43,19 +42,19 @@ exports.LoginUser_lu00 = catchAsync(async (req, res, next) => {
     abortEarly: false,
   });
 
-  const userId = await loginUser_serv_lu00(
+  const userMeta = await loginUser_serv_lu00(
     validatedResult.email,
     validatedResult.username,
     validatedResult.password
   );
-  if (userId) {
-    const token = await signAccessToken(userId);
+  if (userMeta) {
+    const token = await signAccessToken(userMeta._id);
     if (token) {
       res.cookie("authorization", token, {
         maxAge: 1000 * 60 * 60, // 1 hour max age
         httpOnly: true,
       });
-      res.status(200).send("Logged in!!");
+      res.status(200).send("you are now logged in as " + userMeta.username);
     }
   }
 });
