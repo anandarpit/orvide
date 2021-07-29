@@ -1,11 +1,11 @@
 const createError = require(`http-errors`);
-const { MyProfile } = require("../services/fetch.services");
+const { myProfile_serv_mp00 } = require("../services/fetch.services");
 const catchAsync = require('../utils/catchAsync')
 
 module.exports = {
-  PersonalProfile: catchAsync(async(req, res, next) => {
+  myProfile_ctrl_mp00: catchAsync(async(req, res, next) => {
       if (res.locals.authenticated && res.locals.user) {
-        const userData = await MyProfile(res.locals.user.sub);
+        const userData = await myProfile_serv_mp00(res.locals.user.sub);
 
         const response = {
           _id: userData._id,

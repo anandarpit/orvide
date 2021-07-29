@@ -45,7 +45,7 @@ const connect = require('../helpers/connection')
 const OrgSchema = require('../model/Org')
 const UserSchema = require('../model/user/User')
 const createError = require(`http-errors`)
-const { randomValueHex } = require('../utils/generateValue.utils')
+const { randomValueHex } = require('../utils/generateValue')
 const { MyProfile } = require('./fetch.services')
 
 exports.CreateOrg_srv = async (userDetails, body) => {

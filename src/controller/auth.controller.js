@@ -12,7 +12,7 @@ const {
 } = require("../validation/auth.validation");
 const catchAsync = require("../utils/catchAsync");
 
-exports.VerificationEmail_ve00 = catchAsync(async (req, res, next) => {
+exports.VerificationEmail_ctrl_ve00 = catchAsync(async (req, res, next) => {
   const validatedResult = await verifyEmail_joi_ve00().validateAsync(req.body, {
     abortEarly: false,
   });
@@ -27,7 +27,7 @@ exports.VerificationEmail_ve00 = catchAsync(async (req, res, next) => {
   }
 });
 
-exports.RegisterUser_ru00 = catchAsync(async (req, res, next) => {
+exports.RegisterUser_ctrl_ru00 = catchAsync(async (req, res, next) => {
   const validatedResult = await registerUser_joi_ru00().validateAsync(
     req.body,
     { abortEarly: false }
@@ -37,7 +37,7 @@ exports.RegisterUser_ru00 = catchAsync(async (req, res, next) => {
   res.end();
 });
 
-exports.LoginUser_lu00 = catchAsync(async (req, res, next) => {
+exports.LoginUser_ctrl_lu00 = catchAsync(async (req, res, next) => {
   const validatedResult = await loginUser_joi_lu00().validateAsync(req.body, {
     abortEarly: false,
   });

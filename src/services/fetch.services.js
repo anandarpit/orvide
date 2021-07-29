@@ -4,7 +4,7 @@ const UserMetaSchema = require("../model/User/UserMeta");
 const createError = require(`http-errors`);
 
 module.exports = {
-  MyProfile: async (_id) => {
+  myProfile_serv_mp00: async (_id) => {
     return new Promise((resolve, reject) => {
       try {
         connect.then(async (db) => {

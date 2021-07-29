@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 require(`dotenv`).config();
-const { randomValueHex } = require("../utils/generateValue.utils");
+const { randomValueHex } = require("../utils/generateValue");
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
