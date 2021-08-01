@@ -78,19 +78,19 @@ exports.CreateOrg_srv = async (userDetails, body) => {
   })
 }
 
-exports.unique_orgName_srv = async validatedResult => {
-  return new Promise((resolve, reject) => {
-    try {
-      connect.then(async db => {
-        const orgName = await OrgSchema.findOne({
-          orgName: validatedResult.orgName
-        })
-        var nameStatus = 'unique'
-        if (orgName) nameStatus = 'same'
-        return resolve(nameStatus)
-      })
-    } catch (err) {
-      return reject(createError(500,"Internal Server Error"))
-    }
-  })
-}
+// exports.unique_orgName_srv = async validatedResult => {
+//   return new Promise((resolve, reject) => {
+//     try {
+//       connect.then(async db => {
+//         const orgName = await OrgSchema.findOne({
+//           orgName: validatedResult.orgName
+//         })
+//         var nameStatus = 'unique'
+//         if (orgName) nameStatus = 'same'
+//         return resolve(nameStatus)
+//       })
+//     } catch (err) {
+//       return reject(createError(500,"Internal Server Error"))
+//     }
+//   })
+// }
