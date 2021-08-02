@@ -6,7 +6,7 @@ const OrgSchema = new mongoose.Schema({
     required: true,
   },
   orgId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.String,
     required: true,
     unique: true,
   },

@@ -62,7 +62,7 @@ describe('auth-api',()=>{
 
 it("getting opt",(done)=>{
       chai.request(server)
-    .post("/api/auth/otp")
+    .post("/test/fetchOTP")
     .send({email})
     .end((err,response)=>{
         response.should.have.status(200);

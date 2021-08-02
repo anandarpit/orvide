@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const structureSchema = new mongoose.Schema({
+    oid: {
+        type: String,
+        required: true
+    },
     structureName : {
         type: String,
         required: true,
@@ -23,5 +27,8 @@ const structureSchema = new mongoose.Schema({
     },
     members: [{
         uid : String,
-    }]
-})
+    }], 
+}, { timestamps: true })
+
+
+module.exports = mongoose.model('Structures', structureSchema);
