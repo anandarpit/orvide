@@ -4,6 +4,7 @@ const {
   loginUser_serv_lu00,
   verificationEmail_serv_ve00,
   registerUser_serv_ru00,
+  otp
 } = require("../services/auth.services");
 const {
   loginUser_joi_lu00,
@@ -48,7 +49,6 @@ exports.LoginUser_ctrl_lu00 = catchAsync(async (req, res, next) => {
     validatedResult.password
   );
 
-  console.log(userMeta)
   if (userMeta) {
     const token = await signAccessToken(userMeta._id);
     if (token) {
@@ -60,3 +60,4 @@ exports.LoginUser_ctrl_lu00 = catchAsync(async (req, res, next) => {
     }
   }
 });
+
