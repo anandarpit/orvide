@@ -12,7 +12,7 @@ chai.use(chaiHttp);
 describe('API',()=>{
    
 var otp;
-var email = "initiate@gmail.com",
+var email = "initiatetenet@gmail.com",
 username = "tenet",
 firstName = "Carl",
 lastName = "sagan",

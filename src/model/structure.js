@@ -1,13 +1,17 @@
 const mongoose = require("mongoose");
 
 const structureSchema = new mongoose.Schema({
-    oid: {
-        type: String,
+    org_id: {
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
-    structureName : {
+    name : {
         type: String,
         required: true,
+    },
+    description: {
+        type: String,
+        editedBY: mongoose.Schema.Types.ObjectId,
     },
     admins : [{
         uid: mongoose.Schema.Types.ObjectId,
@@ -17,17 +21,19 @@ const structureSchema = new mongoose.Schema({
         uid: mongoose.Schema.Types.ObjectId,
         atTime: Number,
     },
-    rooms : [{
-        roomId: mongoose.Schema.Types.ObjectId,
-        roomName: String,
-        creatorId: String,
-    }],
+    endorser : {
+        uid: mongoose.Schema.Types.ObjectId,
+        atTime: Number,
+    },
+    // rooms : [{
+    //     roomId: mongoose.Schema.Types.ObjectId,
+    //     roomName: String,
+    //     creatorId: String,
+    // }],
     unionRoom: {
         enabled: Boolean,
     },
-    members: [{
-        uid : String,
-    }], 
+    membersCount: mongoose.Schema.Types.Number, 
 }, { timestamps: true })
 
 

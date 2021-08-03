@@ -10,11 +10,12 @@ const OrgSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  totalMembers: {
-    type: mongoose.Schema.Types.Number
-  },
+  // totalMembers: {
+  //   type: mongoose.Schema.Types.Number
+  // },
+  membersCount: mongoose.Schema.Types.Number,
   architect: {
-    id: {
+    userId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
@@ -39,17 +40,16 @@ const OrgSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.String,
     },
   },
-  structures: [{
-      structureId: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-      },
-      structureName: {
-        type: mongoose.Schema.Types.String,
-        required: true,
-      }
-  }],
-  
+  // structures: [{
+  //     structureId: {
+  //       type: mongoose.Schema.Types.ObjectId,
+  //       required: true,
+  //     },
+  //     structureName: {
+  //       type: mongoose.Schema.Types.String,
+  //       required: true,
+  //     }
+  // }],
 });
 
 const org = mongoose.model("Orgs", OrgSchema);

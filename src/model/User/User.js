@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const createError = require(`http-errors`);
 
 
 const UserSchema = new mongoose.Schema({

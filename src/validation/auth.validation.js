@@ -12,7 +12,7 @@ module.exports = {
         "string.base": `Should be a type of 'text'`,
         "string.empty": `Cannot be an empty field`,
         "string.min": `Should have a minimum length of {#limit}`,
-        "any.required": `Password is Required!`,
+        "any.required": `Password is Required!`,"string.base": `Should be a type of 'text'`,
       }),
       cnfPass: Joi.ref(`password`), //TODO display messages
     });
