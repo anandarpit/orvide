@@ -1,10 +1,7 @@
-const logger = require("../logger");
+const logger = require("../config/logger");
 const createError = require("http-errors");
-const app = require("../server.js");
+const app = require("../server.js").server;
 
-exports.logError = (err) => {
-  logger.error(err);
-};
 
 const exitHandler = () => {
   if (app) {
@@ -38,7 +35,7 @@ isOperational = (err) => {
 };
 
 exports.errorHandler = (err, req, res, next) => {
-  logger.error(err.message);
+  logger.error(err);
   if (!isOperational(err)) {
     logger.error(`shutting down due to ${err.stack}`);
     process.exit(1);

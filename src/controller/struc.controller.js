@@ -18,6 +18,6 @@ exports.CreateStructure_ctrl_cs00 = catchAsync(async (req, res, next) => {
   const validatedResult = await createStructure_joi_cs00().validateAsync(
     req.body
   );
-  const  
+
 
 });

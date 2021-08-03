@@ -41,15 +41,15 @@
 // }
 
 const mongoose = require('mongoose')
-const connect = require('../helpers/connection')
+const connect = require('../config/connection')
 const OrgSchema = require('../model/Org')
 const UserSchema = require('../model/user/User')
 const createError = require(`http-errors`)
 const { randomValueHex } = require('../utils/generateValue')
 const { MyProfile } = require('./fetch.services')
 
-exports.CreateOrg_srv = async (userDetails, body) => {
-  return new Promise((resolve, reject) => {
+exports.CreateOrg = async (userDetails, body) => {
+  return new Promise(async(resolve, reject) => {
     try {
       connect
         .then(async db => {
@@ -78,19 +78,4 @@ exports.CreateOrg_srv = async (userDetails, body) => {
   })
 }
 
-// exports.unique_orgName_srv = async validatedResult => {
-//   return new Promise((resolve, reject) => {
-//     try {
-//       connect.then(async db => {
-//         const orgName = await OrgSchema.findOne({
-//           orgName: validatedResult.orgName
-//         })
-//         var nameStatus = 'unique'
-//         if (orgName) nameStatus = 'same'
-//         return resolve(nameStatus)
-//       })
-//     } catch (err) {
-//       return reject(createError(500,"Internal Server Error"))
-//     }
-//   })
-// }
+

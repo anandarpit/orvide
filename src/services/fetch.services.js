@@ -1,10 +1,10 @@
-const connect = require("../helpers/connection");
+const connect = require("../config/connection");
 const UserSchema = require("../model/user/User");
 const UserMetaSchema = require("../model/User/UserMeta");
 const createError = require(`http-errors`);
 
 module.exports = {
-  myProfile_serv_mp00: async (_id) => {
+  myProfile: async (_id) => {
     return new Promise((resolve, reject) => {
       try {
         connect.then(async (db) => {

@@ -2,7 +2,7 @@ const jwt = require(`jsonwebtoken`);
 const createError = require(`http-errors`);
 const fs = require("fs");
 const path = require("path");
-const logger = require("../logger");
+const logger = require("../config/logger");
 const catchAsync = require("../utils/catchAsync");
 //This is temporary until we use Aws KMS to store the private key
 const pathToPrivKey = path.join(__dirname, "key/id_rsa_priv.pem");

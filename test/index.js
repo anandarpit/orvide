@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 // const express = require('express');
 const mongoose = require("mongoose");
 require(`dotenv`).config();
-const connect = require("../src/helpers/connection");
+const connect = require("../src/config/connection");
 
 describe("drop database and init connection", () => {
   it("drop database", (done) => {

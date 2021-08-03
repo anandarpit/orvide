@@ -1,7 +1,7 @@
 const Joi = require(`@hapi/joi`)
 
 module.exports = {
-    uniqueUsername_joi_uu00: () => {
+    uniqueUsername: () => {
         return Joi.object({
             username: Joi.string().min(4).lowercase().required().messages({
                 //TODO add appropriate RegEX
@@ -12,7 +12,7 @@ module.exports = {
             }),
         })
     },
-    uniqueEmail_joi_ue00: () => {
+    uniqueEmail: () => {
         return Joi.object({
             email: Joi.string().email().required().messages({
                 //TODO add appropriate RegEX
@@ -22,5 +22,23 @@ module.exports = {
                 "any.required": `Invalid`
             }),
         })
-    }
+    },
+      validate_orgName:()=>{
+    return Joi.object({
+      orgName: Joi.string().required().messages({
+        "string.empty": `Organisation name cannot be empty`,
+        "any.required": `Organsisation Name is required`,
+      }),
+
+    });
+  },
+
+  validate_orgId:()=>{
+    return Joi.object({
+      orgId: Joi.string().lowercase().required().messages({
+            "string.empty": `OrgID cannot be empty`,
+            "any.required": `OrgID is required`,
+          }),
+    })
+  }
 }

@@ -2,7 +2,7 @@ const jwt = require(`jsonwebtoken`);
 const createError = require(`http-errors`);
 const fs = require("fs");
 const path = require("path");
-const pathToPubKey = path.join(__dirname,"..", "helpers/key/id_rsa_pub.pem");
+const pathToPubKey = path.join(__dirname,"..", "config/key/id_rsa_pub.pem");
 
 const PUB_KEY = fs.readFileSync(pathToPubKey, "utf8");
 
@@ -11,14 +11,14 @@ module.exports ={
  isLoggedIn : (req, res, next) =>{
   try {
     const token = req.headers[`authorization`];
-    if (!token) next(createError.BadRequest({ code: "NT_00"}));
+    if (!token) throw (createError.BadRequest({ code: "NT_00"}));
 
     jwt.verify(token, PUB_KEY, (err, payload) => {
       if (err) {
         if (err.name == "JsonWebTokenError")
-          next(createError.BadRequest({ code: "IT_00"}));
+          throw (createError.BadRequest({ code: "IT_00"}));
         else
-          next(
+          throw (
             createError.InternalServerError()
           );
       } else {
@@ -28,9 +28,9 @@ module.exports ={
       }
     });
   } catch (error) {
-    console.log(error);
+    next(error);
   }
-},
+ },
 
 isAlreadyLoggedIn : (req, res, next)=> {
   // //TODO maybe we need to check for cookies for this one!

@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
-const connect = require("../helpers/connection");
+const connect = require("../config/connection");
 const UserSchema = require("../model/user/User");
 const UserMetaSchema = require("../model/User/UserMeta");
-const { genPassword, validPassword } = require("../helpers/passwordHash");
+const { genPassword, validPassword } = require("../utils/passwordHash");
 const createError = require(`http-errors`);
 
 module.exports = {
-  verificationEmail_serv_ve00: async (validatedResult, OTP) => {
+  verificationEmail: async (validatedResult, OTP) => {
     const { email, password } = validatedResult;
 
     const passwordData = genPassword(password);
@@ -46,7 +46,7 @@ module.exports = {
     }
   },
 
-  loginUser_serv_lu00: async (email, username, password) => {
+  loginUser: async (email, username, password) => {
     let userMeta;
     if (email) {
       userMeta = await UserMetaSchema.findOne({
@@ -86,7 +86,7 @@ module.exports = {
    *
    * This has been covered in steps RegisterUser1 and RegisterUser2
    */
-  registerUser_serv_ru00: (validatedResult) => {
+  registerUser: (validatedResult) => {
     return new Promise(async (resolve, reject) => {
       const session = await mongoose.startSession();
       session.startTransaction();

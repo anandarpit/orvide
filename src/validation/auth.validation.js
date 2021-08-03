@@ -1,7 +1,7 @@
 const Joi = require(`@hapi/joi`);
 
 module.exports = {
-  verifyEmail_joi_ve00: () => {
+  verifyEmail: () => {
     return Joi.object({
       email: Joi.string().email().lowercase().required().messages({
         "string.email": `Invalid Email`,
@@ -17,7 +17,7 @@ module.exports = {
       cnfPass: Joi.ref(`password`), //TODO display messages
     });
   },
-  registerUser_joi_ru00: () => {
+  registerUser: () => {
     return Joi.object({
       firstName: Joi.string().required().messages({
         "any.required": `First Name is Required!`,
@@ -45,7 +45,7 @@ module.exports = {
       }),
     });
   },
-  loginUser_joi_lu00: () => {
+  loginUser: () => {
     return Joi.object()
       .keys({
         username: Joi.string().allow(""),

@@ -1,31 +1,50 @@
 const createError = require(`http-errors`);
-const {
-  uniqueEmail_serv_ue00,
-  uniqueUsername_serv_uu00,
-} = require("../services/meta.services");
-const {
-  uniqueUsername_joi_uu00,
-  uniqueEmail_joi_ue00,
-} = require("../validation/meta.validation");
+const {metaService} = require("../services");
+const {metaValidation} = require("../validation");
 const catchAsync = require("../utils/catchAsync");
 
 module.exports = {
   UniqueEmail_ue00: catchAsync(async (req, res, next) => {
-    const validatedResult = await uniqueEmail_joi_ue00().validateAsync(
+    const validatedResult = await metaValidation.uniqueEmail().validateAsync(
       req.body
     );
-    const uniqueEmail = await uniqueEmail_serv_ue00(validatedResult.email);
+    const uniqueEmail = await metaService.uniqueEmail(validatedResult.email);
     if (uniqueEmail) res.status(200).send(uniqueEmail);
     res.end();
   }),
 
   UniqueUsername_uu00: catchAsync(async (req, res, next) => {
-    const validatedResult = await uniqueUsername_joi_uu00().validateAsync(
+    const validatedResult = await metaValidation.uniqueUsername().validateAsync(
       req.body,
       { abortEarly: false }
     );
-    const result = await uniqueUsername_serv_uu00(validatedResult.uname);
+    const result = await metaService.uniqueUsername(validatedResult.uname);
     if (result) return res.status(200).send(result);
     res.end();
   }),
+
+unique_orgName_ctrl : catchAsync(async (req, res, next)=>{
+
+      // if (!res.locals.authenticated && !res.locals.user)
+      //     return res.status(404).send('Please Login In')
+
+    const validatedOrgName = await metaValidation.validate_orgName().validateAsync(req.body)
+    const nameStatus = await metaService.unique_orgName(validatedOrgName);
+    if(nameStatus)
+    res.status(200).json({nameStatus})
+    res.end();
+ }),
+
+unique_orgId_ctrl : catchAsync(async (req, res) => {
+  
+    const validateOrgId = await metaValidation.validate_orgId().validateAsync(req.body)
+    const IdStatus = await metaValidation.unique_orgId(validateOrgId);
+    if(IdStatus){
+     return res.status(200).json({IdStatus})
+    }
+    res.end();
+  
+})
 };
+
+

@@ -4,10 +4,10 @@ const cors = require("cors");
 const helmet = require("helmet");
 require(`dotenv`).config();
 const app = express();
-const { errorHandler } = require("./error/errorHandler");
+const { errorHandler } = require("./utils/errorHandler");
 var cookieParser = require("cookie-parser");
-const logger = require("./logger");
-const httpLogger = require("./logger/httpLogger");
+const logger = require("./config/logger");
+const httpLogger = require("./config/httpLogger");
 const morgan = require("morgan");
 
 app.use(helmet());

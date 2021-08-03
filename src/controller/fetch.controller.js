@@ -1,5 +1,5 @@
 const createError = require(`http-errors`);
-const { myProfile_serv_mp00 } = require("../services/fetch.services");
+const { fetchService } = require("../services");
 const catchAsync = require("../utils/catchAsync");
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
     if (!res.locals.authenticated && !res.locals.user)
       return res.status(404).send("Please Login In");
 
-    const userData = await myProfile_serv_mp00(res.locals.user.sub);
+    const userData = await fetchService.myProfile(res.locals.user.sub);
 
     const response = {
       _id: userData._id,
