@@ -32,14 +32,8 @@ const UserSchema = new mongoose.Schema({
         orgId: {
             type: mongoose.Schema.Types.ObjectId,
         },
-        orgName: {
-            type: mongoose.Schema.Types.String,
-        },
-        userPermissionsId: {
-            type: mongoose.Schema.Types.Object,
-        },
-        role: {
-            type: mongoose.Schema.Types.String,
+        roleId: {
+            type: mongoose.Schema.Types.ObjectId,
         }
     }]
 }, { timestamps: true })
