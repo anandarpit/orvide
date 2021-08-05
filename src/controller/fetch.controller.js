@@ -4,10 +4,8 @@ const catchAsync = require("../utils/catchAsync");
 
 module.exports = {
   myProfile_ctrl_mp00: catchAsync(async (req, res, next) => {
-    if (!res.locals.authenticated && !res.locals.user)
-      return res.status(404).send("Please Login In");
 
-    const userData = await fetchService.myProfile(res.locals.user.sub);
+    const userData = await fetchService.myProfile(res.locals.payload.sub);
 
     const response = {
       _id: userData._id,

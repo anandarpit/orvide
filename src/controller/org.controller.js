@@ -1,4 +1,4 @@
-const UserMetaSchema = require('../model/User/UserMeta')
+const UserMetaSchema = require('../model/user/UserMeta')
 const createError = require(`http-errors`)
 const {fetchService} = require('../services')
 const CreateOrg = require('../services/org.services')

@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 
 
 //NOTE: The filter that would be needed to applied over here would be :  { sID: structureID, uID: UserID } in order to search for the rooms that a user is into in a given structure.
-const UserRooms = new mongoose.Schema({
+const UserRoomsSchema = new mongoose.Schema({
+    org_id: {
+        type : mongoose.Schema.Types.ObjectId,
+        required: true
+    },
     sID: {
         type : mongoose.Schema.Types.ObjectId,
         required: true
@@ -20,4 +24,4 @@ const UserRooms = new mongoose.Schema({
 }, { timestamps: true })
 
 
-module.exports = mongoose.model('UserRooms', UserRooms);
+module.exports = mongoose.model('UserRooms', UserRoomsSchema);

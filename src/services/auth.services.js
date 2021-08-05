@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const connect = require("../config/connection");
 const UserSchema = require("../model/user/User");
-const UserMetaSchema = require("../model/User/UserMeta");
+const UserMetaSchema = require("../model/user/UserMeta");
 const { genPassword, validPassword } = require("../utils/passwordHash");
 const createError = require(`http-errors`);
 
@@ -58,10 +58,11 @@ module.exports = {
       });
     }
 
-    if (!userMeta)
+    if (!userMeta){
       throw createError.BadRequest({
         code: "UNF_00",
       });
+    }
 
     const hash = userMeta.password.hash;
     const salt = userMeta.password.salt;

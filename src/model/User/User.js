@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const UserSchema = new mongoose.Schema({
     username: {
         type: mongoose.Schema.Types.String,
@@ -32,12 +31,8 @@ const UserSchema = new mongoose.Schema({
         orgId: {
             type: mongoose.Schema.Types.ObjectId,
         },
-        roleId: {
-            type: mongoose.Schema.Types.ObjectId,
-        }
     }]
 }, { timestamps: true })
 
 
 module.exports = mongoose.model('Users', UserSchema);
-

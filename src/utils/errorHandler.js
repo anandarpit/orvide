@@ -2,7 +2,6 @@ const logger = require("../config/logger");
 const createError = require("http-errors");
 const app = require("../server.js").server;
 
-
 const exitHandler = () => {
   if (app) {
     app.close(() => {

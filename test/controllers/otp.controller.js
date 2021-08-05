@@ -1,5 +1,5 @@
 const createError = require(`http-errors`);
-const UserMetas = require(`../../src/model/User/UserMeta`);
+const UserMetas = require(`../../src/model/user/UserMeta`);
 const catchAsync = require("../../src/utils/catchAsync");
 
 exports.fetchOTP_test = catchAsync(async (req, res, next) => {

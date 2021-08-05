@@ -10,27 +10,10 @@ const OrgSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  // totalMembers: {
-  //   type: mongoose.Schema.Types.Number
-  // },
   membersCount: mongoose.Schema.Types.Number,
-  architect: {
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-    },
-    firstName: {
-      type: mongoose.Schema.Types.String,
-      required: true,
-    },
-    lastName: {
-      type: mongoose.Schema.Types.String,
-      required: true,
-    },
-    username: {
-      type: mongoose.Schema.Types.String,
-      required: true,
-    },
+  architectId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
   },
   orgDomain: {
     enabled: {
@@ -40,16 +23,6 @@ const OrgSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.String,
     },
   },
-  // structures: [{
-  //     structureId: {
-  //       type: mongoose.Schema.Types.ObjectId,
-  //       required: true,
-  //     },
-  //     structureName: {
-  //       type: mongoose.Schema.Types.String,
-  //       required: true,
-  //     }
-  // }],
 });
 
 const org = mongoose.model("Orgs", OrgSchema);

@@ -44,7 +44,7 @@ exports.LoginUser_ctrl_lu00 = catchAsync(async (req, res, next) => {
     const token = await signAccessToken(userMeta._id);
     if (token) {
       res.cookie("authorization", token, {
-        maxAge: 1000 * 60 * 60, // 1 hour max age
+        maxAge: 1000 * 60 * 60 * 24 * 7, //Currently valid for seven days // TODO: Change this!
         httpOnly: true,
       });
       res.status(200).send("You are now logged in as " + userMeta.username);

@@ -19,9 +19,9 @@ module.exports = {
         "string.base": `Should be a type of text`,
         "string.max": `Exceeded max no of length`,
       }),
-      unionRoom: Joi.Boolean().messages({
-          "boolean.base": "Only Boolean values allowed"
-      }),
+      // unionRoom: Joi.Boolean().messages({
+      //     "boolean.base": "Only Boolean values allowed"
+      // }),
     });
   },
 };

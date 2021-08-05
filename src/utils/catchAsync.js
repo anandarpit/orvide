@@ -1,6 +1,6 @@
 const catchAsync = (fn) => (req, res, next) => {
   Promise.resolve(fn(req, res, next)).catch((err) => {
-    const errCode = err.message.code;
+    const errCode = err.message.code
     if (err.isJoi === true) err.status = 422;
     else if (errCode === "EAR_00") err.message = "This email is already associated with another account";
     else if (errCode === "UNF_00") err.message = "User not found";

@@ -21,7 +21,7 @@ function signAccessToken(userId) {
     };
 
     const options = {
-      expiresIn: `1h`,
+      expiresIn: `7d`,
       algorithm: `RS256`,
     };
 
