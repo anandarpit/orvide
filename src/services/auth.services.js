@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const connect = require("../config/connection");
 const UserSchema = require("../model/user/User");
 const UserMetaSchema = require("../model/user/UserMeta");
 const { genPassword, validPassword } = require("../utils/passwordHash");
@@ -114,13 +113,13 @@ module.exports = {
           else if (userMeta.emailVerification.expiryTime <= Date.now())
             return reject(
               createError.BadRequest({
-                code: "OTP_EX",
+                code: "OTP_01",
               })
             );
           else if (userMeta.emailVerification.verificationOtp != otp)
             return reject(
               createError.BadRequest({
-                code: "OTP_INV",
+                code: "OTP_02",
               })
             );
           else if (userMeta.emailVerification.verificationOtp === otp) {

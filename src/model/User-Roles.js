@@ -4,7 +4,7 @@ const UserRolesSchema = new mongoose.Schema({
   userId: mongoose.Schema.Types.ObjectId,
   roleId: mongoose.Schema.Types.ObjectId,
   orgId: mongoose.Schema.Types.ObjectId,
-  additionPower: {
+  aRoles: {
     isRoleCreator: {
         type: Boolean,
         givenBy: mongoose.Schema.Types.ObjectId,

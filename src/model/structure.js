@@ -1,29 +1,29 @@
 const mongoose = require("mongoose");
 
-const structureSchema = new mongoose.Schema({
+const StructureSchema = new mongoose.Schema(
+  {
     org_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
     },
-    name : {
-        type: String,
-        required: true,
+    name: {
+      type: String,
+      required: true,
     },
     description: {
-        type: String,
-        editedBY: mongoose.Schema.Types.ObjectId,
+      value: mongoose.Schema.Types.String,
+      editedBY: mongoose.Schema.Types.ObjectId,
     },
-    admins : [{
+    admins: [
+      {
+        _id: false,
         uid: mongoose.Schema.Types.ObjectId,
         canCreate: Boolean,
-    }],
-    initiator : {
-        uid: mongoose.Schema.Types.ObjectId,
-        atTime: Number,
-    },
-    endorser : {
-        uid: mongoose.Schema.Types.ObjectId,
-        atTime: Number,
+      },
+    ],
+    endorser: {
+      uid: mongoose.Schema.Types.ObjectId,
+      atTime: Number,
     },
     // rooms : [{
     //     roomId: mongoose.Schema.Types.ObjectId,
@@ -31,10 +31,15 @@ const structureSchema = new mongoose.Schema({
     //     creatorId: String,
     // }],
     unionRoom: {
-        enabled: Boolean,
+      enabled: Boolean,
     },
-    membersCount: mongoose.Schema.Types.Number, 
-}, { timestamps: true })
+    membersCount: mongoose.Schema.Types.Number,
+    sMeta: {
+      initiator: mongoose.Schema.Types.ObjectId,
+      creationTime: mongoose.Schema.Types.Number,
+    },
+  },
+  { timestamps: true }
+);
 
-
-module.exports = mongoose.model('Structures', structureSchema);
+module.exports = mongoose.model("Structures", StructureSchema);
