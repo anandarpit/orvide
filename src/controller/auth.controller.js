@@ -25,8 +25,7 @@ exports.RegisterUser_ctrl_ru00 = catchAsync(async (req, res, next) => {
     { abortEarly: false }
   );
   const result = await authService.registerUser(validatedResult);
-  if (result) return res.status(200).send("Registered");
-  res.end();
+  if (result) return res.status(200).send("Registered")
 });
 
 exports.LoginUser_ctrl_lu00 = catchAsync(async (req, res, next) => {
@@ -34,21 +33,20 @@ exports.LoginUser_ctrl_lu00 = catchAsync(async (req, res, next) => {
     abortEarly: false,
   });
 
-  const userMeta = await authService.loginUser(
+  const result = await authService.loginUser(
     validatedResult.email,
     validatedResult.username,
     validatedResult.password
   );
 
-  if (userMeta) {
-    const token = await signAccessToken(userMeta._id);
+  if (result) {
+    const token = await signAccessToken(result._id);
     if (token) {
       res.cookie("authorization", token, {
         maxAge: 1000 * 60 * 60 * 24 * 7, //Currently valid for seven days // TODO: Change this!
         httpOnly: true,
       });
-      res.status(200).send("You are now logged in as " + userMeta.username);
+      res.status(200).send("You are now logged in as " + result.data.un);
     }
   }
 });
-

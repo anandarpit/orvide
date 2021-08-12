@@ -9,9 +9,9 @@ module.exports = {
 
     const response = {
       _id: userData._id,
-      username: userData.username,
-      firstName: userData.name.firstName,
-      lastName: userData.name.lastName,
+      username: userData.data.un,
+      firstName: userData.data.name.fn,
+      lastName: userData.data.name.ln,
       emails: userData.emails,
     };
     return res.status(200).send(response);

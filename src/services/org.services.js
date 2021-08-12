@@ -43,7 +43,7 @@
 const mongoose = require('mongoose')
 const connect = require('../config/connection')
 const OrgSchema = require('../model/Org')
-const UserSchema = require('../model/user/User')
+const UserSchema = require('../model/users')
 const createError = require(`http-errors`)
 const { randomValueHex } = require('../utils/generateValue')
 const { MyProfile } = require('./fetch.services')

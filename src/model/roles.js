@@ -6,15 +6,15 @@ const RoleSchema = new mongoose.Schema({
         lowercase: true,
         required: true
     },
-    org_id: mongoose.Schema.Types.ObjectId,
-    roleMeta: {
-        creatorId: mongoose.Schema.Types.ObjectId,
-        creationTime: String
+    oId: mongoose.Schema.Types.ObjectId,
+    meta: {
+        cId: mongoose.Schema.Types.ObjectId, //Creator ID(USer's)
+        cT: String  // created AT time
     },
-    isRoleCreator: Boolean,
-    isModerator: Boolean,
-    isEndorser: Boolean,
-    isInitiator: Boolean,
+    isRC: Boolean,  // is role creator
+    isMod: Boolean, // is moderator
+    isEnd: Boolean, // is endorser
+    isIni: Boolean, //is Initiator
 })
 
 module.exports = mongoose.model('Roles', RoleSchema)

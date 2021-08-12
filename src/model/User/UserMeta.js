@@ -34,10 +34,6 @@ const UserMetaSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.Number
         }
     },
-    hasCompletedRegistration: {
-        type: mongoose.Schema.Types.Boolean,
-        required: false
-    }
 }, {timestamps: true})
 
 const user = mongoose.model('UserMeta', UserMetaSchema);

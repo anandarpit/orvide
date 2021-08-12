@@ -5,7 +5,7 @@ const OrgSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.String,
     required: true,
   },
-  orgId: {
+  oId: {
     type: mongoose.Schema.Types.String,
     required: true,
     unique: true,

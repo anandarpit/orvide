@@ -1,5 +1,5 @@
 const connect = require("../config/connection");
-const UserSchema = require("../model/user/User");
+const UserSchema = require("../model/users");
 const createError = require(`http-errors`);
 
 module.exports = {
