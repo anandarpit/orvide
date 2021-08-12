@@ -12,9 +12,9 @@ exports.checkOrReturnRoles_corr00 = async (userId, orgId) => {
         $arrayElemAt: [
           {
             $filter: {
-              input: "$joinedOrgs",
+              input: "$JO",
               cond: {
-                $eq: ["$$this.orgId", ObjectId(orgId)],
+                $eq: ["$$this.oId", ObjectId(orgId)],
               },
             },
           },

@@ -18,9 +18,9 @@ exports.CreateStructure_ctrl_cs00 = catchAsync(async (req, res, next) => {
   );
   const userId = res.locals.payload.sub;
   const userData = await checkOrReturnRoles_corr00(userId, validatedResult.org_id);
-  console.log(userData)
+  console.log("HEllo ",userData)
   if (userData) {
-    if(userData[0].aRoles.isInitiator || userData[0].roles.isInitiator){
+    if(userData[0].aRoles.ini || userData[0].roles.isInitiator){
       const result = await createStructure(validatedResult, userId)
       console.log("incoming "+result)
     }else{

@@ -9,6 +9,7 @@ const StructureSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
+      trim: true,
     },
     description: {
       value: mongoose.Schema.Types.String,
@@ -25,15 +26,9 @@ const StructureSchema = new mongoose.Schema(
       uid: mongoose.Schema.Types.ObjectId,
       atTime: Number,
     },
-    // rooms : [{
-    //     roomId: mongoose.Schema.Types.ObjectId,
-    //     roomName: String,
-    //     creatorId: String,
-    // }],
     unionRoom: {
       enabled: Boolean,
     },
-    membersCount: mongoose.Schema.Types.Number,
     sMeta: {
       initiator: mongoose.Schema.Types.ObjectId,
       creationTime: mongoose.Schema.Types.Number,
