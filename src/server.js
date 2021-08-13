@@ -8,11 +8,11 @@ const { errorHandler } = require("./utils/errorHandler");
 var cookieParser = require("cookie-parser");
 const logger = require("./config/logger");
 const httpLogger = require("./config/httpLogger");
-const morgan = require("morgan");
+
 
 app.use(helmet());
 app.use(httpLogger);
-app.use(morgan(`dev`));
+
 
 app.use(cors({ origin: true, optionsSuccessStatus: 200, credentials: true }));
 app.options(

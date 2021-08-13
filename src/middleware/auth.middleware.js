@@ -3,7 +3,7 @@ const createError = require(`http-errors`);
 const fs = require("fs");
 const path = require("path");
 const pathToPubKey = path.join(__dirname, "..", "config/key/id_rsa_pub.pem");
-
+const { orgService } = require('../services')
 const PUB_KEY = fs.readFileSync(pathToPubKey, "utf8");
 const catchAsync = require("../utils/catchAsync");
 
@@ -23,6 +23,17 @@ module.exports = {
           next();
         }
       });
+  }),
+
+  isCreator: catchAsync(async(req, res, next) =>{
+  
+    const creator = orgService.isCreator(res.locals.payload.sub);
+    if (creator)
+      next();
+    else
+      throw createError(403, { code: "INC_00" });
+    
+
   }),
 
   isAlreadyLoggedIn: (req, res, next) => {

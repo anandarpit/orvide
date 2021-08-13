@@ -1,4 +1,4 @@
-const winston = require('winston')
+const winston = require('winston');
 const colorizer = winston.format.colorize();
 
 const levels = {
@@ -7,7 +7,7 @@ const levels = {
   info: 2,
   http: 3,
   debug: 4,
-}
+};
 
 const level = () => {
   const env = process.env.NODE_ENV || 'development'
@@ -20,7 +20,7 @@ const colors = {
   warn: 'yellow',
   info: 'blue',
   http: 'magenta',
-  debug: 'green',
+  debug: 'white',
 }
 
 winston.addColors(colors)
@@ -33,7 +33,7 @@ const format = winston.format.combine(
   // winston.format.colorize({ all: true }),
   // Define the format of the message showing the timestamp, the level and the message
   winston.format.printf(msg => 
-    colorizer.colorize(msg.level, `${msg.timestamp} - ${msg.level}: ${msg.message}`)
+    colorizer.colorize(msg.level, `${msg.timestamp} - [${msg.level}] : ${msg.message}`)
   )
 )
 

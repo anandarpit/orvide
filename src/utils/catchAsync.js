@@ -9,11 +9,11 @@ const catchAsync = (fn) => (req, res, next) => {
     else if (errCode === "IC_00") err.message = "Invalid Credentials";
     else if (errCode === "AAV_00") err.message = "Account Already verified!";
     else if (errCode === "NLI_00") err.message = "Not Logged in";
-    else if (errCode === "NT_00") err.message = "No Token";
+    else if (errCode === "NT_00") err.message = "Unauthorized";//same to line 13
     else if (errCode === "IT_00") err.message = "Invalid Token";
     else if (errCode === "NA_00") err.message = "Not Authorized";
     //Name taken
-    else if (errCode === "NAT_01") err.message = "Structure name already taken in this Org!";
+    else if (errCode === "NAT_01") err.message = "Structure name already taken in this Org!";   
     //OTP
     else if (errCode === "OTP_01") err.message = "OTP expired, try again!";
     else if (errCode === "OTP_02") err.message = "Invalid OTP";

@@ -2,45 +2,43 @@ const createError = require(`http-errors`);
 const {metaService} = require("../services");
 const {metaValidation} = require("../validation");
 const catchAsync = require("../utils/catchAsync");
+const logger = require("../config/logger")
 
 module.exports = {
-  UniqueEmail_ue00: catchAsync(async (req, res, next) => {
+  UniqueEmail: catchAsync(async (req, res, next) => {
     const validatedResult = await metaValidation.uniqueEmail().validateAsync(
       req.body
     );
-    const uniqueEmail = await metaService.uniqueEmail(validatedResult.email);
-    if (uniqueEmail) res.status(200).send(uniqueEmail);
+    const emailStatus = await metaService.uniqueEmail(validatedResult.email);
+    if (emailStatus) res.status(200).json({message:emailStatus});
     res.end();
   }),
 
-  UniqueUsername_uu00: catchAsync(async (req, res, next) => {
+  UniqueUsername: catchAsync(async (req, res, next) => {
     const validatedResult = await metaValidation.uniqueUsername().validateAsync(
       req.body,
       { abortEarly: false }
     );
-    const result = await metaService.uniqueUsername(validatedResult.uname);
-    if (result) return res.status(200).send(result);
+    const usernameStatus = await metaService.uniqueUsername(validatedResult.username);
+    if (usernameStatus) return res.status(200).json({message:usernameStatus});
     res.end();
   }),
 
-unique_orgName_ctrl : catchAsync(async (req, res, next)=>{
-
-      // if (!res.locals.authenticated && !res.locals.user)
-      //     return res.status(404).send('Please Login In')
+UniqueOrgName : catchAsync(async (req, res, next)=>{
 
     const validatedOrgName = await metaValidation.validate_orgName().validateAsync(req.body)
     const nameStatus = await metaService.unique_orgName(validatedOrgName);
     if(nameStatus)
-    res.status(200).json({nameStatus})
+    res.status(200).json({message:nameStatus})
     res.end();
  }),
 
-unique_orgId_ctrl : catchAsync(async (req, res) => {
+UniqueOrgId : catchAsync(async (req, res) => {
   
     const validateOrgId = await metaValidation.validate_orgId().validateAsync(req.body)
-    const IdStatus = await metaValidation.unique_orgId(validateOrgId);
+    const IdStatus = await metaService.unique_orgId(validateOrgId);
     if(IdStatus){
-     return res.status(200).json({IdStatus})
+     return res.status(200).json({message:IdStatus})
     }
     res.end();
   

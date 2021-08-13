@@ -33,7 +33,7 @@ module.exports = {
   unique_orgId: async (validatedResult) => {
     return new Promise(async (resolve, reject) => {
       const orgName = await orgSchema.findOne({
-        orgId: validatedResult.orgId,
+        oId: validatedResult.orgId,
       });
       var IdStatus = "unique";
       if (orgName) IdStatus = "same";

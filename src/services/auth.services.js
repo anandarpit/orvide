@@ -4,8 +4,10 @@ const { genPassword, validPassword } = require("../utils/passwordHash");
 const createError = require(`http-errors`);
 const { catchAsync } = require("../config/connection");
 
+
 module.exports = {
   verificationEmail: async (validatedResult, OTP) => {
+    
     const { email, password } = validatedResult;
 
     const passwordData = genPassword(password);
