@@ -99,7 +99,7 @@ const UserSchema = new mongoose.Schema(
             sId: mongoose.Schema.Types.ObjectId,
             rooms: [
               {
-                type: mongoose.Schema.Types.ObjectId,
+                rId: mongoose.Schema.Types.ObjectId,
                 _id: false,
               },
             ],

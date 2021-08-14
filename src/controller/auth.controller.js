@@ -36,7 +36,7 @@ exports.LoginUser_ctrl_lu00 = catchAsync(async (req, res, next) => {
   });
   const {email,username, password} = validatedResult;
 
-  const userMeta = await authService.loginUser(email, username, password);
+  const result = await authService.loginUser(email, username, password);
 
   if (result) {
     const token = await signAccessToken(result._id);
@@ -45,7 +45,7 @@ exports.LoginUser_ctrl_lu00 = catchAsync(async (req, res, next) => {
         maxAge: 1000 * 60 * 60 * 24 * 7, //Currently valid for seven days // TODO: Change this!
         httpOnly: true,
       });
-      res.status(200).json({message:"You are now logged in as " + userMeta.username});
+      res.status(200).json({message:"You are now logged in as " + result.data.un});
     }
   }
 });

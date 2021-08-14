@@ -1,23 +1,29 @@
 const StructureSchema = require("../model/structure");
-const UserSchema = require("../model/users")
+const RoomSchema = require("../model/rooms");
+const UserSchema = require("../model/users");
 const createError = require(`http-errors`);
 const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
 
 module.exports = {
   createStruc: async (validatedResult, userId, roleData) => {
-    if((!roleData) && ((roleData.aRoles && roleData.aRoles.ini) || (roleData.role && roleData.role.isInitiator))){
-     await createStructure(validatedResult, userId)
-     return true;
-    } else{
+    console.log(roleData[0])
+    if (
+      roleData[0] &&
+      ((roleData[0].aRoles && roleData[0].aRoles.ini) ||
+        (roleData[0].role && roleData[0].role.isInitiator))
+    ) {
+      await createStructure(validatedResult, userId);
+      return true;
+    } else {
       throw createError.BadRequest({ code: "NA_00" });
     }
-  }
+  },
 };
 
-async function createStructure (validatedResult, userId) {
+async function createStructure(validatedResult, userId) {
   const { org_id, name, description, unionRoom } = validatedResult;
-  const sData = new StructureSchema({
+  const sVal = new StructureSchema({
     org_id: org_id,
     name: name,
     description: {
@@ -33,30 +39,55 @@ async function createStructure (validatedResult, userId) {
     },
     admins: [{ uid: userId, canCreate: true }],
   });
-  const nameTaken = await StructureSchema.findOne({org_id: org_id, name: name})
-  if(nameTaken){
-    throw createError.NotAcceptable({code: "NAT_01"})
+  const nameTaken = await StructureSchema.findOne({
+    org_id: org_id,
+    name: name,
+  });
+  if (nameTaken) {
+    throw createError.NotAcceptable({ code: "NAT_01" });
   }
   const session = await mongoose.startSession();
   session.startTransaction();
   try {
-    const sResult = await sData.save({ session }); //structure create
+    //Creating Structure
+    const sResult = await sVal.save({ session });
 
-    const uData = {
-      $addToSet: {"JO.$.JS": [{"sId": sResult._id}]}
+    //Updating User document
+    var uVal = null;
+    const uFilter = { "JO.oId": ObjectId(org_id) };
+    if (unionRoom) {
+      //Adding default room if unionRoom == true
+      const rVal = new RoomSchema({
+        sid: sResult._id,
+        name: "all",
+        desc: "The Union room for " + name,
+        type: "UNION",
+        cTime: Date.now(),
+        rAdm: [{ uid: userId, aTime: Date.now() }],
+      });
+      const rData = await rVal.save({ session });
+
+      uVal = {
+        $addToSet: {
+          "JO.$.JS": [{ sId: sResult._id, rooms: [{ rId: rData._id }] }],
+        },
+      };
+    } else {
+      uVal = {
+        $addToSet: { "JO.$.JS": [{ sId: sResult._id }] },
+      };
     }
-    const uFilter = {"JO.oId": ObjectId(org_id)}
+    const uData = await UserSchema.updateOne(uFilter, uVal, { session });
 
-    await UserSchema.updateOne(uFilter, uData);
     await session.commitTransaction();
     return true;
   } catch (err) {
     await session.abortTransaction();
     if (err.code == 11000) {
-      throw createError.BadRequest({ code: "NAT_01" })
+      throw createError.BadRequest({ code: "NAT_01" });
     } else {
-      console.log(err)
-      throw createError.InternalServerError()
+      console.log(err);
+      throw createError.InternalServerError();
     }
   } finally {
     session.endSession();
