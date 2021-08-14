@@ -95,6 +95,7 @@ const UserSchema = new mongoose.Schema(
         //Joined structures
         JS: [
           {
+            _id: false,
             sId: mongoose.Schema.Types.ObjectId,
             rooms: [
               {

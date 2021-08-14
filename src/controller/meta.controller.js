@@ -1,6 +1,6 @@
 const createError = require(`http-errors`);
-const {metaService} = require("../services");
-const {metaValidation} = require("../validation");
+const { metaService } = require("../services");
+const { metaValidation } = require("../validation");
 const catchAsync = require("../utils/catchAsync");
 const logger = require("../config/logger")
 
@@ -31,7 +31,7 @@ UniqueOrgName : catchAsync(async (req, res, next)=>{
     if(nameStatus)
     res.status(200).json({message:nameStatus})
     res.end();
- }),
+  }),
 
 UniqueOrgId : catchAsync(async (req, res) => {
   
@@ -41,8 +41,9 @@ UniqueOrgId : catchAsync(async (req, res) => {
      return res.status(200).json({message:IdStatus})
     }
     res.end();
-  
-})
+  }),
+  // unique_struc_ctrl: catchAsync(async (req, res) => {
+  //   const struc_name_val = await metaValidation.unique_struc().validateAsync(req.body)
+  //   const roles  // Check roles if he is initiator or not 
+  // })
 };
-
-

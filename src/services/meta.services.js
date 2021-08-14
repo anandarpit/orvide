@@ -40,4 +40,7 @@ module.exports = {
       return resolve(IdStatus);
     });
   },
+  // uniqueStruc: async (validatedResult) => {
+  //   return await 
+  // }
 };

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
 
 exports.checkOrReturnRoles_corr00 = async (userId, orgId) => {
-  return await UserSchema.aggregate()
+  const result = await UserSchema.aggregate()
     .match({
       _id: ObjectId(userId),
     })
@@ -33,6 +33,8 @@ exports.checkOrReturnRoles_corr00 = async (userId, orgId) => {
       aRoles: "$org_doc.aRoles",
       roles: { $arrayElemAt: ["$result", 0] },
     }).exec();
+
+    return result
 };
 
 /**
@@ -41,10 +43,10 @@ exports.checkOrReturnRoles_corr00 = async (userId, orgId) => {
     "_id" : ObjectId("610a3aa1f8928747274665be"), 
     "orgId" : ObjectId("610a73b9f4b8b317393cd883"), 
     "aRoles" : {
-        "isEndorser" : {
+        "end" : {
             "givenBy" : ObjectId("610cd27cd43117df266ceed4")
         }, 
-        "isInitiator" : {
+        "ini" : {
             "givenBy" : ObjectId("610cd34fd43117df266ceed5")
         }
     }, 

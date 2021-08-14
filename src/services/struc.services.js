@@ -1,7 +1,8 @@
 const StructureSchema = require("../model/structure");
+const UserSchema = require("../model/users")
 const createError = require(`http-errors`);
 const mongoose = require("mongoose");
-// const ObjectId = mongoose.Types.ObjectId;
+const ObjectId = mongoose.Types.ObjectId;
 
 module.exports = {
   createStructure: async (validatedResult, userId) => {
@@ -29,7 +30,14 @@ module.exports = {
     const session = await mongoose.startSession();
     session.startTransaction();
     try {
-      const result = await sData.save({ session });
+      const sResult = await sData.save({ session });
+
+      const uData = {
+        $addToSet: {"JO.$.JS": [{"sId": sResult._id}]}
+      }
+      const uFilter = {"JO.oId": ObjectId(org_id)}
+
+      await UserSchema.updateOne(uFilter, uData);
       await session.commitTransaction();
       return true;
     } catch (err) {
@@ -37,6 +45,7 @@ module.exports = {
       if (err.code == 11000) {
         throw createError.BadRequest({ code: "NAT_01" })
       } else {
+        console.log(err)
         throw createError.InternalServerError()
       }
     } finally {

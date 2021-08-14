@@ -22,11 +22,15 @@
         },
         {
             "name": "meta",
-            "description": "Fetch meta details"
+            "description": "Meta details"
         },
         {
             "name": "fetch",
-            "description": "can't find a good name"
+            "description": "Fetch details"
+        },
+        {
+            "name": "struc",
+            "description": "About structure"
         }
     ],
     "schemes": [
@@ -221,6 +225,44 @@
                     }
                 ]
             }
+        },
+        "/struc/create": {
+            "post": {
+                "tags": [
+                    "struc"
+                ],
+                "summary": "Create a new Structure",
+                "description": "Only authorized users who has the particular role can create the structure",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "type": "string",
+                        "schema": {
+                            "$ref": "#/definitions/createStruc"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Logged in!!!"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
         }
     },
     "securityDefinitions": {
@@ -304,6 +346,26 @@
                 },
                 "password": {
                     "type": "string"
+                }
+            },
+            "xml": {
+                "name": "login"
+            }
+        },
+        "createStruc": {
+            "type": "object",
+            "properties": {
+                "org_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "unionRoom": {
+                    "type": "boolean"
                 }
             },
             "xml": {
