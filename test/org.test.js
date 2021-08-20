@@ -1,11 +1,13 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const server = require('./server.test')
-require(`dotenv`).config()
+const server = "http://localhost:3000";
 
+// require('../src/server')
+require(`dotenv`).config()
 
 chai.should();
 chai.use(chaiHttp);
+
 var username = "tenet",
 password = "tenet@123",
 token,

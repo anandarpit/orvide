@@ -8,6 +8,7 @@ const { errorHandler } = require("./utils/errorHandler");
 var cookieParser = require("cookie-parser");
 const logger = require("./config/logger");
 const httpLogger = require("./config/httpLogger");
+const should = require('chai').should();
 
 
 app.use(helmet());
@@ -37,7 +38,7 @@ app.use(async (req, res, next) => {
 
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 3000;
+const PORT =  3000;
 const server = app.listen(PORT, () => {
   logger.info(`Server is running on port ${PORT}`);
 });

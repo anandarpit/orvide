@@ -1,9 +1,8 @@
 const router = require(`express`).Router();
-const {testController} = require('./controllers')
+const testController  = require('./controllers/test.controller');
 
 router.post('/fetchOTP', testController.fetchOTP);
 router.post('/token',testController.fetchToken);
-router.post('/putData',testController.putData);
-router.post('/putDataArrays',testController.putDataArrays);
+
 
 module.exports = router;

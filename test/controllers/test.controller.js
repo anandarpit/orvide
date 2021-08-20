@@ -3,8 +3,6 @@ const users = require(`../../src/model/users`);
 const catchAsync = require("../../src/utils/catchAsync");
 const { signAccessToken } = require(`../../src/config/tokens`);
 const {authService} = require("../../src/services");
-const testSchema = require(`../model/tests`);
-const arraySchema = require(`../model/arrays`)
 const logger = require(`../../src/config/logger`);
 
 exports.fetchOTP = catchAsync(async (req, res, next) => {
@@ -25,34 +23,7 @@ exports.fetchToken = catchAsync(async (req, res, next)=>{
   const token = await signAccessToken(userMeta._id);
   res.status(200).json({token: token});
 })
-exports.putData = catchAsync(async (req, res, next)=>{
-  
-  for(var i =0;i<100000;i++){
-    const details = new testSchema({uId:i})
-    await details.save((err, doc)=>{
-      if(err) 
-      console.log("saving error in test");
-    });
-  }
-  res.sendStatus(200);
-})
- exports.putDataArrays = catchAsync(async (req, res, next)=>{
-   for(var i = 0 ; i<5; i++){
-     const details = new arraySchema({uId:i,orgId})
-     await details.save();
-     for(var j=0 ; j<20 ;j++){
 
-       for(var k = 0; k < 5; k++ ){
-         const details = new arraySchema({
-           uId:k+j+i,
-           orgId:i
-           
-           
-           })
-           await details.save();
-       }
-     }
-   }
-   res.sendStatus(200);
- })
+
+
 
