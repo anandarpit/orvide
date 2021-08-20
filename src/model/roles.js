@@ -9,7 +9,7 @@ const RoleSchema = new mongoose.Schema({
     oId: mongoose.Schema.Types.ObjectId,
     meta: {
         cId: mongoose.Schema.Types.ObjectId, //Creator ID(USer's)
-        cT: String  // created AT time
+        cT: mongoose.Schema.Types.Date  // created AT time
     },
     isRC: Boolean,  // is role creator
     isMod: Boolean, // is moderator

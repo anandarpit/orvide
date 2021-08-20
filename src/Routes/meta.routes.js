@@ -6,4 +6,5 @@ router.post('/uname_unique', UniqueUsername) //Checks if the username is availab
 router.post('/email_unique', UniqueEmail) // Checks if the email is available or not
 router.post('/unique_org_name', isLoggedIn, UniqueOrgName);
 router.post('/unique_org_id', isLoggedIn, UniqueOrgId);
+// router.post('/unique_struc_name', isLoggedIn, unique_struc_ctrl);
 module.exports = router

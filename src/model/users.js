@@ -95,10 +95,11 @@ const UserSchema = new mongoose.Schema(
         //Joined structures
         JS: [
           {
+            _id: false,
             sId: mongoose.Schema.Types.ObjectId,
             rooms: [
               {
-                type: mongoose.Schema.Types.ObjectId,
+                rId: mongoose.Schema.Types.ObjectId,
                 _id: false,
               },
             ],
