@@ -34,8 +34,9 @@ module.exports = {
 
   validate_orgId: () => {
     return Joi.object({
-      orgId: Joi.string().lowercase().required().messages({
+      orgId: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required().messages({
         "string.empty": `OrgID cannot be empty`,
+        "string.pattern.base": "Invalid ObjectId",
         "any.required": `OrgID is required`,
       }),
     });

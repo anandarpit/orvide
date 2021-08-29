@@ -1,0 +1,813 @@
+[34m19/08/2021 11:07:37 - [info] : Server is running on port 4000[39m
+[34m19/08/2021 11:08:06 - [info] : Mongoose connection is disconnected.[39m
+[31m19/08/2021 11:08:06 - [error] : Can not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+[34m19/08/2021 11:18:30 - [info] : Mongoose connection is disconnected.[39m
+[31m19/08/2021 11:18:30 - [error] : Can not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+[34m19/08/2021 11:21:17 - [info] : Mongoose connection is disconnected.[39m
+[31m19/08/2021 11:21:17 - [error] : Can not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+[34m19/08/2021 12:30:55 - [info] : Mongoose connection is disconnected.[39m
+[31m19/08/2021 12:30:55 - [error] : Can not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+[34m19/08/2021 17:04:04 - [info] : Mongoose connection is disconnected.[39m
+[31m19/08/2021 17:04:04 - [error] : Can not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+[34m19/08/2021 19:23:26 - [info] : Mongoose connection is disconnected.[39m
+[31m19/08/2021 19:23:26 - [error] : Can not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+[34m19/08/2021 20:07:49 - [info] : Mongoose connection is disconnected.[39m
+[31m19/08/2021 20:07:49 - [error] : Can not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+[34m19/08/2021 23:13:22 - [info] : Mongoose connection is disconnected.[39m
+[31m19/08/2021 23:13:22 - [error] : Can not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+[34m19/08/2021 23:44:15 - [info] : Server is running on port 4000[39m
+[34m19/08/2021 23:44:15 - [info] : Mongoose server listening[39m
+[34m19/08/2021 23:45:24 - [info] : Mongoose connection is disconnected.[39m
+[34m19/08/2021 23:45:30 - [info] : Mongoose server listening[39m
+[34m19/08/2021 23:46:36 - [info] : Mongoose connection is disconnected.[39m
+[34m21/08/2021 21:00:15 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 21:00:15 - [info] : Mongoose server listening[39m
+[31m21/08/2021 21:00:34 - [error] : Not Found[39m
+[35m21/08/2021 21:00:34 - [http] : GET / 404 46 - 5.421 ms[39m
+[35m[39m
+[35m21/08/2021 21:02:02 - [http] : GET /api-docs 301 183 - 6.226 ms[39m
+[35m[39m
+[35m21/08/2021 21:02:02 - [http] : GET /api-docs/ 200 3104 - 1.119 ms[39m
+[35m[39m
+[35m21/08/2021 21:02:02 - [http] : GET /api-docs/swagger-ui-init.js 200 9933 - 0.369 ms[39m
+[35m[39m
+[35m21/08/2021 21:02:02 - [http] : GET /api-docs/swagger-ui.css 200 143554 - 6.824 ms[39m
+[35m[39m
+[35m21/08/2021 21:02:02 - [http] : GET /api-docs/swagger-ui-standalone-preset.js 200 336511 - 5.572 ms[39m
+[35m[39m
+[35m21/08/2021 21:02:02 - [http] : GET /api-docs/swagger-ui-bundle.js 200 1100409 - 7.486 ms[39m
+[35m[39m
+[35m21/08/2021 21:02:02 - [http] : GET /api-docs/favicon-32x32.png 200 628 - 3.557 ms[39m
+[35m[39m
+[31m21/08/2021 21:13:47 - [error] : First Name is Required!. Username is Required!. Email is required. OTP is required[39m
+[35m21/08/2021 21:13:47 - [http] : POST /api/auth/register 422 119 - 28.127 ms[39m
+[35m[39m
+[31m21/08/2021 21:15:31 - [error] : Not Found[39m
+[35m21/08/2021 21:15:31 - [http] : GET /api/auth/verificationEmail 404 46 - 2.768 ms[39m
+[35m[39m
+[31m21/08/2021 21:15:35 - [error] : Email is required. Password is Required![39m
+[35m21/08/2021 21:15:35 - [http] : POST /api/auth/verificationEmail 422 77 - 7.913 ms[39m
+[35m[39m
+[31m21/08/2021 21:16:19 - [error] : Unexpected token e in JSON at position 6[39m
+[35m21/08/2021 21:16:19 - [http] : POST /api/auth/verificationEmail 400 77 - 37.357 ms[39m
+[35m[39m
+[31m21/08/2021 21:16:24 - [error] : Unexpected token e in JSON at position 6[39m
+[35m21/08/2021 21:16:24 - [http] : POST /api/auth/verificationEmail 400 77 - 4.388 ms[39m
+[35m[39m
+[31m21/08/2021 21:16:35 - [error] : Unexpected token e in JSON at position 6[39m
+[35m21/08/2021 21:16:35 - [http] : POST /api/auth/verificationEmail 400 77 - 3.722 ms[39m
+[35m[39m
+[31m21/08/2021 21:16:39 - [error] : Unexpected token e in JSON at position 6[39m
+[35m21/08/2021 21:16:39 - [http] : POST /api/auth/verificationEmail 400 77 - 3.324 ms[39m
+[35m[39m
+[31m21/08/2021 21:16:43 - [error] : Unexpected token e in JSON at position 6[39m
+[35m21/08/2021 21:16:43 - [http] : POST /api/auth/verificationEmail 400 77 - 3.572 ms[39m
+[35m[39m
+[31m21/08/2021 21:16:57 - [error] : Unexpected token } in JSON at position 65[39m
+[35m21/08/2021 21:16:57 - [http] : POST /api/auth/verificationEmail 400 78 - 4.546 ms[39m
+[35m[39m
+[31m21/08/2021 21:17:04 - [error] : Password is Required!. "pass" is not allowed[39m
+[35m21/08/2021 21:17:04 - [http] : POST /api/auth/verificationEmail 422 83 - 15.161 ms[39m
+[35m[39m
+[35m21/08/2021 21:17:20 - [http] : POST /api/auth/verificationEmail 200 64 - 7096.383 ms[39m
+[35m[39m
+[35m21/08/2021 21:27:27 - [http] : POST /api/auth/register 200 24 - 35.948 ms[39m
+[35m[39m
+[31m21/08/2021 21:29:31 - [error] : Password is Required!. "value" must contain at least one of [username, email][39m
+[35m21/08/2021 21:29:31 - [http] : POST /api/auth/login 422 116 - 10.309 ms[39m
+[35m[39m
+[31m21/08/2021 21:30:10 - [error] : Unexpected token { in JSON at position 6[39m
+[35m21/08/2021 21:30:10 - [http] : POST /api/auth/login 400 77 - 3.364 ms[39m
+[35m[39m
+[31m21/08/2021 21:30:19 - [error] : Invalid Credentials[39m
+[35m21/08/2021 21:30:19 - [http] : POST /api/auth/login 400 56 - 37.019 ms[39m
+[35m[39m
+[35m21/08/2021 21:30:38 - [http] : POST /api/auth/login 200 45 - 48.069 ms[39m
+[35m[39m
+[35m21/08/2021 21:35:52 - [http] : GET /api/fetch/my_profile 200 176 - 4.985 ms[39m
+[35m[39m
+[31m21/08/2021 21:37:06 - [error] : Argument passed in must be a single String of 12 bytes or a string of 24 hex characters[39m
+[34m21/08/2021 21:45:32 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 21:45:32 - [info] : Mongoose server listening[39m
+[35m21/08/2021 21:46:15 - [http] : GET /api/fetch/my_profile 304 - - 17.569 ms[39m
+[35m[39m
+[31m21/08/2021 21:46:19 - [error] : Argument passed in must be a single String of 12 bytes or a string of 24 hex characters[39m
+[34m21/08/2021 21:53:28 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 21:53:28 - [info] : Mongoose server listening[39m
+[31m21/08/2021 21:53:59 - [error] : Argument passed in must be a single String of 12 bytes or a string of 24 hex characters[39m
+[34m21/08/2021 21:54:52 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 21:54:52 - [info] : Mongoose server listening[39m
+[34m21/08/2021 21:54:56 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 21:54:56 - [info] : Mongoose server listening[39m
+[31m21/08/2021 21:55:04 - [error] : Argument passed in must be a single String of 12 bytes or a string of 24 hex characters[39m
+[34m21/08/2021 21:58:01 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 21:58:01 - [info] : Mongoose server listening[39m
+[34m21/08/2021 22:00:20 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:00:20 - [info] : Mongoose server listening[39m
+[34m21/08/2021 22:05:04 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:05:04 - [info] : Mongoose server listening[39m
+[34m21/08/2021 22:05:06 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:05:06 - [info] : Mongoose server listening[39m
+[34m21/08/2021 22:05:35 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:05:35 - [info] : Mongoose server listening[39m
+[34m21/08/2021 22:05:38 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:05:38 - [info] : Mongoose server listening[39m
+[31m21/08/2021 22:07:53 - [error] : "org_id" with value "string" fails to match the valid mongo id pattern[39m
+[35m21/08/2021 22:07:53 - [http] : POST /api/struc/create 422 111 - 33.810 ms[39m
+[35m[39m
+[31m21/08/2021 22:09:05 - [error] : "org_id" with value "string" fails to match the valid mongo id pattern[39m
+[35m21/08/2021 22:09:05 - [http] : POST /api/struc/create 422 111 - 2.995 ms[39m
+[35m[39m
+[31m21/08/2021 22:09:46 - [error] : Not Authorized[39m
+[35m21/08/2021 22:09:46 - [http] : POST /api/struc/create 400 51 - 8.023 ms[39m
+[35m[39m
+[31m21/08/2021 22:10:00 - [error] : "org_id" with value "61212001bbc36df14a2f4da" fails to match the valid mongo id pattern[39m
+[35m21/08/2021 22:10:00 - [http] : POST /api/struc/create 422 128 - 2.735 ms[39m
+[35m[39m
+[34m21/08/2021 22:16:26 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:16:26 - [info] : Mongoose server listening[39m
+[31m21/08/2021 22:16:36 - [error] : "org_id" with value "61212001bbc36df14a2f4da" fails to match the valid mongo id pattern[39m
+[35m21/08/2021 22:16:36 - [http] : POST /api/struc/create 422 128 - 31.987 ms[39m
+[35m[39m
+[34m21/08/2021 22:18:38 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:18:38 - [info] : Mongoose server listening[39m
+[34m21/08/2021 22:18:42 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:18:42 - [info] : Mongoose server listening[39m
+[34m21/08/2021 22:19:02 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:19:02 - [info] : Mongoose server listening[39m
+[31m21/08/2021 22:19:18 - [error] : regex must be a RegExp[39m
+[34m21/08/2021 22:19:53 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:19:53 - [info] : Mongoose server listening[39m
+[31m21/08/2021 22:19:59 - [error] : "org_id" with value "61212001bbc36df14a2f4da" fails to match the required pattern: /^[0-9a-fA-F]{24}$/[39m
+[35m21/08/2021 22:19:59 - [http] : POST /api/struc/create 422 143 - 30.200 ms[39m
+[35m[39m
+[31m21/08/2021 22:20:16 - [error] : Not Authorized[39m
+[35m21/08/2021 22:20:16 - [http] : POST /api/struc/create 400 51 - 9.284 ms[39m
+[35m[39m
+[34m21/08/2021 22:23:09 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:23:09 - [info] : Mongoose server listening[39m
+[34m21/08/2021 22:23:12 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:23:12 - [info] : Mongoose server listening[39m
+[34m21/08/2021 22:23:16 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:23:16 - [info] : Mongoose server listening[39m
+[31m21/08/2021 22:23:23 - [error] : Not Authorized[39m
+[35m21/08/2021 22:23:23 - [http] : POST /api/struc/create 400 51 - 35.959 ms[39m
+[35m[39m
+[31m21/08/2021 22:23:29 - [error] : Invalid ObjectId[39m
+[35m21/08/2021 22:23:29 - [http] : POST /api/struc/create 422 53 - 3.894 ms[39m
+[35m[39m
+[34m21/08/2021 22:23:49 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:23:49 - [info] : Mongoose server listening[39m
+[34m21/08/2021 22:23:59 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:23:59 - [info] : Mongoose server listening[39m
+[34m21/08/2021 22:24:16 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:24:16 - [info] : Mongoose server listening[39m
+[34m21/08/2021 22:24:24 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:24:24 - [info] : Mongoose server listening[39m
+[34m21/08/2021 22:24:33 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:24:33 - [info] : Mongoose server listening[39m
+[34m21/08/2021 22:24:51 - [info] : Server is running on port 4000[39m
+[34m21/08/2021 22:24:51 - [info] : Mongoose server listening[39m
+[34m21/08/2021 22:24:56 - [info] : Mongoose connection is disconnected.[39m
+[34m22/08/2021 11:34:36 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:34:42 - [info] : Mongoose server listening[39m
+[34m22/08/2021 11:35:46 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:35:46 - [info] : Mongoose server listening[39m
+[34m22/08/2021 11:36:00 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:36:00 - [info] : Mongoose server listening[39m
+[34m22/08/2021 11:36:11 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:36:11 - [info] : Mongoose server listening[39m
+[34m22/08/2021 11:36:21 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:36:21 - [info] : Mongoose server listening[39m
+[34m22/08/2021 11:36:22 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:36:22 - [info] : Mongoose server listening[39m
+[34m22/08/2021 11:36:25 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:36:25 - [info] : Mongoose server listening[39m
+[34m22/08/2021 11:38:39 - [info] : Mongoose connection is disconnected.[39m
+[34m22/08/2021 11:38:43 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:38:43 - [info] : Mongoose server listening[39m
+[34m22/08/2021 11:42:57 - [info] : Mongoose connection is disconnected.[39m
+[34m22/08/2021 11:43:15 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:43:15 - [info] : Mongoose server listening[39m
+[35m22/08/2021 11:44:09 - [http] : GET /api-docs/ 200 3104 - 4.951 ms[39m
+[35m[39m
+[35m22/08/2021 11:44:09 - [http] : GET /api-docs/swagger-ui-init.js 200 9933 - 0.694 ms[39m
+[35m[39m
+[35m22/08/2021 11:44:09 - [http] : GET /api-docs/swagger-ui.css 200 143554 - 11.419 ms[39m
+[35m[39m
+[35m22/08/2021 11:44:09 - [http] : GET /api-docs/swagger-ui-standalone-preset.js 200 336511 - 9.995 ms[39m
+[35m[39m
+[35m22/08/2021 11:44:09 - [http] : GET /api-docs/swagger-ui-bundle.js 200 1100409 - 8.535 ms[39m
+[35m[39m
+[35m22/08/2021 11:44:09 - [http] : GET /api-docs/favicon-32x32.png 200 628 - 3.824 ms[39m
+[35m[39m
+[34m22/08/2021 11:44:48 - [info] : Mongoose connection is disconnected.[39m
+[34m22/08/2021 11:44:52 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:44:52 - [info] : Mongoose server listening[39m
+[35m22/08/2021 11:44:57 - [http] : GET /api-docs/ 304 - - 18.764 ms[39m
+[35m[39m
+[35m22/08/2021 11:44:58 - [http] : GET /api-docs/swagger-ui.css 304 - - 2.479 ms[39m
+[35m[39m
+[35m22/08/2021 11:44:58 - [http] : GET /api-docs/swagger-ui-init.js 304 - - 0.608 ms[39m
+[35m[39m
+[35m22/08/2021 11:44:58 - [http] : GET /api-docs/swagger-ui-bundle.js 304 - - 4.205 ms[39m
+[35m[39m
+[35m22/08/2021 11:44:58 - [http] : GET /api-docs/swagger-ui-standalone-preset.js 304 - - 4.751 ms[39m
+[35m[39m
+[35m22/08/2021 11:44:58 - [http] : GET /api-docs/favicon-32x32.png - - - - ms[39m
+[35m[39m
+[31m22/08/2021 11:45:49 - [error] : Unauthorized[39m
+[35m22/08/2021 11:45:49 - [http] : POST /api/struc/create 400 49 - 12.507 ms[39m
+[35m[39m
+[31m22/08/2021 11:46:07 - [error] : Unexpected token " in JSON at position 3[39m
+[35m22/08/2021 11:46:07 - [http] : POST /api/struc/create 400 78 - 7.815 ms[39m
+[35m[39m
+[31m22/08/2021 11:46:11 - [error] : Unexpected token " in JSON at position 3[39m
+[35m22/08/2021 11:46:11 - [http] : POST /api/struc/create 400 78 - 3.670 ms[39m
+[35m[39m
+[31m22/08/2021 11:46:16 - [error] : Unauthorized[39m
+[35m22/08/2021 11:46:16 - [http] : POST /api/struc/create 400 49 - 5.402 ms[39m
+[35m[39m
+[31m22/08/2021 11:46:46 - [error] : Unexpected token " in JSON at position 3[39m
+[35m22/08/2021 11:46:46 - [http] : POST /api/struc/create 400 78 - 4.262 ms[39m
+[35m[39m
+[31m22/08/2021 11:46:52 - [error] : Unauthorized[39m
+[35m22/08/2021 11:46:52 - [http] : POST /api/struc/create 400 49 - 2.118 ms[39m
+[35m[39m
+[34m22/08/2021 11:48:13 - [info] : Mongoose connection is disconnected.[39m
+[34m22/08/2021 11:48:16 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:48:16 - [info] : Mongoose server listening[39m
+[31m22/08/2021 11:48:19 - [error] : Unauthorized[39m
+[35m22/08/2021 11:48:19 - [http] : POST /api/struc/create 400 49 - 19.077 ms[39m
+[35m[39m
+[35m22/08/2021 11:48:41 - [http] : POST /api/auth/login 200 45 - 76.353 ms[39m
+[35m[39m
+[31m22/08/2021 11:49:05 - [error] : Invalid ObjectId[39m
+[35m22/08/2021 11:49:05 - [http] : POST /api/struc/create 422 53 - 4.167 ms[39m
+[35m[39m
+[35m22/08/2021 11:49:36 - [http] : GET /api-docs/ 304 - - 4.110 ms[39m
+[35m[39m
+[35m22/08/2021 11:49:36 - [http] : GET /api-docs/swagger-ui.css 304 - - 2.701 ms[39m
+[35m[39m
+[35m22/08/2021 11:49:36 - [http] : GET /api-docs/swagger-ui-init.js 304 - - 0.335 ms[39m
+[35m[39m
+[35m22/08/2021 11:49:36 - [http] : GET /api-docs/swagger-ui-bundle.js 304 - - 2.689 ms[39m
+[35m[39m
+[35m22/08/2021 11:49:36 - [http] : GET /api-docs/swagger-ui-standalone-preset.js 304 - - 2.910 ms[39m
+[35m[39m
+[35m22/08/2021 11:52:18 - [http] : GET /api-docs/ 304 - - 1.577 ms[39m
+[35m[39m
+[35m22/08/2021 11:52:18 - [http] : GET /api-docs/swagger-ui.css 304 - - 0.472 ms[39m
+[35m[39m
+[35m22/08/2021 11:52:18 - [http] : GET /api-docs/swagger-ui-bundle.js 304 - - 1.061 ms[39m
+[35m[39m
+[35m22/08/2021 11:52:18 - [http] : GET /api-docs/swagger-ui-standalone-preset.js 304 - - 1.473 ms[39m
+[35m[39m
+[35m22/08/2021 11:52:18 - [http] : GET /api-docs/swagger-ui-init.js 200 9933 - 0.527 ms[39m
+[35m[39m
+[35m22/08/2021 11:52:18 - [http] : GET /api-docs/favicon-32x32.png - - - - ms[39m
+[35m[39m
+[34m22/08/2021 11:53:44 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:53:44 - [info] : Mongoose server listening[39m
+[34m22/08/2021 11:54:02 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:54:02 - [info] : Mongoose server listening[39m
+[34m22/08/2021 11:54:03 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:54:03 - [info] : Mongoose server listening[39m
+[34m22/08/2021 11:54:09 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:54:09 - [info] : Mongoose server listening[39m
+[35m22/08/2021 11:54:13 - [http] : GET /api-docs/ 304 - - 7.033 ms[39m
+[35m[39m
+[35m22/08/2021 11:54:13 - [http] : GET /api-docs/swagger-ui-bundle.js 304 - - 2.551 ms[39m
+[35m[39m
+[35m22/08/2021 11:54:13 - [http] : GET /api-docs/swagger-ui-init.js 304 - - 0.270 ms[39m
+[35m[39m
+[35m22/08/2021 11:54:13 - [http] : GET /api-docs/swagger-ui-standalone-preset.js 304 - - 3.211 ms[39m
+[35m[39m
+[35m22/08/2021 11:54:13 - [http] : GET /api-docs/swagger-ui.css 304 - - 3.303 ms[39m
+[35m[39m
+[34m22/08/2021 11:54:23 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:54:23 - [info] : Mongoose server listening[39m
+[34m22/08/2021 11:54:24 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 11:54:24 - [info] : Mongoose server listening[39m
+[34m22/08/2021 14:16:08 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 14:16:08 - [info] : Mongoose server listening[39m
+[35m22/08/2021 14:16:17 - [http] : GET /api-docs/ 200 3104 - 6.705 ms[39m
+[35m[39m
+[35m22/08/2021 14:16:18 - [http] : GET /api-docs/favicon-16x16.png 200 665 - 2.908 ms[39m
+[35m[39m
+[35m22/08/2021 14:16:21 - [http] : GET /api-docs/ 304 - - 1.257 ms[39m
+[35m[39m
+[35m22/08/2021 14:16:21 - [http] : GET /api-docs/swagger-ui.css 304 - - 1.252 ms[39m
+[35m[39m
+[35m22/08/2021 14:16:21 - [http] : GET /api-docs/swagger-ui-init.js 304 - - 0.508 ms[39m
+[35m[39m
+[35m22/08/2021 14:16:21 - [http] : GET /api-docs/swagger-ui-bundle.js 304 - - 1.345 ms[39m
+[35m[39m
+[35m22/08/2021 14:16:21 - [http] : GET /api-docs/swagger-ui-standalone-preset.js 304 - - 1.450 ms[39m
+[35m[39m
+[35m22/08/2021 14:16:21 - [http] : GET /api-docs/favicon-32x32.png - - - - ms[39m
+[35m[39m
+[31m22/08/2021 14:17:31 - [error] : Invalid ObjectId[39m
+[35m22/08/2021 14:17:31 - [http] : POST /api/struc/create 422 53 - 61.514 ms[39m
+[35m[39m
+[31m22/08/2021 14:17:33 - [error] : Invalid ObjectId[39m
+[35m22/08/2021 14:17:33 - [http] : POST /api/struc/create 422 53 - 2.739 ms[39m
+[35m[39m
+[31m22/08/2021 14:18:23 - [error] : Unexpected token u in JSON at position 6[39m
+[35m22/08/2021 14:18:23 - [http] : GET /api/meta/uname_unique 400 77 - 4.764 ms[39m
+[35m[39m
+[31m22/08/2021 14:18:29 - [error] : Not Found[39m
+[35m22/08/2021 14:18:29 - [http] : GET /api/meta/uname_unique 404 46 - 4.183 ms[39m
+[35m[39m
+[31m22/08/2021 14:18:40 - [error] : Invalid. "uname" is not allowed[39m
+[35m22/08/2021 14:18:40 - [http] : POST /api/meta/uname_unique 422 70 - 2.491 ms[39m
+[35m[39m
+[35m22/08/2021 14:18:48 - [http] : POST /api/meta/uname_unique 200 20 - 13.596 ms[39m
+[35m[39m
+[34m22/08/2021 14:19:17 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 14:19:17 - [info] : Mongoose server listening[39m
+[35m22/08/2021 14:19:24 - [http] : GET /api/meta/uname_unique 200 20 - 49.538 ms[39m
+[35m[39m
+[31m22/08/2021 14:19:28 - [error] : Not Found[39m
+[35m22/08/2021 14:19:28 - [http] : POST /api/meta/uname_unique 404 46 - 8.952 ms[39m
+[35m[39m
+[35m22/08/2021 14:19:30 - [http] : GET /api/meta/uname_unique 200 20 - 12.427 ms[39m
+[35m[39m
+[34m22/08/2021 14:19:41 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 14:19:41 - [info] : Mongoose server listening[39m
+[34m22/08/2021 14:20:00 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 14:20:00 - [info] : Mongoose server listening[39m
+[34m22/08/2021 14:20:19 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 14:20:19 - [info] : Mongoose server listening[39m
+[35m22/08/2021 14:20:24 - [http] : GET /api-docs/ 304 - - 6.925 ms[39m
+[35m[39m
+[35m22/08/2021 14:20:24 - [http] : GET /api-docs/swagger-ui.css 304 - - 2.512 ms[39m
+[35m[39m
+[35m22/08/2021 14:20:24 - [http] : GET /api-docs/swagger-ui-init.js 200 9931 - 0.625 ms[39m
+[35m[39m
+[35m22/08/2021 14:20:24 - [http] : GET /api-docs/swagger-ui-bundle.js 304 - - 3.899 ms[39m
+[35m[39m
+[35m22/08/2021 14:20:24 - [http] : GET /api-docs/swagger-ui-standalone-preset.js 304 - - 4.189 ms[39m
+[35m[39m
+[35m22/08/2021 14:21:42 - [http] : GET /api/meta/uname_unique 200 18 - 63.698 ms[39m
+[35m[39m
+[34m22/08/2021 14:23:27 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 14:23:27 - [info] : Mongoose server listening[39m
+[34m22/08/2021 14:23:40 - [info] : Server is running on port 4000[39m
+[34m22/08/2021 14:23:40 - [info] : Mongoose server listening[39m
+[35m22/08/2021 14:23:44 - [http] : GET /api-docs/ 200 3104 - 4.888 ms[39m
+[35m[39m
+[35m22/08/2021 14:23:44 - [http] : GET /api-docs/swagger-ui-init.js 200 9933 - 0.370 ms[39m
+[35m[39m
+[35m22/08/2021 14:23:44 - [http] : GET /api-docs/swagger-ui-standalone-preset.js 304 - - 3.103 ms[39m
+[35m[39m
+[35m22/08/2021 14:23:44 - [http] : GET /api-docs/swagger-ui-bundle.js 304 - - 2.198 ms[39m
+[35m[39m
+[35m22/08/2021 14:23:44 - [http] : GET /api-docs/swagger-ui.css 200 143554 - 8.397 ms[39m
+[35m[39m
+[35m22/08/2021 14:24:53 - [http] : GET /api-docs/ 200 3104 - 0.636 ms[39m
+[35m[39m
+[35m22/08/2021 14:24:53 - [http] : GET /api-docs/swagger-ui.css 304 - - 0.888 ms[39m
+[35m[39m
+[35m22/08/2021 14:24:53 - [http] : GET /api-docs/swagger-ui-init.js 304 - - 0.636 ms[39m
+[35m[39m
+[35m22/08/2021 14:24:53 - [http] : GET /api-docs/swagger-ui-bundle.js 304 - - 1.144 ms[39m
+[35m[39m
+[35m22/08/2021 14:24:53 - [http] : GET /api-docs/swagger-ui-standalone-preset.js 304 - - 1.428 ms[39m
+[35m[39m
+[35m22/08/2021 14:24:53 - [http] : GET /api-docs/favicon-32x32.png 200 628 - 2.059 ms[39m
+[35m[39m
+[35m22/08/2021 14:24:58 - [http] : POST /api/meta/uname_unique 200 18 - 37.894 ms[39m
+[35m[39m
+[34m22/08/2021 21:06:55 - [info] : Mongoose server listening[39m
+[34m22/08/2021 21:06:56 - [info] : Mongoose connection is disconnected.[39m
+[34m22/08/2021 21:06:59 - [info] : Mongoose server listening[39m
+[34m23/08/2021 19:36:25 - [info] : Mongoose server listening[39m
+[34m23/08/2021 19:37:18 - [info] : Mongoose connection is disconnected.[39m
+[34m23/08/2021 19:37:22 - [info] : Server is running on port 4000[39m
+[34m23/08/2021 19:37:22 - [info] : Mongoose server listening[39m
+[35m23/08/2021 19:40:00 - [http] : POST /api/auth/login 200 45 - 60.549 ms[39m
+[35m[39m
+[34m23/08/2021 19:48:10 - [info] : Server is running on port 4000[39m
+[34m23/08/2021 19:48:10 - [info] : Mongoose server listening[39m
+[31m23/08/2021 19:48:39 - [error] : Invalid ObjectId[39m
+[35m23/08/2021 19:48:39 - [http] : POST /api/struc/create 422 53 - 42.930 ms[39m
+[35m[39m
+[31m23/08/2021 19:49:34 - [error] : Internal Server Error[39m
+[35m23/08/2021 19:49:34 - [http] : POST /api/struc/create 500 58 - 80.641 ms[39m
+[35m[39m
+[34m23/08/2021 19:49:54 - [info] : Mongoose connection is disconnected.[39m
+[34m24/08/2021 18:55:22 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 18:55:22 - [info] : Mongoose server listening[39m
+[31m24/08/2021 18:55:47 - [error] : Not Authorized[39m
+[35m24/08/2021 18:55:47 - [http] : POST /api/struc/create 400 51 - 47.026 ms[39m
+[35m[39m
+[31m24/08/2021 18:55:51 - [error] : User not found[39m
+[35m24/08/2021 18:55:51 - [http] : POST /api/auth/login 400 51 - 24.975 ms[39m
+[35m[39m
+[31m24/08/2021 19:01:12 - [error] : User not found[39m
+[35m24/08/2021 19:01:12 - [http] : POST /api/auth/login 400 51 - 3.352 ms[39m
+[35m[39m
+[31m24/08/2021 19:01:24 - [error] : User not found[39m
+[35m24/08/2021 19:01:24 - [http] : POST /api/auth/login 400 51 - 3.372 ms[39m
+[35m[39m
+[31m24/08/2021 19:01:25 - [error] : User not found[39m
+[35m24/08/2021 19:01:25 - [http] : POST /api/auth/login 400 51 - 7.991 ms[39m
+[35m[39m
+[34m24/08/2021 19:03:55 - [info] : Mongoose connection is disconnected.[39m
+[34m24/08/2021 19:04:06 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:06:08 - [info] : Mongoose connection is disconnected.[39m
+[34m24/08/2021 19:06:13 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:06:13 - [info] : Mongoose server listening[39m
+[31m24/08/2021 19:06:15 - [error] : User not found[39m
+[35m24/08/2021 19:06:15 - [http] : POST /api/auth/login 400 51 - 52.888 ms[39m
+[35m[39m
+[31m24/08/2021 19:06:49 - [error] : User not found[39m
+[35m24/08/2021 19:06:49 - [http] : POST /api/auth/login 400 51 - 6.906 ms[39m
+[35m[39m
+[31m24/08/2021 19:06:53 - [error] : User not found[39m
+[35m24/08/2021 19:06:53 - [http] : POST /api/auth/login 400 51 - 4.531 ms[39m
+[35m[39m
+[31m24/08/2021 19:06:53 - [error] : User not found[39m
+[35m24/08/2021 19:06:53 - [http] : POST /api/auth/login 400 51 - 7.746 ms[39m
+[35m[39m
+[35m24/08/2021 19:07:00 - [http] : POST /api/auth/login 200 44 - 21.161 ms[39m
+[35m[39m
+[31m24/08/2021 19:08:11 - [error] : Unauthorized[39m
+[35m24/08/2021 19:08:11 - [http] : POST /api/struc/create 400 49 - 1.586 ms[39m
+[35m[39m
+[34m24/08/2021 19:10:09 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:10:09 - [info] : Mongoose server listening[39m
+[31m24/08/2021 19:10:20 - [error] : Unauthorized[39m
+[35m24/08/2021 19:10:20 - [http] : POST /api/struc/create 400 49 - 17.224 ms[39m
+[35m[39m
+[31m24/08/2021 19:10:21 - [error] : Unauthorized[39m
+[35m24/08/2021 19:10:21 - [http] : POST /api/struc/create 400 49 - 4.914 ms[39m
+[35m[39m
+[31m24/08/2021 19:10:22 - [error] : Unauthorized[39m
+[35m24/08/2021 19:10:22 - [http] : POST /api/struc/create 400 49 - 2.191 ms[39m
+[35m[39m
+[34m24/08/2021 19:10:44 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:10:44 - [info] : Mongoose server listening[39m
+[31m24/08/2021 19:10:47 - [error] : Unauthorized[39m
+[35m24/08/2021 19:10:47 - [http] : POST /api/struc/create 400 49 - 14.771 ms[39m
+[35m[39m
+[31m24/08/2021 19:10:49 - [error] : Unauthorized[39m
+[35m24/08/2021 19:10:49 - [http] : POST /api/struc/create 400 49 - 2.435 ms[39m
+[35m[39m
+[31m24/08/2021 19:11:43 - [error] : roleData is not defined[39m
+[34m24/08/2021 19:12:08 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:12:08 - [info] : Mongoose server listening[39m
+[31m24/08/2021 19:12:12 - [error] : Cannot read property '0' of null[39m
+[34m24/08/2021 19:12:25 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:12:25 - [info] : Mongoose server listening[39m
+[35m24/08/2021 19:12:27 - [http] : POST /api/struc/create 201 44 - 170.031 ms[39m
+[35m[39m
+[31m24/08/2021 19:14:11 - [error] : Structure name already taken in this Org![39m
+[35m24/08/2021 19:14:11 - [http] : POST /api/struc/create 406 78 - 9.642 ms[39m
+[35m[39m
+[35m24/08/2021 19:14:16 - [http] : POST /api/struc/create 201 44 - 23.380 ms[39m
+[35m[39m
+[31m24/08/2021 19:17:14 - [error] : Invalid ObjectId[39m
+[35m24/08/2021 19:17:14 - [http] : POST /api/struc/create 422 53 - 4.867 ms[39m
+[35m[39m
+[35m24/08/2021 19:17:51 - [http] : POST /api/struc/create 201 44 - 20.005 ms[39m
+[35m[39m
+[34m24/08/2021 19:21:50 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:21:50 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:21:59 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:21:59 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:34:16 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:34:17 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:34:25 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:34:25 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:35:46 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:35:46 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:35:50 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:35:50 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:35:54 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:35:54 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:35:59 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:35:59 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:36:35 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:36:35 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:36:45 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:36:45 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:36:54 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:36:54 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:36:59 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:36:59 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:37:06 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:37:06 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:37:12 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:37:13 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:37:20 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:37:20 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:37:24 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:37:34 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:37:34 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:37:50 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:37:50 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:40:06 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:40:06 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:40:12 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:40:12 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:40:14 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:40:14 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:41:03 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:41:03 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:41:06 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:41:06 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:41:20 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:41:20 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:41:51 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:41:51 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:41:57 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:41:57 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:45:59 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:45:59 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:46:09 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:46:09 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:46:14 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:46:14 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:46:16 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:46:16 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:46:17 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:46:17 - [info] : Mongoose server listening[39m
+[34m24/08/2021 19:46:23 - [info] : Server is running on port 4000[39m
+[34m24/08/2021 19:46:23 - [info] : Mongoose server listening[39m
+[34m25/08/2021 15:22:46 - [info] : Server is running on port 4000[39m
+[34m25/08/2021 15:22:46 - [info] : Mongoose server listening[39m
+[31m25/08/2021 15:22:48 - [error] : Not Found[39m
+[35m25/08/2021 15:22:48 - [http] : GET / 404 46 - 4.342 ms[39m
+[35m[39m
+[31m25/08/2021 15:23:17 - [error] : First Name is Required!. Username is Required!. Email is required. OTP is required[39m
+[35m25/08/2021 15:23:17 - [http] : POST /api/auth/register 422 119 - 48.077 ms[39m
+[35m[39m
+[31m25/08/2021 15:24:50 - [error] : First Name is Required!. Username is Required!. Email is required. OTP is required[39m
+[35m25/08/2021 15:24:50 - [http] : POST /api/auth/register 422 119 - 4.177 ms[39m
+[35m[39m
+[35m25/08/2021 15:25:09 - [http] : GET /api-docs/ 200 3104 - 2.526 ms[39m
+[35m[39m
+[35m25/08/2021 15:25:09 - [http] : GET /api-docs/swagger-ui-init.js 200 9933 - 0.451 ms[39m
+[35m[39m
+[35m25/08/2021 15:25:09 - [http] : GET /api-docs/swagger-ui.css 200 143554 - 11.812 ms[39m
+[35m[39m
+[35m25/08/2021 15:25:09 - [http] : GET /api-docs/swagger-ui-standalone-preset.js 200 336511 - 6.404 ms[39m
+[35m[39m
+[35m25/08/2021 15:25:09 - [http] : GET /api-docs/swagger-ui-bundle.js 200 1100409 - 2.981 ms[39m
+[35m[39m
+[35m25/08/2021 15:25:09 - [http] : GET /api-docs/favicon-32x32.png 200 628 - 3.521 ms[39m
+[35m[39m
+[31m25/08/2021 15:25:30 - [error] : First Name is Required!. Username is Required!. Email is required. OTP is required[39m
+[35m25/08/2021 15:25:30 - [http] : POST /api/auth/register 422 119 - 6.315 ms[39m
+[35m[39m
+[31m25/08/2021 15:26:18 - [error] : First Name is Required!. Username is Required!. Email is required. OTP is required[39m
+[35m25/08/2021 15:26:18 - [http] : POST /api/auth/register 422 119 - 9.716 ms[39m
+[35m[39m
+[31m25/08/2021 15:26:22 - [error] : First Name is Required!. Username is Required!. Email is required. OTP is required[39m
+[35m25/08/2021 15:26:22 - [http] : POST /api/auth/register 422 119 - 4.926 ms[39m
+[35m[39m
+[31m25/08/2021 15:26:33 - [error] : Invalid Email[39m
+[35m25/08/2021 15:26:33 - [http] : POST /api/auth/register 422 50 - 26.217 ms[39m
+[35m[39m
+[31m25/08/2021 15:27:01 - [error] : User not found[39m
+[35m25/08/2021 15:27:01 - [http] : POST /api/auth/register 400 51 - 10.659 ms[39m
+[35m[39m
+[31m25/08/2021 15:28:47 - [error] : User not found[39m
+[35m25/08/2021 15:28:47 - [http] : POST /api/auth/register 400 51 - 11.267 ms[39m
+[35m[39m
+[31m25/08/2021 15:28:52 - [error] : User not found[39m
+[35m25/08/2021 15:28:52 - [http] : POST /api/auth/register 400 51 - 12.441 ms[39m
+[35m[39m
+[31m25/08/2021 15:28:57 - [error] : User not found[39m
+[35m25/08/2021 15:28:57 - [http] : POST /api/auth/register 400 51 - 2.963 ms[39m
+[35m[39m
+[31m25/08/2021 15:29:01 - [error] : User not found[39m
+[35m25/08/2021 15:29:01 - [http] : POST /api/auth/register 400 51 - 3.694 ms[39m
+[35m[39m
+[34m25/08/2021 19:08:44 - [info] : Server is running on port 4000[39m
+[34m25/08/2021 19:08:44 - [info] : Mongoose server listening[39m
+[35m25/08/2021 19:09:14 - [http] : GET /api-docs/ 200 3104 - 13.762 ms[39m
+[35m[39m
+[35m25/08/2021 19:09:14 - [http] : GET /api-docs/swagger-ui-init.js 200 9933 - 0.334 ms[39m
+[35m[39m
+[35m25/08/2021 19:09:14 - [http] : GET /api-docs/swagger-ui.css 200 143554 - 5.198 ms[39m
+[35m[39m
+[35m25/08/2021 19:09:14 - [http] : GET /api-docs/swagger-ui-standalone-preset.js 200 336511 - 6.691 ms[39m
+[35m[39m
+[35m25/08/2021 19:09:14 - [http] : GET /api-docs/swagger-ui-bundle.js 200 1100409 - 6.561 ms[39m
+[35m[39m
+[35m25/08/2021 19:09:14 - [http] : GET /api-docs/favicon-32x32.png 200 628 - 3.815 ms[39m
+[35m[39m
+[35m25/08/2021 19:10:36 - [http] : POST /api/auth/verificationEmail 200 53 - 9286.918 ms[39m
+[35m[39m
+[31m25/08/2021 19:12:06 - [error] : Unexpected token } in JSON at position 92[39m
+[35m25/08/2021 19:12:06 - [http] : POST /api/auth/register 400 78 - 6.948 ms[39m
+[35m[39m
+[31m25/08/2021 19:12:13 - [error] : Should have a minimum length of 4[39m
+[35m25/08/2021 19:12:13 - [http] : POST /api/auth/register 422 70 - 17.509 ms[39m
+[35m[39m
+[35m25/08/2021 19:12:36 - [http] : POST /api/auth/register 200 24 - 36.007 ms[39m
+[35m[39m
+[34m25/08/2021 19:35:53 - [info] : Server is running on port 4000[39m
+[34m25/08/2021 19:35:53 - [info] : Mongoose server listening[39m
+[34m25/08/2021 19:37:06 - [info] : Server is running on port 4000[39m
+[34m25/08/2021 19:37:06 - [info] : Mongoose server listening[39m
+[34m25/08/2021 20:59:34 - [info] : Server is running on port 4000[39m
+[34m25/08/2021 20:59:34 - [info] : Mongoose server listening[39m
+[34m25/08/2021 20:59:46 - [info] : Server is running on port 4000[39m
+[34m25/08/2021 20:59:46 - [info] : Mongoose server listening[39m
+[34m25/08/2021 20:59:48 - [info] : Server is running on port 4000[39m
+[34m25/08/2021 20:59:48 - [info] : Mongoose server listening[39m
+[34m25/08/2021 21:01:33 - [info] : Server is running on port 4000[39m
+[34m25/08/2021 21:01:33 - [info] : Mongoose server listening[39m
+[34m25/08/2021 21:01:43 - [info] : Server is running on port 4000[39m
+[34m25/08/2021 21:01:43 - [info] : Mongoose server listening[39m
+[35m25/08/2021 21:02:46 - [http] : GET /api-docs/favicon-32x32.png - - - - ms[39m
+[35m[39m
+[34m25/08/2021 21:12:42 - [info] : Server is running on port 4000[39m
+[34m25/08/2021 21:12:42 - [info] : Mongoose server listening[39m
+[34m25/08/2021 21:12:54 - [info] : Server is running on port 4000[39m
+[34m25/08/2021 21:12:54 - [info] : Mongoose server listening[39m
+[34m25/08/2021 21:12:55 - [info] : Server is running on port 4000[39m
+[34m25/08/2021 21:12:55 - [info] : Mongoose server listening[39m
+[34m25/08/2021 21:13:58 - [info] : Server is running on port 4000[39m
+[34m25/08/2021 21:13:58 - [info] : Mongoose server listening[39m
+[34m25/08/2021 21:34:06 - [info] : Server is running on port 4000[39m
+[34m25/08/2021 21:34:06 - [info] : Mongoose server listening[39m
+[34m29/08/2021 20:15:21 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 20:15:21 - [info] : Mongoose server listening[39m
+[35m29/08/2021 20:15:41 - [http] : POST /api/auth/login 200 45 - 65.036 ms[39m
+[35m[39m
+[31m29/08/2021 20:17:46 - [error] : Unexpected token o in JSON at position 4[39m
+[35m29/08/2021 20:17:46 - [http] : POST /api/role/make/admin 400 77 - 4.709 ms[39m
+[35m[39m
+[31m29/08/2021 20:18:05 - [error] : Unexpected token o in JSON at position 4[39m
+[35m29/08/2021 20:18:05 - [http] : POST /api/role/make/admin 400 77 - 1.100 ms[39m
+[35m[39m
+[31m29/08/2021 20:20:40 - [error] : Unexpected token o in JSON at position 4[39m
+[35m29/08/2021 20:20:40 - [http] : POST /api/role/make/admin 400 77 - 3.542 ms[39m
+[35m[39m
+[31m29/08/2021 20:20:56 - [error] : Unexpected token o in JSON at position 4[39m
+[35m29/08/2021 20:20:56 - [http] : POST /api/role/make/admin 400 77 - 4.628 ms[39m
+[35m[39m
+[31m29/08/2021 20:23:43 - [error] : Unexpected token o in JSON at position 4[39m
+[35m29/08/2021 20:23:43 - [http] : POST /api/role/make/admin 400 77 - 1.924 ms[39m
+[35m[39m
+[31m29/08/2021 20:24:00 - [error] : Unexpected token o in JSON at position 4[39m
+[35m29/08/2021 20:24:00 - [http] : POST /api/role/make/admin 400 77 - 3.611 ms[39m
+[35m[39m
+[31m29/08/2021 20:24:08 - [error] : Invalid Token[39m
+[35m29/08/2021 20:24:08 - [http] : POST /api/role/make/admin 400 50 - 7.364 ms[39m
+[35m[39m
+[31m29/08/2021 20:24:19 - [error] : Invalid Token[39m
+[35m29/08/2021 20:24:19 - [http] : POST /api/role/make/admin 400 50 - 4.729 ms[39m
+[35m[39m
+[31m29/08/2021 20:24:30 - [error] : Invalid Token[39m
+[35m29/08/2021 20:24:30 - [http] : POST /api/role/make/admin 400 50 - 4.255 ms[39m
+[35m[39m
+[31m29/08/2021 20:24:49 - [error] : Invalid Token[39m
+[35m29/08/2021 20:24:49 - [http] : POST /api/role/make/admin 400 50 - 3.480 ms[39m
+[35m[39m
+[31m29/08/2021 20:24:57 - [error] : Invalid Token[39m
+[35m29/08/2021 20:24:57 - [http] : POST /api/role/make/admin 400 50 - 3.356 ms[39m
+[35m[39m
+[34m29/08/2021 20:25:35 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 20:25:35 - [info] : Mongoose server listening[39m
+[34m29/08/2021 20:25:36 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 20:25:36 - [info] : Mongoose server listening[39m
+[31m29/08/2021 20:25:39 - [error] : Invalid Token[39m
+[35m29/08/2021 20:25:39 - [http] : POST /api/role/make/admin 400 50 - 25.865 ms[39m
+[35m[39m
+[31m29/08/2021 20:25:52 - [error] : Org ID is required[39m
+[35m29/08/2021 20:25:52 - [http] : POST /api/role/make/admin 422 55 - 26.209 ms[39m
+[35m[39m
+[34m29/08/2021 20:26:02 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 20:26:02 - [info] : Mongoose server listening[39m
+[34m29/08/2021 20:26:03 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 20:26:03 - [info] : Mongoose server listening[39m
+[31m29/08/2021 20:36:14 - [error] : Org ID is required[39m
+[35m29/08/2021 20:36:14 - [http] : POST /api/role/make/admin 422 55 - 36.189 ms[39m
+[35m[39m
+[34m29/08/2021 20:37:11 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 20:37:11 - [info] : Mongoose server listening[39m
+[31m29/08/2021 20:37:13 - [error] : Org ID is required[39m
+[35m29/08/2021 20:37:13 - [http] : POST /api/role/make/admin 422 55 - 26.794 ms[39m
+[35m[39m
+[34m29/08/2021 20:37:20 - [info] : Mongoose connection is disconnected.[39m
+[34m29/08/2021 20:37:25 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 20:37:25 - [info] : Mongoose server listening[39m
+[31m29/08/2021 20:37:29 - [error] : Org ID is required[39m
+[35m29/08/2021 20:37:29 - [http] : POST /api/role/make/admin 422 55 - 44.347 ms[39m
+[35m[39m
+[31m29/08/2021 20:37:58 - [error] : Org ID is required[39m
+[35m29/08/2021 20:37:58 - [http] : POST /api/role/make/admin 422 55 - 11.192 ms[39m
+[35m[39m
+[31m29/08/2021 20:42:17 - [error] : Org ID is required[39m
+[35m29/08/2021 20:42:17 - [http] : POST /api/role/make/admin 422 55 - 10.505 ms[39m
+[35m[39m
+[34m29/08/2021 20:44:17 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 20:44:17 - [info] : Mongoose server listening[39m
+[34m29/08/2021 20:44:34 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 20:44:34 - [info] : Mongoose server listening[39m
+[34m29/08/2021 20:44:37 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 20:44:37 - [info] : Mongoose server listening[39m
+[34m29/08/2021 20:44:39 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 20:44:39 - [info] : Mongoose server listening[39m
+[31m29/08/2021 20:44:46 - [error] : User Id is required[39m
+[35m29/08/2021 20:44:46 - [http] : POST /api/role/make/admin 422 56 - 25.628 ms[39m
+[35m[39m
+[31m29/08/2021 20:44:59 - [error] : Invalid Token[39m
+[35m29/08/2021 20:44:59 - [http] : POST /api/role/make/admin 400 50 - 6.807 ms[39m
+[35m[39m
+[31m29/08/2021 20:45:31 - [error] : Unauthorized[39m
+[35m29/08/2021 20:45:31 - [http] : POST /api/role/make/admin 400 49 - 3.872 ms[39m
+[35m[39m
+[34m29/08/2021 20:45:50 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 20:45:50 - [info] : Mongoose server listening[39m
+[31m29/08/2021 20:45:53 - [error] : User Id is required[39m
+[35m29/08/2021 20:45:53 - [http] : POST /api/role/make/admin 422 56 - 27.005 ms[39m
+[35m[39m
+[31m29/08/2021 20:46:12 - [error] : User Id is required[39m
+[35m29/08/2021 20:46:12 - [http] : POST /api/role/make/admin 422 56 - 9.171 ms[39m
+[35m[39m
+[31m29/08/2021 20:46:47 - [error] : Unexpected token / in JSON at position 81[39m
+[35m29/08/2021 20:46:47 - [http] : POST /api/role/make/admin 400 78 - 31.806 ms[39m
+[35m[39m
+[31m29/08/2021 20:46:55 - [error] : Unexpected token / in JSON at position 81[39m
+[35m29/08/2021 20:46:55 - [http] : POST /api/role/make/admin 400 78 - 2.509 ms[39m
+[35m[39m
+[31m29/08/2021 20:47:06 - [error] : Cannot read property 'sub' of undefined[39m
+[34m29/08/2021 20:47:46 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 20:47:46 - [info] : Mongoose server listening[39m
+[31m29/08/2021 20:47:48 - [error] : User Id is required[39m
+[35m29/08/2021 20:47:48 - [http] : POST /api/role/make/admin 422 56 - 45.549 ms[39m
+[35m[39m
+[31m29/08/2021 20:48:09 - [error] : User Id is required[39m
+[35m29/08/2021 20:48:09 - [http] : POST /api/role/make/admin 422 56 - 9.255 ms[39m
+[35m[39m
+[31m29/08/2021 20:48:21 - [error] : User Id is required[39m
+[35m29/08/2021 20:48:21 - [http] : POST /api/role/make/admin 422 56 - 7.876 ms[39m
+[35m[39m
+[31m29/08/2021 20:57:30 - [error] : User Id is required[39m
+[35m29/08/2021 20:57:30 - [http] : POST /api/role/make/admin 422 56 - 6.285 ms[39m
+[35m[39m
+[34m29/08/2021 20:58:09 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 20:58:09 - [info] : Mongoose server listening[39m
+[31m29/08/2021 20:58:10 - [error] : User Id is required[39m
+[35m29/08/2021 20:58:10 - [http] : POST /api/role/make/admin 422 56 - 27.716 ms[39m
+[35m[39m
+[31m29/08/2021 20:58:21 - [error] : Unauthorized[39m
+[35m29/08/2021 20:58:21 - [http] : POST /api/role/make/admin 400 49 - 31.581 ms[39m
+[35m[39m
+[31m29/08/2021 20:58:28 - [error] : User Id is required[39m
+[35m29/08/2021 20:58:28 - [http] : POST /api/role/make/admin 422 56 - 11.645 ms[39m
+[35m[39m
+[35m29/08/2021 21:03:44 - [http] : POST /api/role/make/admin - - - - ms[39m
+[35m[39m
+[31m29/08/2021 21:03:50 - [error] : User Id is required[39m
+[35m29/08/2021 21:03:50 - [http] : POST /api/role/make/admin 422 56 - 4.455 ms[39m
+[35m[39m
+[31m29/08/2021 21:04:17 - [error] : Invalid Token[39m
+[35m29/08/2021 21:04:17 - [http] : POST /api/role/make/admin 400 50 - 4.036 ms[39m
+[35m[39m
+[34m29/08/2021 21:04:43 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 21:04:43 - [info] : Mongoose server listening[39m
+[31m29/08/2021 21:04:45 - [error] : Invalid Token[39m
+[35m29/08/2021 21:04:45 - [http] : POST /api/role/make/admin 400 50 - 18.844 ms[39m
+[35m[39m
+[31m29/08/2021 21:05:00 - [error] : Invalid Token[39m
+[35m29/08/2021 21:05:00 - [http] : POST /api/role/make/admin 400 50 - 6.515 ms[39m
+[35m[39m
+[31m29/08/2021 21:07:30 - [error] : User Id is required[39m
+[35m29/08/2021 21:07:30 - [http] : POST /api/role/make/admin 422 56 - 55.072 ms[39m
+[35m[39m
+[34m29/08/2021 21:07:40 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 21:07:40 - [info] : Mongoose server listening[39m
+[31m29/08/2021 21:07:45 - [error] : User Id is required[39m
+[35m29/08/2021 21:07:45 - [http] : POST /api/role/make/admin 422 56 - 30.706 ms[39m
+[35m[39m
+[31m29/08/2021 21:08:03 - [error] : User Id is required[39m
+[35m29/08/2021 21:08:03 - [http] : POST /api/role/make/admin 422 56 - 12.734 ms[39m
+[35m[39m
+[31m29/08/2021 21:08:30 - [error] : User Id is required[39m
+[35m29/08/2021 21:08:30 - [http] : POST /api/role/make/admin 422 56 - 8.809 ms[39m
+[35m[39m
+[34m29/08/2021 21:09:59 - [info] : Mongoose connection is disconnected.[39m
+[34m29/08/2021 21:10:06 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 21:10:06 - [info] : Mongoose server listening[39m
+[34m29/08/2021 21:11:48 - [info] : Mongoose connection is disconnected.[39m
+[34m29/08/2021 21:12:53 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 21:12:53 - [info] : Mongoose server listening[39m
+[34m29/08/2021 21:13:32 - [info] : Mongoose connection is disconnected.[39m
+[34m29/08/2021 21:13:37 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 21:13:37 - [info] : Mongoose server listening[39m
+[34m29/08/2021 21:15:13 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 21:15:13 - [info] : Mongoose server listening[39m
+[34m29/08/2021 21:15:55 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 21:15:55 - [info] : Mongoose server listening[39m
+[34m29/08/2021 21:16:10 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 21:16:10 - [info] : Mongoose server listening[39m
+[34m29/08/2021 21:16:11 - [info] : Server is running on port 4000[39m
+[34m29/08/2021 21:16:11 - [info] : Mongoose server listening[39m

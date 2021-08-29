@@ -64,7 +64,7 @@ exports.createOrg = (_id, validatedResult) => {
         orgName: validatedResult.orgName, 
          oId: validatedResult.orgId,
         orgDomain: { enabled: enable, domain: validatedResult.orgDomain },
-        architectId: {
+        ownerId: {
           _id
         },
         link: {
@@ -126,7 +126,7 @@ exports.updateInviteLinkStatus = async (_id, validatedResult) => {
 exports.isCreator = async (_id) => {
 
   const creator = await orgSchema.findOne(
-  { architectId: _id },
+  { ownerId: _id },
   { link: { sta: 1 }, _id: 0 }
   ).catch((err) => {
     console.log("error ",err)

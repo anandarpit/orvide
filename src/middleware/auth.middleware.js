@@ -11,7 +11,7 @@ module.exports = {
   isLoggedIn: catchAsync(async (req, res, next) => {
       const token = req.headers[`authorization`];
       if (!token) throw createError.BadRequest({code: "NT_00"});
-
+      
       jwt.verify(token, PUB_KEY, (err, payload) => {
         if (err) {
           if (err.name == "JsonWebTokenError")

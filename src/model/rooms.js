@@ -12,7 +12,7 @@ const RoomSchema = new mongoose.Schema({
     default: "MANUAL",
   },
   cId: mongoose.Schema.Types.ObjectId, //Creator ID(USer's) Note: no cId for type: UNION
-  cTime: mongoose.Schema.Types.Date, //Creation time
+  cT: mongoose.Schema.Types.Date, //Creation time
   //Room Admins
   rAdm: [{
       uid: mongoose.Schema.Types.ObjectId, //User ID

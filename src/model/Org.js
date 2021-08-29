@@ -11,7 +11,7 @@ const orgSchema = new mongoose.Schema({
     unique: true
   },
   membersCount: mongoose.Schema.Types.Number,
-  architectId: {
+  ownerId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true
   },
@@ -21,6 +21,9 @@ const orgSchema = new mongoose.Schema({
     },
     domain: {
       type: mongoose.Schema.Types.String
+    },
+    dVerified: {
+      type: mongoose.Schema.Types.String, 
     }
   },
   link: {

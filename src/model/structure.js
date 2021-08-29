@@ -24,14 +24,14 @@ const StructureSchema = new mongoose.Schema(
     ],
     endorser: {
       uid: mongoose.Schema.Types.ObjectId,
-      atTime: Number,
+      atTime: mongoose.Schema.Types.Date,
     },
     unionRoom: {
       enabled: Boolean,
     },
     sMeta: {
       initiator: mongoose.Schema.Types.ObjectId,
-      creationTime: mongoose.Schema.Types.Number,
+      creationTime: mongoose.Schema.Types.Date,
     },
   },
   { timestamps: true }

@@ -9,4 +9,5 @@ swaggertest.json
 .vscode
 orvideSchema.json
 node_modules
-logs
+logsene
+http

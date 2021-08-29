@@ -31,9 +31,9 @@ exports.RegisterUser_ctrl_ru00 = catchAsync(async (req, res, next) => {
 });
 
 exports.LoginUser_ctrl_lu00 = catchAsync(async (req, res, next) => {
-  const validatedResult = await authValidation.loginUser().validateAsync(req.body, {
-    abortEarly: false,
+  const validatedResult = await authValidation.loginUser().validateAsync(req.body, {  abortEarly: false,
   });
+
   const {email,username, password} = validatedResult;
 
   const result = await authService.loginUser(email, username, password);

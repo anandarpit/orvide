@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
 
 exports.checkOrReturnRoles_corr00 = async (userId, orgId) => {
-  const result = await UserSchema.aggregate()
+  return await UserSchema.aggregate()
     .match({
       _id: ObjectId(userId),
     })
@@ -33,8 +33,6 @@ exports.checkOrReturnRoles_corr00 = async (userId, orgId) => {
       aRoles: "$org_doc.aRoles",
       roles: { $arrayElemAt: ["$result", 0] },
     }).exec();
-
-    return result
 };
 
 /**
