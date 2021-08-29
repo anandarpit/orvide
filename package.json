@@ -4,8 +4,8 @@
   "description": "This is the beginning of the project: Orvide(tentative name)",
   "main": "./src/server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "mocha ./test/index.js --timeout 50000"
+    "start": "nodemon ./src/server.js",
+    "test": "mocha ./test/index.js --timeout 50000 "
   },
   "keywords": [
     "orvide",
@@ -27,6 +27,7 @@
     "jsdom": "^16.7.0",
     "jsonwebtoken": "^8.5.1",
     "mocha": "^9.0.3",
+    "mocha-explorer-launcher-scripts": "^0.3.0",
     "mongoose": "^5.13.3",
     "morgan": "^1.10.0",
     "morgan-json": "^1.1.0",
@@ -45,6 +46,7 @@
   },
   "homepage": "https://github.com/anandarpit/orvide#readme",
   "devDependencies": {
-    "parcel-bundler": "^1.12.5"
+    "parcel-bundler": "^1.12.5",
+    "should": "^13.2.3"
   }
 }

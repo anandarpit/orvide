@@ -1,6 +1,11 @@
 const chai = require("chai");
 const chaiHttp = require("chai-http");
-const server = require('./server.test')
+// const server1 = require('../src/server');
+const server = "http://localhost:3000"
+
+
+
+
 
 chai.should();
 chai.use(chaiHttp);
