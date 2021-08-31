@@ -76,7 +76,7 @@ exports.getUserOrgDetail = async (_id) => {
 exports.updateInviteLinkStatus = async (_id, validatedResult) => {
   try {
     const { orgId, status } = validatedResult;
-    const isCreator = await orgSchema.findOne({ architectId: _id }, { link: { sta: 1 }, _id: 0 });
+    const isCreator = await orgSchema.findOne({ ownerId: _id }, { link: { sta: 1 }, _id: 0 });
     if (!isCreator)
       throw createError({ code: "NA_00" });
     
