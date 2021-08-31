@@ -5,5 +5,6 @@ router.use('/fetch', require('./fetch.routes'));
 router.use('/meta',require('./meta.routes'));
 router.use('/org',require('./org.routes'));
 router.use('/struc',require('./struc.routes'));
+router.use('/role',require('./role.routes'));
 
 module.exports = router;

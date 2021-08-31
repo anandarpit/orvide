@@ -1,10 +1,12 @@
 const Joi = require(`@hapi/joi`);
 
 module.exports = {
-  createStructure_joi_cs00: () => {
+  createStructure: () => {
     return Joi.object({
-      org_id: Joi.string().max(30).required().messages({
+      //This is the regex to verify if the ObjectId passed is really a 24digit hexadecimal string
+      org_id: Joi.string().regex(/^[0-9a-fA-F]{24}$/).max(30).required().messages({
         "string.base": `Should be a type of 'text'`,
+        "string.pattern.base": "Invalid ObjectId",
         "string.empty": `Cannot be empty`,
         "any.required": `Org ID is required`,
         "string.max": `Exceeded max no of length`

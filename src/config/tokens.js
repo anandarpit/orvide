@@ -12,7 +12,7 @@ function signAccessToken(userId) {
   return new Promise((resolve, reject) => {
     const _id = userId;
     const issuer = `orvide.com`;
-
+    
     const payload = {
       sub: _id,
       iat: Date.now(),

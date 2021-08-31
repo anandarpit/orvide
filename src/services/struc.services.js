@@ -7,17 +7,17 @@ const ObjectId = mongoose.Types.ObjectId;
 
 module.exports = {
   createStruc: async (validatedResult, userId, roleData) => {
-    console.log(roleData[0])
-    if (
-      roleData[0] &&
-      ((roleData[0].aRoles && roleData[0].aRoles.ini) ||
-        (roleData[0].role && roleData[0].role.isInitiator))
-    ) {
+    // console.log(roleData[0])
+    // if (
+    //   roleData[0] &&
+    //   ((roleData[0].aRoles && roleData[0].aRoles.ini) ||
+    //     (roleData[0].role && roleData[0].role.isInitiator))
+    // ) {
       await createStructure(validatedResult, userId);
       return true;
-    } else {
-      throw createError.BadRequest({ code: "NA_00" });
-    }
+    // } else {
+    //   throw createError.BadRequest({ code: "NA_00" });
+    // }
   },
 };
 
@@ -62,7 +62,7 @@ async function createStructure(validatedResult, userId) {
         name: "all",
         desc: "The Union room for " + name,
         type: "UNION",
-        cTime: Date.now(),
+        cT: Date.now(),
         rAdm: [{ uid: userId, aTime: Date.now() }],
       });
       const rData = await rVal.save({ session });

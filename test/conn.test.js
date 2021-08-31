@@ -14,14 +14,14 @@ const mongoose = require("mongoose");
 require(`dotenv`).config();
 const connect = require("../src/config/connection");
 
-describe("drop database and init connection", () => {
-  it("drop database", (done) => {
-    connect
-      .then(() => {
-        mongoose.connection.db.dropDatabase(function () {
-          done();
-        });
-      })
-      .catch(done);
-  });
-});
+// describe("drop database and init connection", () => {
+//   it("drop database", (done) => {
+//     connect
+//       .then(() => {
+//         mongoose.connection.db.dropDatabase(function () {
+//           done();
+//         });
+//       })
+//       .catch(done);
+//   });
+// });

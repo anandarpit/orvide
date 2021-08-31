@@ -74,27 +74,74 @@ const UserSchema = new mongoose.Schema(
         oId: mongoose.Schema.Types.ObjectId,
          //orgs unique Id
         roleId: mongoose.Schema.Types.ObjectId,
-        test:mongoose.Schema.Types.String,
-        aRoles: {
-          //Additional roles
-          rC: {
-            // is role creator
-            gBy: mongoose.Schema.Types.ObjectId, //Given By
+        label: {
+          type: {
+            type: String,
+            enum: ["ADMIN", "OWNER", "NONE"],
+            default: "NONE",
           },
-          mod: {
-            // is moderator
-            gBy: mongoose.Schema.Types.ObjectId, //Given By
-          },
-          end: {
-            // is endorser
-            gBy: mongoose.Schema.Types.ObjectId, //Given By
-          },
-          ini: {
-            //is Initiator
-            gBy: mongoose.Schema.Types.ObjectId, //Given By
+          gBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            aT: mongoose.Schema.Types.Date,
           },
         },
-        // Joined structures
+        ADMIN: {
+          //can create new roles
+          cnr: {
+            is: {
+              type: mongoose.Schema.Types.Boolean,
+              default: true,
+            },
+            gBy: mongoose.Schema.Types.ObjectId,
+          },
+          //can make other admins 
+          cma: {
+            is: {
+              type: mongoose.Schema.Types.Boolean,
+              default: true,
+            },
+            gBy: mongoose.Schema.Types.ObjectId,
+          }
+        },
+
+        //**From here is the Additional Access
+        
+        MOD: {
+          is: mongoose.Schema.Types.Boolean,
+          //can remove user
+          cru: {
+            is: {
+              type: mongoose.Schema.Types.Boolean,
+              default: false,
+            },
+            gBy: mongoose.Schema.Types.ObjectId,
+          },
+          gBy: mongoose.Schema.Types.ObjectId,
+        },
+        //can request for new structures
+        crs: {
+          is: {
+            type: mongoose.Schema.Types.Boolean,
+            default: false,
+          },
+          gBy: mongoose.Schema.Types.ObjectId,
+        },
+        cb: {
+          is: {
+            type: mongoose.Schema.Types.Boolean,
+            default: true,
+          },
+          gBy: mongoose.Schema.Types.ObjectId,
+        },
+        cec: {
+          is: {
+            type: mongoose.Schema.Types.Boolean,
+            default: false,
+          },
+          gBy: mongoose.Schema.Types.ObjectId,
+        },
+
+        //Joined structures
         JS: [
           {
             _id: false,

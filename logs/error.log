@@ -1,0 +1,126 @@
+[31m19/08/2021 11:08:06 - [error] : Can not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+[31m19/08/2021 11:18:30 - [error] : Can not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+[31m19/08/2021 11:21:17 - [error] : Can not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+[31m19/08/2021 12:30:55 - [error] : Can not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+[31m19/08/2021 17:04:04 - [error] : Can not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+[31m19/08/2021 19:23:26 - [error] : Can not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+[31m19/08/2021 20:07:49 - [error] : Can not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+[31m19/08/2021 23:13:22 - [error] : Can not Connect MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:2717[39m
+[31m21/08/2021 21:00:34 - [error] : Not Found[39m
+[31m21/08/2021 21:13:47 - [error] : First Name is Required!. Username is Required!. Email is required. OTP is required[39m
+[31m21/08/2021 21:15:31 - [error] : Not Found[39m
+[31m21/08/2021 21:15:35 - [error] : Email is required. Password is Required![39m
+[31m21/08/2021 21:16:19 - [error] : Unexpected token e in JSON at position 6[39m
+[31m21/08/2021 21:16:24 - [error] : Unexpected token e in JSON at position 6[39m
+[31m21/08/2021 21:16:35 - [error] : Unexpected token e in JSON at position 6[39m
+[31m21/08/2021 21:16:39 - [error] : Unexpected token e in JSON at position 6[39m
+[31m21/08/2021 21:16:43 - [error] : Unexpected token e in JSON at position 6[39m
+[31m21/08/2021 21:16:57 - [error] : Unexpected token } in JSON at position 65[39m
+[31m21/08/2021 21:17:04 - [error] : Password is Required!. "pass" is not allowed[39m
+[31m21/08/2021 21:29:31 - [error] : Password is Required!. "value" must contain at least one of [username, email][39m
+[31m21/08/2021 21:30:10 - [error] : Unexpected token { in JSON at position 6[39m
+[31m21/08/2021 21:30:19 - [error] : Invalid Credentials[39m
+[31m21/08/2021 21:37:06 - [error] : Argument passed in must be a single String of 12 bytes or a string of 24 hex characters[39m
+[31m21/08/2021 21:46:19 - [error] : Argument passed in must be a single String of 12 bytes or a string of 24 hex characters[39m
+[31m21/08/2021 21:53:59 - [error] : Argument passed in must be a single String of 12 bytes or a string of 24 hex characters[39m
+[31m21/08/2021 21:55:04 - [error] : Argument passed in must be a single String of 12 bytes or a string of 24 hex characters[39m
+[31m21/08/2021 22:07:53 - [error] : "org_id" with value "string" fails to match the valid mongo id pattern[39m
+[31m21/08/2021 22:09:05 - [error] : "org_id" with value "string" fails to match the valid mongo id pattern[39m
+[31m21/08/2021 22:09:46 - [error] : Not Authorized[39m
+[31m21/08/2021 22:10:00 - [error] : "org_id" with value "61212001bbc36df14a2f4da" fails to match the valid mongo id pattern[39m
+[31m21/08/2021 22:16:36 - [error] : "org_id" with value "61212001bbc36df14a2f4da" fails to match the valid mongo id pattern[39m
+[31m21/08/2021 22:19:18 - [error] : regex must be a RegExp[39m
+[31m21/08/2021 22:19:59 - [error] : "org_id" with value "61212001bbc36df14a2f4da" fails to match the required pattern: /^[0-9a-fA-F]{24}$/[39m
+[31m21/08/2021 22:20:16 - [error] : Not Authorized[39m
+[31m21/08/2021 22:23:23 - [error] : Not Authorized[39m
+[31m21/08/2021 22:23:29 - [error] : Invalid ObjectId[39m
+[31m22/08/2021 11:45:49 - [error] : Unauthorized[39m
+[31m22/08/2021 11:46:07 - [error] : Unexpected token " in JSON at position 3[39m
+[31m22/08/2021 11:46:11 - [error] : Unexpected token " in JSON at position 3[39m
+[31m22/08/2021 11:46:16 - [error] : Unauthorized[39m
+[31m22/08/2021 11:46:46 - [error] : Unexpected token " in JSON at position 3[39m
+[31m22/08/2021 11:46:52 - [error] : Unauthorized[39m
+[31m22/08/2021 11:48:19 - [error] : Unauthorized[39m
+[31m22/08/2021 11:49:05 - [error] : Invalid ObjectId[39m
+[31m22/08/2021 14:17:31 - [error] : Invalid ObjectId[39m
+[31m22/08/2021 14:17:33 - [error] : Invalid ObjectId[39m
+[31m22/08/2021 14:18:23 - [error] : Unexpected token u in JSON at position 6[39m
+[31m22/08/2021 14:18:29 - [error] : Not Found[39m
+[31m22/08/2021 14:18:40 - [error] : Invalid. "uname" is not allowed[39m
+[31m22/08/2021 14:19:28 - [error] : Not Found[39m
+[31m23/08/2021 19:48:39 - [error] : Invalid ObjectId[39m
+[31m23/08/2021 19:49:34 - [error] : Internal Server Error[39m
+[31m24/08/2021 18:55:47 - [error] : Not Authorized[39m
+[31m24/08/2021 18:55:51 - [error] : User not found[39m
+[31m24/08/2021 19:01:12 - [error] : User not found[39m
+[31m24/08/2021 19:01:24 - [error] : User not found[39m
+[31m24/08/2021 19:01:25 - [error] : User not found[39m
+[31m24/08/2021 19:06:15 - [error] : User not found[39m
+[31m24/08/2021 19:06:49 - [error] : User not found[39m
+[31m24/08/2021 19:06:53 - [error] : User not found[39m
+[31m24/08/2021 19:06:53 - [error] : User not found[39m
+[31m24/08/2021 19:08:11 - [error] : Unauthorized[39m
+[31m24/08/2021 19:10:20 - [error] : Unauthorized[39m
+[31m24/08/2021 19:10:21 - [error] : Unauthorized[39m
+[31m24/08/2021 19:10:22 - [error] : Unauthorized[39m
+[31m24/08/2021 19:10:47 - [error] : Unauthorized[39m
+[31m24/08/2021 19:10:49 - [error] : Unauthorized[39m
+[31m24/08/2021 19:11:43 - [error] : roleData is not defined[39m
+[31m24/08/2021 19:12:12 - [error] : Cannot read property '0' of null[39m
+[31m24/08/2021 19:14:11 - [error] : Structure name already taken in this Org![39m
+[31m24/08/2021 19:17:14 - [error] : Invalid ObjectId[39m
+[31m25/08/2021 15:22:48 - [error] : Not Found[39m
+[31m25/08/2021 15:23:17 - [error] : First Name is Required!. Username is Required!. Email is required. OTP is required[39m
+[31m25/08/2021 15:24:50 - [error] : First Name is Required!. Username is Required!. Email is required. OTP is required[39m
+[31m25/08/2021 15:25:30 - [error] : First Name is Required!. Username is Required!. Email is required. OTP is required[39m
+[31m25/08/2021 15:26:18 - [error] : First Name is Required!. Username is Required!. Email is required. OTP is required[39m
+[31m25/08/2021 15:26:22 - [error] : First Name is Required!. Username is Required!. Email is required. OTP is required[39m
+[31m25/08/2021 15:26:33 - [error] : Invalid Email[39m
+[31m25/08/2021 15:27:01 - [error] : User not found[39m
+[31m25/08/2021 15:28:47 - [error] : User not found[39m
+[31m25/08/2021 15:28:52 - [error] : User not found[39m
+[31m25/08/2021 15:28:57 - [error] : User not found[39m
+[31m25/08/2021 15:29:01 - [error] : User not found[39m
+[31m25/08/2021 19:12:06 - [error] : Unexpected token } in JSON at position 92[39m
+[31m25/08/2021 19:12:13 - [error] : Should have a minimum length of 4[39m
+[31m29/08/2021 20:17:46 - [error] : Unexpected token o in JSON at position 4[39m
+[31m29/08/2021 20:18:05 - [error] : Unexpected token o in JSON at position 4[39m
+[31m29/08/2021 20:20:40 - [error] : Unexpected token o in JSON at position 4[39m
+[31m29/08/2021 20:20:56 - [error] : Unexpected token o in JSON at position 4[39m
+[31m29/08/2021 20:23:43 - [error] : Unexpected token o in JSON at position 4[39m
+[31m29/08/2021 20:24:00 - [error] : Unexpected token o in JSON at position 4[39m
+[31m29/08/2021 20:24:08 - [error] : Invalid Token[39m
+[31m29/08/2021 20:24:19 - [error] : Invalid Token[39m
+[31m29/08/2021 20:24:30 - [error] : Invalid Token[39m
+[31m29/08/2021 20:24:49 - [error] : Invalid Token[39m
+[31m29/08/2021 20:24:57 - [error] : Invalid Token[39m
+[31m29/08/2021 20:25:39 - [error] : Invalid Token[39m
+[31m29/08/2021 20:25:52 - [error] : Org ID is required[39m
+[31m29/08/2021 20:36:14 - [error] : Org ID is required[39m
+[31m29/08/2021 20:37:13 - [error] : Org ID is required[39m
+[31m29/08/2021 20:37:29 - [error] : Org ID is required[39m
+[31m29/08/2021 20:37:58 - [error] : Org ID is required[39m
+[31m29/08/2021 20:42:17 - [error] : Org ID is required[39m
+[31m29/08/2021 20:44:46 - [error] : User Id is required[39m
+[31m29/08/2021 20:44:59 - [error] : Invalid Token[39m
+[31m29/08/2021 20:45:31 - [error] : Unauthorized[39m
+[31m29/08/2021 20:45:53 - [error] : User Id is required[39m
+[31m29/08/2021 20:46:12 - [error] : User Id is required[39m
+[31m29/08/2021 20:46:47 - [error] : Unexpected token / in JSON at position 81[39m
+[31m29/08/2021 20:46:55 - [error] : Unexpected token / in JSON at position 81[39m
+[31m29/08/2021 20:47:06 - [error] : Cannot read property 'sub' of undefined[39m
+[31m29/08/2021 20:47:48 - [error] : User Id is required[39m
+[31m29/08/2021 20:48:09 - [error] : User Id is required[39m
+[31m29/08/2021 20:48:21 - [error] : User Id is required[39m
+[31m29/08/2021 20:57:30 - [error] : User Id is required[39m
+[31m29/08/2021 20:58:10 - [error] : User Id is required[39m
+[31m29/08/2021 20:58:21 - [error] : Unauthorized[39m
+[31m29/08/2021 20:58:28 - [error] : User Id is required[39m
+[31m29/08/2021 21:03:50 - [error] : User Id is required[39m
+[31m29/08/2021 21:04:17 - [error] : Invalid Token[39m
+[31m29/08/2021 21:04:45 - [error] : Invalid Token[39m
+[31m29/08/2021 21:05:00 - [error] : Invalid Token[39m
+[31m29/08/2021 21:07:30 - [error] : User Id is required[39m
+[31m29/08/2021 21:07:45 - [error] : User Id is required[39m
+[31m29/08/2021 21:08:03 - [error] : User Id is required[39m
+[31m29/08/2021 21:08:30 - [error] : User Id is required[39m
