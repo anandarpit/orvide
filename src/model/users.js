@@ -70,9 +70,11 @@ const UserSchema = new mongoose.Schema(
 
     //Joined Orgs []Array so capital
     JO: [
-      {
-        oId: mongoose.Schema.Types.ObjectId, //orgs unique Id
+      { _id:false,
+        oId: mongoose.Schema.Types.ObjectId,
+         //orgs unique Id
         roleId: mongoose.Schema.Types.ObjectId,
+        test:mongoose.Schema.Types.String,
         aRoles: {
           //Additional roles
           rC: {
@@ -92,7 +94,7 @@ const UserSchema = new mongoose.Schema(
             gBy: mongoose.Schema.Types.ObjectId, //Given By
           },
         },
-        //Joined structures
+        // Joined structures
         JS: [
           {
             _id: false,

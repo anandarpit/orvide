@@ -1,11 +1,13 @@
 const connect = require("../config/connection");
-const UserSchema = require("../model/users");
+const userSchema = require("../model/users");
 const createError = require(`http-errors`);
 const orgSchema = require(`../model/Org`);
+const logger = require(`../config/logger`)
+const {orgIdName} = require('../functions/userOrg')
 
 module.exports = {
   uniqueEmail: async (email) => {
-    const email_exist = await UserSchema.findOne({
+    const email_exist = await userSchema.findOne({
       "emails.email": [email],
     },{"_id" : 1});
     if (email_exist) {
@@ -15,7 +17,7 @@ module.exports = {
     }
   },
   uniqueUsername: async (uname) => {
-        const user = await UserSchema.findOne({ "data.un": uname },{"_id" : 1});
+        const user = await userSchema.findOne({ "data.un": uname },{"_id" : 1});
         if (!user) {
           return "unique";
         } else return "same";
@@ -43,4 +45,8 @@ module.exports = {
   // uniqueStruc: async (validatedResult) => {
   //   return await 
   // }
+
 };
+
+
+

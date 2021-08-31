@@ -10,18 +10,12 @@ exports.createOrg = catchAsync(async (req, res) => {
     
   const orgId = await orgService.createOrg(res.locals.payload.sub, validatedOrg)
 
-  if (orgId) return res.status(200).json({ message: 'Registered' })
+  if (orgId) return res.status(201).json({ message: 'Registered' })
 })
 
-exports.getOrg = catchAsync(async (req, res) => {
-  const orgList = await orgService.getOrg(res.locals.payload.sub)
-  if (orgList) return res.status(200).json({ data: orgList })
-})
+
 
 exports.updateInviteLinkStatus = catchAsync(async (req, res) => {
-    const validatedResult = await orgValidation
-        .inviteLinkStatus()
-        .validateAsync(req.body);
     
     const result = orgService.updateInviteLinkStatus(
         res.locals.payload.sub,
@@ -31,3 +25,17 @@ exports.updateInviteLinkStatus = catchAsync(async (req, res) => {
         res.status(201).json({ message: `Invite Link Status '${req.body.status}'` });
         
 })
+
+exports.getUserOrgDetails = catchAsync(async (req, res) => {
+  const orgList = await orgService.getUserOrgDetail(res.locals.payload.sub)
+    if (orgList) return res.status(200).json({ data: orgList });
+  return res.status(204).json({message:"something went wrong"})
+})
+
+exports.getStructDetails = catchAsync(async (req, res) => {
+    const structList = await orgService.getStructDetails(req.locals.payload.sub);
+    if (orgList) return res.status(200).json({ data: structList });
+    return res.status(204).json({ message: "something went wrong" });
+
+})
+

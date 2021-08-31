@@ -7,7 +7,7 @@ const logger = require(`../../src/config/logger`);
 
 exports.fetchOTP = catchAsync(async (req, res, next) => {
   const email = req.body.email;
-  const user = await users.findOne({ 'eVer.tempEmail': 'initiatetenet@gmail.com' },{ 'eVer.otp': 1 });
+  const user = await users.findOne({ 'eVer.tempEmail': email },{ 'eVer.otp': 1 });
   
   if (user) {
     const otp = user.eVer.otp;

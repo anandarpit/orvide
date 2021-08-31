@@ -11,8 +11,8 @@ chai.use(chaiHttp);
 var username = "tenet",
 password = "tenet@123",
 token,
-orgName = "NSEC",
-orgId = "college@nsec",
+orgName = "bppodat",
+orgId = "bpp123",
 wrongOrgName = "123",
 wrongOrgId = ""
 
@@ -118,6 +118,22 @@ describe('Org Api',()=>{
                 done();
             })
         })
+it('Fetch org ,structure and Room', (done) => {
+  chai
+    .request(server)
+    .get('/api/meta/fetch-user-org-detail')
+    .set('authorization', token)
+    .end((err, response) => {
+      response.should.have.status(200)
+      response.should.be.json
+      response.body.should.be.a('object');
+      console.log(response.body.data);
+    //   response.body.should.have.property('message')
+    //   response.body.message.should.equal('Registered')
+      done()
+    })
+})
+
     })
     describe('Organisation Sameness',()=>{
      it("Org Name should be same",(done)=>{

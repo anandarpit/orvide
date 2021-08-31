@@ -5,7 +5,8 @@
   "main": "./src/server.js",
   "scripts": {
     "start": "nodemon ./src/server.js",
-    "test": "mocha ./test/index.js --timeout 50000 "
+    "test": "mocha ./test/index.js --timeout 50000",
+    "test1":"mocha ./src/functions/functions.test.js --timeout 50000"
   },
   "keywords": [
     "orvide",
