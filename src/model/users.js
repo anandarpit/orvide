@@ -73,17 +73,7 @@ const UserSchema = new mongoose.Schema(
       {
         oId: mongoose.Schema.Types.ObjectId, //orgs unique Id
         roleId: mongoose.Schema.Types.ObjectId,
-        label: {
-          type: {
-            type: String,
-            enum: ["ADMIN", "OWNER", "NONE"],
-            default: "NONE",
-          },
-          gBy: {
-            type: mongoose.Schema.Types.ObjectId,
-            aT: mongoose.Schema.Types.Date,
-          },
-        },
+        OWNER: mongoose.Schema.Types.Boolean,
         ADMIN: {
           //can create new roles
           cnr: {
@@ -93,18 +83,18 @@ const UserSchema = new mongoose.Schema(
             },
             gBy: mongoose.Schema.Types.ObjectId,
           },
-          //can make other admins 
+          //can make other admins
           cma: {
             is: {
               type: mongoose.Schema.Types.Boolean,
               default: true,
             },
             gBy: mongoose.Schema.Types.ObjectId,
-          }
+          },
         },
 
         //**From here is the Additional Access
-        
+
         MOD: {
           is: mongoose.Schema.Types.Boolean,
           //can remove user
@@ -117,6 +107,8 @@ const UserSchema = new mongoose.Schema(
           },
           gBy: mongoose.Schema.Types.ObjectId,
         },
+        //Organizer: Manage the events section
+        OZR: mongoose.Schema.Types.Boolean,
         //can request for new structures
         crs: {
           is: {

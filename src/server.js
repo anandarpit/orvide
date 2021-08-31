@@ -36,7 +36,7 @@ app.use(async (req, res, next) => {
 
 app.use(errorHandler);
 
-const PORT =  3000;
+const PORT =  4000;
 const server = app.listen(PORT, () => {
   logger.info(`Server is running on port ${PORT}`);
 });

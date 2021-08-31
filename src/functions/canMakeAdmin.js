@@ -23,18 +23,26 @@ exports.canMakeAdmin_func = async (userId, orgId) => {
         ],
       },
     })
+    .project({
+      "_id": 1,
+      "data": {
+        "oId": 1,
+        "OWNER": 1,
+        "ADMIN": 1
+      }
+    })
     .exec();
 };
 
 /**
 TEMPLATE OF THE OUTPUT
-{ 
-    "_id" : ObjectId("6126484a6d2141218db38522"), 
-    "data" : {
-        "oId" : ObjectId("61264bd6deedb64a65644496"), 
-        "label" : {
-            "type" : "OWNER"
-        }
-    }
+{
+  _id: 6126484a6d2141218db38522,
+  data: {
+    oId: 61264bd6deedb64a65644496,
+    OWNER: true,
+    ADMIN: { cnr: true, cma: false }
+  }
 }
  */
+

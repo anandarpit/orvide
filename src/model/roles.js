@@ -21,6 +21,8 @@ const RoleSchema = new mongoose.Schema({
       default: false
     },
   },
+  //Organizer: Manage the events section
+  OZR: mongoose.Schema.Types.Boolean,
   //can request for new structures
   crs: {
     type: mongoose.Schema.Types.Boolean,
@@ -31,11 +33,6 @@ const RoleSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.Boolean,
     default: true
   },
-  //can control events and calendar section
-  cec: {
-    type: mongoose.Schema.Types.Boolean,
-    default: false
-  }
 },{ timestamps: true });
 
 module.exports = mongoose.model("Roles", RoleSchema);
