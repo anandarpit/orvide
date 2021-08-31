@@ -1,8 +1,7 @@
 const createError = require(`http-errors`);
 const catchAsync = (fn) => (req, res, next) => {
   Promise.resolve(fn(req, res, next)).catch((err) => {
-    const errCode = err.message.code
-    console.log("error" ,err.message);
+    const errCode = err.message.code;
     if (err.isJoi === true) err.status = 422;
     else if (errCode === "EAR_00") err.message = "This email is already associated with another account";//Email Already Registered
     else if (errCode === "UNF_00") err.message = "User not found";
