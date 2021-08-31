@@ -26,11 +26,6 @@ const RoleSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.Boolean,
     default: false
   },
-  //can post
-  cp: {
-    type: mongoose.Schema.Types.Boolean,
-    default: true
-  },
   //can blog
   cb: {
     type: mongoose.Schema.Types.Boolean,

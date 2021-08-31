@@ -15,7 +15,7 @@ exports.MakeAdmin = catchAsync(async (req, res, next) => {
     //Step 2: for checking the maker has the right permissions to make 
     const thisUserRole = await canMakeAdmin_func(thisUserId, orgId)
     console.log(thisUserRole[0])
-    if(thisUserRole[0] && )
+    // if(thisUserRole[0] && )
     
 
     //Step 3: for checking if the to-be-made-admin has the clean-chit to become admin 

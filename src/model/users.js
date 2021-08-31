@@ -102,6 +102,9 @@ const UserSchema = new mongoose.Schema(
             gBy: mongoose.Schema.Types.ObjectId,
           }
         },
+
+        //**From here is the Additional Access
+        
         MOD: {
           is: mongoose.Schema.Types.Boolean,
           //can remove user
@@ -119,13 +122,6 @@ const UserSchema = new mongoose.Schema(
           is: {
             type: mongoose.Schema.Types.Boolean,
             default: false,
-          },
-          gBy: mongoose.Schema.Types.ObjectId,
-        },
-        cp: {
-          is: {
-            type: mongoose.Schema.Types.Boolean,
-            default: true,
           },
           gBy: mongoose.Schema.Types.ObjectId,
         },
