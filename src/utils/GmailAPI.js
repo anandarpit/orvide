@@ -18,6 +18,9 @@ oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 async function sendMail(receiverEmail, subject, body) {
   return new Promise(async (resolve, reject) => {
     try {
+      if (process.env.NODE_ENV === 'dev') {
+        return resolve(true);
+      }
       const accessToken = await oAuth2Client.getAccessToken();
 
       const transport = nodemailer.createTransport({

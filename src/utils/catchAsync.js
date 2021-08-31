@@ -1,7 +1,7 @@
 const createError = require(`http-errors`);
 const catchAsync = (fn) => (req, res, next) => {
   Promise.resolve(fn(req, res, next)).catch((err) => {
-    const errCode = err.message.code
+    const errCode = err.message.code;
     if (err.isJoi === true) err.status = 422;
     else if (errCode === "EAR_00") err.message = "This email is already associated with another account";//Email Already Registered
     else if (errCode === "UNF_00") err.message = "User not found";
@@ -9,9 +9,10 @@ const catchAsync = (fn) => (req, res, next) => {
     else if (errCode === "IC_00") err.message = "Invalid Credentials";
     else if (errCode === "AAV_00") err.message = "Account Already verified!";
     else if (errCode === "NLI_00") err.message = "Not Logged in";
-    else if (errCode === "NT_00") err.message = "Unauthorized";//same to line 13
+    else if (errCode === "NT_00") err.message = "No token";//same to line 13
     else if (errCode === "IT_00") err.message = "Invalid Token";
     else if (errCode === "NA_00") err.message = "Not Authorized";
+    else if (errCode === "DKE_CO") err.message = "Org name, Org Id or domain already exist";
     //Name taken
     else if (errCode === "NAT_01") err.message = "Structure name already taken in this Org!";   
     //OTP
@@ -19,6 +20,7 @@ const catchAsync = (fn) => (req, res, next) => {
     else if (errCode === "OTP_02") err.message = "Invalid OTP";
     //No permission
     else if (errCode === "NP_01") err.message = "You do not have the permission to create new Structures.";
+    else if(err.name === 'MongooseError') err.message = "InternalServerError"
     next(err);
   });
 };

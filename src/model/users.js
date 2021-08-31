@@ -70,8 +70,9 @@ const UserSchema = new mongoose.Schema(
 
     //Joined Orgs []Array so capital
     JO: [
-      {
-        oId: mongoose.Schema.Types.ObjectId, //orgs unique Id
+      { _id:false,
+        oId: mongoose.Schema.Types.ObjectId,
+         //orgs unique Id
         roleId: mongoose.Schema.Types.ObjectId,
         OWNER: mongoose.Schema.Types.Boolean,
         ADMIN: {

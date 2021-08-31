@@ -1,45 +1,3 @@
-// const connect = require("../helpers/connection");
-// const OrgSchema = require("../model/Org");
-// const UserSchema = require("../model/user/User");
-// const mongoose = require("mongoose");
-// const createError = require(`http-errors`);
-// const {randomValueHex} = require('../utils/generateId')
-
-// module.exports = {
-//   CreateOrg_srv: async (validatedResult, userData) => {
-//     return new Promise((resolve, reject) => {
-//       try {
-//         connect.then(async (db) => {
-// const enable = null;
-// if (validatedResult.orgDomain) enable = true;
-
-//           const data = new OrgSchema({
-//             orgId: validatedResult.orgId,
-//             orgName: validatedResult.orgName,
-// orgDomain: { enabled: enable, domain: validatedResult.orgDomain },
-//           });
-
-//           await data.save((err, doc) => {
-//             if (err) return reject(err);
-//             else{
-
-//               const filter = { _id: userData._id}
-//               const userUpdate = new UserSchema({
-//                 _id: userData._id,
-//                 emails: [{ email: email }],
-//                 username: username,
-//                 name: { firstName, lastName },
-//               });
-//             }
-//           });
-//         });
-//       } catch (error) {
-//         return reject(error);
-//       }
-//     });
-//   },
-// }
-
 const mongoose = require('mongoose')
 const connect = require('../config/connection')
 const orgSchema = require('../model/Org')
@@ -47,6 +5,8 @@ const userSchema = require('../model/users')
 const createError = require(`http-errors`)
 const { randomId } = require('../utils/generateValue')
 const logger = require('../config/logger')
+const {orgFunc} = require('../functions')
+const { debug } = require('../config/logger')
 
 exports.createOrg = (_id, validatedResult) => {
   return new Promise(async (resolve, reject) => {
@@ -55,9 +15,8 @@ exports.createOrg = (_id, validatedResult) => {
     session.startTransaction()
 
     try {
-      const enable = null
-      if (validatedResult.orgDomain) enable = true
-
+      const enable = null;
+      if (validatedResult.orgDomain) enable = true;
       const linkId = await randomId(26); //gen linkId for org invite link
 
       const orgDetails = new orgSchema({
@@ -81,7 +40,7 @@ exports.createOrg = (_id, validatedResult) => {
 
       await userSchema.updateOne(
         { _id },
-        { $push: { joinedOrgs: { orgId: orgDoc._id } } },
+        { $addToSet: { "JO.oId": orgDoc._id } }, //addToSet INSTEAD OF PUSH
         { session }
       )
       logger.debug("user collection updated")
@@ -89,8 +48,9 @@ exports.createOrg = (_id, validatedResult) => {
 
       return resolve(true)
     } catch (err) {
-      await session.abortTransaction()
-      if (err.code === 11000 && err.name === 'MongoError') return reject(createError(500, { code: "DKE" }))
+      await session.abortTransaction();
+      if (err.code === 11000) return reject (createError.BadRequest({ code: "DKE_CO" }));
+      logger.error("create Org error ", err);
       return reject(err);
     } finally {
       session.endSession();
@@ -98,28 +58,35 @@ exports.createOrg = (_id, validatedResult) => {
     }
   })
 }
+exports.getUserOrgDetail = async (_id) => {
+  const list = await orgFunc.orgIdName(_id);
+  logger.debug('org Id and Name  ', list)
+  return list;
+}
 
-exports.getOrg = async _id => {
-  return new Promise(async (resolve, reject) => {
-    const orgList = await UserSRSchema.find({ uID: _id }, { org_id: 1, _id: 0 });
-    logger.info('orgList', orgList);
-  })
-}
-exports.saveToUserRS = async (_id, orgId) => {
-  return new Promise(async (resolve, reject) => {
-    resolve(true);
-  })
-}
+// exports.getStructDetails = async (_id) => {
+//   const list = await orgFunc.structIdName(_id, req.orgId);
+//   logger.debug("struct Id and Name ", list);
+//   return list;
+
+// }
+
+
+
 exports.updateInviteLinkStatus = async (_id, validatedResult) => {
   try {
     const { orgId, status } = validatedResult;
-    const isCreator = await orgSchema.findOne({ architectId: _id }, { link: {sta:1}, _id: 0 });
-    console.log("Status orgId" , status, orgId);
+    const isCreator = await orgSchema.findOne({ ownerId: _id }, { link: { sta: 1 }, _id: 0 });
+    if (!isCreator)
+      throw createError({ code: "NA_00" });
+    
+    logger.debug("Status orgId" , status, orgId);
     
     await orgSchema.updateOne({ orgId }, { $set: { "link.sta": status }  });
     return true;
   } catch(err) {
-    console.log("updating error " +err);
+    debug.err("error in invite link", err);
+      
   }
 }
 

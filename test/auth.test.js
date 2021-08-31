@@ -10,8 +10,8 @@ chai.use(chaiHttp)
 
 describe('API', () => {
   var otp
-  var email = 'initiatetenet@gmail.com',
-    username = 'tenet',
+  var email = 'initiate2tenet@gmail.com',
+    username = 'tenet2',
     firstName = 'Carl',
     lastName = 'sagan',
     password = 'tenet@123',
@@ -60,6 +60,9 @@ describe('API', () => {
         .post('/api/auth/verificationEmail')
         .send(userMeta)
         .end((err, response) => {
+          should.not.exist(err)
+          should.exist(response)
+
           response.should.have.status(200)
           response.should.be.json
           response.body.should.be.a('array')

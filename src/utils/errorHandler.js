@@ -29,7 +29,7 @@ process.on("unhandledRejection", RejectionHandler);
 isOperational = (err) => {
   const errorType = createError.isHttpError(err);
 
-  if (errorType || err.isJoi) return true;
+  if (errorType || err.isJoi || err.name === 'MongooseError') return true;
   else return false;
 };
 
